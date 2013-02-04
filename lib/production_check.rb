@@ -5,7 +5,7 @@ module ::Middleman::Features::ProductionCheck
   class << self
     def registered(app)
       $production = true
-      raise "TS_VERSION required to deploy" unless $versions[:riak]
+      raise "TS_VERSION required to deploy" unless $versions[:ts]
     end
   end
 end

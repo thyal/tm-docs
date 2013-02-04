@@ -1,6 +1,6 @@
 ---
 title: What is Riak
-project: riak
+project: ts
 version: 0.10.0+
 document: tutorial
 audience: beginner
