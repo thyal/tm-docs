@@ -19,7 +19,8 @@ $versions = {
 }
 $default_project = 'ts'
 
-%w{versionify production_check index
+#%w{versionify production_check index
+%w{production_check index
   sitemap_render_override duals helpers downloads}.each do |lib|
   require File.join(File.dirname(__FILE__), lib)
 end
