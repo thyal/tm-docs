@@ -12,6 +12,8 @@ versions: false
 interest: [
 "[[TinyMesh Messages]]",
 "[[HTTP API]]",
+"[[Querying Data]]",
+"[[HTTP List Devices]]",
 ]
 ---
 

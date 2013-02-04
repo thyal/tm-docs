@@ -39,6 +39,6 @@ The Fast Track takes you through the following sections:
 
 * [[What is TinySolution?|What is TinySolution]]: High level overview of the TinySolutio architecture.
 * [[Connecting To TinySolution]]: Initial configuration needed to use TinySolution
-* [[Using TinySolution To Send Data|Sending Data]]: Instructions to send data as well as overview of TinySolution capabilties
 * [[Querying TinySolution]]: A review of standard API Operations.
+* [[Using TinySolution To Send Data|Sending Data]]: Instructions to send data as well as overview of TinySolution capabilties
 * [[Streaming Data]]: Instructions on streaming real-time data from TinyMesh devices

@@ -5,9 +5,9 @@ version: 0.0.1+
 document: tutorial
 audience: beginner
 keywords: [tutorial, fast-track]
-prev: "[[The TinySolution Fast Track]]"
+prev: "[[Connecting To TinySolution]]"
 up:   "[[The TinySolution Fast Track]]"
-next: "[[Connecting To TinySolution]]"
+next: "[[Sending Data]]"
 versions: false
 interest: [
 "[[Key Managment]]",

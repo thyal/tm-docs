@@ -7,7 +7,7 @@ audience: beginner
 keywords: [tutorial, fast-track]
 prev: "[[What Is TinySolution]]"
 up:   "[[The TinySolution Fast Track]]"
-next: "[[Using TinySolution To Send Data|Sending Data]]"
+next: "[[Querying TinySolution]]"
 versions: false
 interest: [
 "[[Key Managment]]",
