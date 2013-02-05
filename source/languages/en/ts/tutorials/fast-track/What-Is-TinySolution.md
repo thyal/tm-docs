@@ -15,10 +15,6 @@ interest: [
 ]
 ---
 
-This page provides a introduction to the TinySolution Architecture.
-
-## How Does TinySolution Work?
-
 TinySolution™ allows information to be exchanged over the Internet,
 between physical hardware and high-level application software. TinySolution™
 provides a communication infrastructure that allows application designers
@@ -31,6 +27,7 @@ connecting applications. The notable difference being the low-level
 binary interface is strictly real-time streams, whilst the high-level
 interface has support for batch-oriented operations.
 
+
 ### How Can I Interface TinySolution?
 
 All client applications will address the high-level API which utilises
@@ -39,12 +36,35 @@ data is hierarchically stored and easily accessible using most modern
 HTTP libraries for your programming language. We will provide [[Client
 Libraries]] for some of the common languages in the future.
 
-For development, the absolute easiest way is to either use a
-web-browser or `curl` to access data.
+For development, the absolute easiest way is to interface TinySolution
+is either using your web-browser or `curl`.
+
 
 ### What Data Can I Query
 
 TinySolution™ containers maps directly to TinyMesh™ networks, each
 network consists of 1 or more TinyMesh™ devices. Each device contains
-a series of messages. All the data elements - containers, devices and
-messages - can be accessed from the high-level [[HTTP API]].
+a series of messages. All the data elements - _containers, devices and
+messages_ - can be accessed from the high-level [[HTTP API]].
+
+
+### Terminology
+
+<table>
+ <theaD>
+  <tr>
+   <th><b>Term</b></th>
+   <th><b>Description</b></th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr><td><b>Container</b></td>     <td>The TinyMesh network</td></tr>
+  <tr><td><b>Device</b></td>        <td>The TinyMesh device</td></tr>
+  <tr><td><b>Message</b></td>       <td>A single message originating from a _Device_</td></tr>
+  <tr><td><b>Gateway Device</b></td><td>The TinyMesh device serving as gateway</td></tr>
+  <tr><td><b>Network Connector</b></td>
+   <td>A TCP/IP enabled device capable of communicating with the
+    <i>Gateway Device</i> UART as well as the TinySolution endpoint.
+   </td></tr>
+ </tbody>
+</table>
