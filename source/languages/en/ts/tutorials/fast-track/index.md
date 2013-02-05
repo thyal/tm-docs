@@ -17,12 +17,12 @@ additional services to easily communicate and configure TinyMesh™
 devices.
 
 The TinySolution™ services aims to simplify the development cycles
-aswell as deploying and maintaining existing TinyMesh™ networks. Some
+as well as deploying and maintaining existing TinyMesh™ networks. Some
 of it's features include:
 
 * High-availability infrastructure for secure communication
 * Online configuration and monitoring of TinyMesh™ networks
-* Additional security using the [[Key Managment Infrastructure]]
+* Secure [[Key Management Infrastructure]]
 
 ## What is the TinySolution Fast Track?
 
@@ -37,7 +37,7 @@ TinySolution cloud-platform, but can also serve as a setup reference.
 
 The Fast Track takes you through the following sections:
 
-* [[What is TinySolution?|What is TinySolution]]: High level overview of the TinySolutio architecture.
+* [[What is TinySolution?|What is TinySolution]]: High level overview of the TinySolution architecture.
 * [[Connecting To TinySolution]]: Initial configuration needed to use TinySolution
 * [[Querying TinySolution]]: A review of standard API Operations.
 * [[Using TinySolution To Send Data|Sending Data]]: Instructions to send data as well as overview of TinySolution capabilties

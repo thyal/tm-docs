@@ -30,8 +30,8 @@ also the representation we want in return.
 
 ### Parameter Inference
 
-We don't want you to remember all the addressing and package managment
-details, therefor when sending messages we automatically add the
+We don't want you to remember all the addressing and package management
+details, there for when sending messages we automatically add the
 correct parameters for `unique_id`, `packet_number` and other required
 fields. This lets you focus on the task at hand instead of worrying
 about how to transform your business logic into TinyMesh messages.
@@ -39,7 +39,7 @@ about how to transform your business logic into TinyMesh messages.
 ## Sending data
 
 When sending data, we only need to worry about the device id and our
-payload. In the case of retreiving a status this gets relativly
+payload. In the case of retrieving a status this gets relatively
 simple:
 
 ```bash
@@ -55,7 +55,7 @@ Content-Length: x
 "type":"command","command":"get_status"}
 ```
 
-All messages belongs to a device, when we break down the resorce url
+All messages belongs to a device, when we break down the resource URL
 we see that `ABCD/0bee89b07a248` is in reality device `0bee89b07a248`
 in the container `ABCD`. If the device does not exists we would get a
 `404 Not Found` error code in return. There is currently no limitation

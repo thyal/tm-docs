@@ -10,7 +10,7 @@ up:   "[[The TinySolution Fast Track]]"
 next: "[[Connecting To TinySolution]]"
 versions: false
 interest: [
-"[[Key Managment]]",
+"[[Key Management]]",
 "[[Containers]]",
 ]
 ---
@@ -27,8 +27,8 @@ using either raw binary data or structured documents using either XML or JSON.
 
 TinySolution™ provides 2 interfaces, one low-level interface for
 connecting TinyMesh™ containers and one high-level interface for
-connecting applications. The noteable difference beeing the low-level
-binary interface is strictly real-time streams, wilst the high-level
+connecting applications. The notable difference being the low-level
+binary interface is strictly real-time streams, whilst the high-level
 interface has support for batch-oriented operations.
 
 ### How Can I Interface TinySolution?

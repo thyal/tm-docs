@@ -17,9 +17,9 @@ interest: [
 To instantaneously receive data when it's received by TinySolution we
 can stream data. Streaming is a add-on feature that builds on the
 [[Query Module|Querying Data]], this means functionality like
-filtering and timeranges apply aswell.
+filtering and time ranges apply as well.
 
-## Stream data infinitly
+## Stream data infinitely
 
 By default there is no limitation on how long you can stream data.
 The data is sent as chunks over HTTP, the connection is kept until
@@ -45,7 +45,7 @@ Transfer-Encoding: chunked
  </p>
 </div>
 
-### Stream for a defined timerange
+### Stream for a defined time range
 
 Just as easy we can stream until a certain date, this is done by
 setting the `date.to` query parameter somewhere into the future (for

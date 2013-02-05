@@ -10,7 +10,7 @@ up:   "[[The TinySolution Fast Track]]"
 next: "[[Querying TinySolution]]"
 versions: false
 interest: [
-"[[Key Managment]]",
+"[[Key Management]]",
 "[[Networks]]",
 "[[TinyMesh Configuration]]"
 ]
@@ -22,7 +22,7 @@ This page describes how you can connect a TinyMesh network to TinySolution.
 
 All networks connected to TinySolution requires a unique [[Container Address|Network#Container-Address]]
 to perform a handshake. The `Container Address` is stored in the
-calibration memory and can be accessed by setting the the Gateway
+calibration memory and can be accessed by setting the Gateway
 Module in `Configuration Mode`.
 
 To perform the configuration we expect you to be familiar with
@@ -121,7 +121,7 @@ the following command (decimal representation):
 
 The expected response is a [[Get CAD|TinyMesh Messages#event]]
 message. When received, to validate the authenticity, TinySolution will
-check the digital signature included in the message; if successfull
+check the digital signature included in the message; if successful
 the device is authenticated.
 
 There might be race-condition where the device sends a message before
