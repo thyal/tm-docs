@@ -14,10 +14,9 @@ interest: [
 ]
 ---
 
-To instantaneously receive data when it's received by TinySolution we
-can stream data. Streaming is a add-on feature that builds on the
-[[Query Module|Querying Data]], this means functionality like
-filtering and time ranges apply as well.
+To instantaneously receive data we can stream it from TinySolution.
+Streaming is a add-on feature that builds on the [[Query Module|Querying Data]],
+this means functionality like filtering and time ranges apply as well.
 
 ## Stream data infinitely
 
