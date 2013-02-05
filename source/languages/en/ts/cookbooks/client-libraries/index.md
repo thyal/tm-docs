@@ -11,6 +11,7 @@ simple: true
 versions: false
 ---
 
-# Client Libraries
+# Helpers scripts for development
 
-None at the moment
+* [[CURL]]
+* [[PowerShell (.NET)|PowerShell]]
