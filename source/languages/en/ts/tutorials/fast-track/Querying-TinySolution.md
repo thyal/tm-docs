@@ -30,7 +30,7 @@ Allow: GET, PUT
 Date: Fri, 01 Feb 2013 15:31:18 GMT
 Content-Length: x
 
-{"key":"ABCD",name:"Container #ABCD","devices":["ABCD/0bee89b07a248"]}
+[{"key":"ABCD",name:"Container #ABCD","devices":["ABCD/0bee89b07a248"]}]
 ```
 
 The `key` parameter is the same as we entered in the calibration
@@ -52,7 +52,7 @@ defined by the `Accept` header.
 ```bash
 curl api.tiny-solution.com/messages/ABCD?date.from=2013-02-02T00:00:00Z
 HTTP/1.1 200 OK
-Allow: GET, PUT
+Allow: GET
 Date: Fri, 01 Feb 2013 15:31:43 GMT
 Content-Length: x
 
