@@ -50,11 +50,10 @@ gateway device)_
 1. Input container address in address 23 - 26.
 1. Exit calibration.
 
-
 Example showing session where container address is set to ABCD, all
 lines starting with _3e_ are outputted from the module.
-<pre>
-<code>
+
+```
 3E __ __ __|__ __ __ __  >_______
 48 57 __ __|__ __ __ __  HW______
 3E __ __ __|__ __ __ __  >_______
@@ -62,9 +61,7 @@ lines starting with _3e_ are outputted from the module.
 FF __ __ __|__ __ __ __  ÿ_______
 3E __ __ __|__ __ __ __  >_______
 58 __ __ __|__ __ __ __  X_______
-</code>
-</pre>
-
+```
 
 {{#<0.0.1}}
 <div class="info">
@@ -76,6 +73,7 @@ FF __ __ __|__ __ __ __  ÿ_______
  </p>
 </div>
 {{/<0.0.1}}
+
 
 ## Gateway Transport Configuration
 
