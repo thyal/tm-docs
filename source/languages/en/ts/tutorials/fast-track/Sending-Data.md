@@ -23,9 +23,9 @@ This page describes how to transmit data to the TinyMesh™ using the [[HTTP API
 TinySolution supports sending data in multiple formats, most notably
 XML, JSON and binary. The first two are a structured data format which
 allows for a much more flexible way of working with data. Nonetheless
-we can send (and receive) raw binary data directly from the TinyMesh
+we can send (and receive) binary data directly from the TinyMesh
 if we know the required addressing information. As we will see
-shortly, we can variate not only the content type we are sending, but
+shortly, we can not only variate the content type we are sending, but
 also the representation we want in return.
 
 ### Parameter Inference
@@ -38,14 +38,14 @@ about how to transform your business logic into TinyMesh messages.
 
 ## Sending data
 
-When sending data, we only need to worry about the device id and our
-payload. In the case of retrieving a status this gets relatively
-simple:
+When sending data, we only need to worry about the `device id` and our
+payload. In the case of retrieving a status we can illustrate the
+simplicity:
 
 ```bash
-curl -XPOST api.tiny-solution.com/messages/ABCD/0bee89b07a248 -d '{ \
-"type"     : "command", \
-"command"  : "get_status"}'
+dev@lp:~ $ curl -XPOST api.tiny-solution.com/messages/ABCD/0bee89b07a248 -d \
+'{"type" : "command", "command" : "get_status"}'
+
 HTTP/1.1 301 Created
 Allow: GET, POST
 Date: Fri, 01 Feb 2013 15:44:18 GMT
@@ -61,3 +61,14 @@ in the container `ABCD`. If the device does not exists we would get a
 `404 Not Found` error code in return. There is currently no limitation
 on what types of messages you can send, but only `command` messages
 will be forwarded to the TinyMesh container.
+
+
+<div class="info">
+ <div class="title">Working with binary</div>
+ <p>
+  When working with raw binary data we can choose to return the binary
+  as raw, hexadecimal or base64 encoded. The result will always return
+  `application/octet-stream` for `Content-Type` and
+  `Content-Transfer-Encoding` will be one of `binary`, `hex` or `base64`.
+ </p>
+</div>
