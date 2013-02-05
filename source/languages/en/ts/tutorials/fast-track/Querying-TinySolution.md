@@ -10,8 +10,7 @@ up:   "[[The TinySolution Fast Track]]"
 next: "[[Sending Data]]"
 versions: false
 interest: [
-"[[Key Management]]",
-"[[Networks]]",
+"[[Containers]]",
 "[[Streaming Data]]",
 ]
 ---
@@ -21,11 +20,12 @@ This page describes how to query data using the [[HTTP API]]
 ## Finding devices
 
 When a new device connects to TinySolution™, it's automatically added
-to the parent container. The [[HTTP List Devices]] operation can be
-used to retrieve a list of all the devices in a container.
+to the parent container. The [[HTTP List Devices|HTTP Listing Devices]]
+operation can be used to retrieve a list of all the devices in a container.
 
 ```bash
-curl api.tiny-solution.com/container/ABCD
+dev@lp:~ $ curl api.tiny-solution.com/container/ABCD
+
 HTTP/1.1 200 OK
 Allow: GET, PUT
 Date: Fri, 01 Feb 2013 15:31:18 GMT
@@ -45,13 +45,15 @@ and you will be able to see it in the `devices` array.
 
 The most interesting data to look at is the messages. Most likely you
 would query a time series of message either by a device or by a
-container using the [[HTTP Fetching Messages]] operation. All the
+container using the [[HTTP Fetch Messages|HTTP Fetching Messages]] operation. All the
 messages are then subjected to filtering and returned in the format
 defined by the `Accept` header.
 
 **Fetch messages from the container**
+
 ```bash
-curl api.tiny-solution.com/messages/ABCD?date.from=2013-02-02T00:00:00Z
+dev@lp:~ $ curl api.tiny-solution.com/messages/ABCD?date.from=2013-02-02T00:00:00Z
+
 HTTP/1.1 200 OK
 Allow: GET
 Date: Fri, 01 Feb 2013 15:31:43 GMT
@@ -62,27 +64,28 @@ Content-Length: x
 ```
 
 As seen above all queries must have a date range, by default the
-date.to is set to the current time. The [[Date Field]] support some basic
+`date.to` is set to the current time. The [[Date Field]] support some basic
 math operations like "2013-02-02T:00:00:00Z-1WEEK", alternatively you
-can use the string literal NOW to work with relative time; e.g.
-"NOW-1HOUR". All the dates must be valid ISO 8601 datetimes.
+can use the string literal `NOW` to work with relative time; e.g.
+`NOW-1HOUR`. All the dates must be valid ISO 8601 datetimes.
 
 ### Filtering responses
 
 TinySolution would not be very flexible if we could not manipulate the
-result set. Additionally to the dynamic parser driving business logic
-we can only query for certain parts of the result using `filter` and
-`exclude` parameters.
+result set. Additionally to the dynamic parser driving your business logic
+we can filter the result using the `resp.filter` and `resp.exclude` parameters.
 
 ```bash
-curl api.tiny-solution.com/messages/ABCD?date.from=NOW-1HOUR&filter=key,caddr
+dev@lp:~ $ curl api.tiny-solution.com/messages/ABCD?date.from=NOW-1HOUR&resp.filter=key,caddr
+
 HTTP/1.1 200 OK
-Allow: GET, PUT
+Allow: GET
 Date: Fri, 01 Feb 2013 15:33:18 GMT
 Content-Length: x
 
 [{"key":"ABCD/0bee89b07a248/20130201151942","caddr":"ABCD"}]
 ```
 
-Using the `filter` parameter will only return the fields specified,
-`exclude` does the exact opposite and removes the specified fields.
+Using the `resp.filter` parameter will only return the fields specified,
+`resp.exclude` does the exact opposite and removes the specified fields.
+If you filter on a non-existing field it will have no effect.
