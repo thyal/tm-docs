@@ -43,7 +43,6 @@ identify message origin.
 
 * [[HTTP Create Message]]
 * [[HTTP Fetch Message]]
-* [[HTTP Stream Messages]]
 * [[HTTP List Messages]]
 
 # Appendix
