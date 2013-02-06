@@ -22,7 +22,7 @@ of it's features include:
 
 * High-availability infrastructure for secure communication
 * Online configuration and monitoring of TinyMesh™ containers
-* Secure [[Key Management Infrastructure]]
+* Secure Key Management Infrastructure
 
 ## What is the TinySolution Fast Track?
 

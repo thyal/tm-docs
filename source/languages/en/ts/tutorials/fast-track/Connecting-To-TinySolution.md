@@ -10,8 +10,6 @@ up:   "[[The TinySolution Fast Track]]"
 next: "[[Querying TinySolution]]"
 versions: false
 interest: [
-"[[Containers]]",
-"[[TinyMesh Configuration]]"
 ]
 ---
 
@@ -20,8 +18,8 @@ This page describes how you can connect a TinyMesh container to TinySolution.
 
 ## Gateway Device Configuration
 
-A _container_ connected to TinySolution requires a unique [[Container Address|Containers#Container-Address]]
-to perform a handshake. The [[Container Address|Containers#Container-Address]]
+A _container_ connected to TinySolution requires a unique Container Address
+to perform a handshake. The Container Address
 is stored in the calibration memory of the device and can be configured
 by setting the Gateway Device in configuration mode.
 

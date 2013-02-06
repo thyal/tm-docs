@@ -10,8 +10,6 @@ up:   "[[The TinySolution Fast Track]]"
 next: "[[Connecting To TinySolution]]"
 versions: false
 interest: [
-"[[Key Management]]",
-"[[Containers]]",
 ]
 ---
 
