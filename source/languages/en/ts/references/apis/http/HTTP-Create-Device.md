@@ -1,11 +1,11 @@
 ---
-title: Update Device State
+title: Create Device
 project: ts
 version: 0.0.0+
 document: api
 toc: true
 audience: advanced
-keywords: [api, http]
+keywords: [api, http-operation]
 group_by: "Query Operations"
 ---
 

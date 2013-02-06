@@ -1,5 +1,5 @@
 ---
-title: Create Device
+title: Fetch Device
 project: ts
 version: 0.0.0+
 document: api

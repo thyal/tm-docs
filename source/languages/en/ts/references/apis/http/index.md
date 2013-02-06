@@ -18,28 +18,34 @@ Most examples can be tested using a web-browser, but parts working
 with raw binary data will require `curl` or similar to perform.
 
 
+<div class="col">
 ## Container operations
 
 Containers are used to group physical installations, it provides
 default a configuration for all devices.
 
-* [[HTTP Creating Containers]]
-* [[HTTP Updating Containers]]
-* [[HTTP Fetching Containers]]
-* [[HTTP Set Default Container Configuration]]
+* [[HTTP Create Container]]
+* [[HTTP Update Container]]
+* [[HTTP Fetch Container]]
+* [[HTTP List Containers]]
 
 ## Device operations
 
-Each device consists of a configuration
+Each device consists of a configuration, meta data and is used to
+identify message origin.
 
-* [[HTTP Creating Devices]]
-* [[HTTP Fetching Devices]]
-* [[HTTP Updating Device Configuration]]
-* [[HTTP Updating Device State]]
+* [[HTTP Create Device]]
+* [[HTTP Fetch Device]]
+* [[HTTP Update Device]]
+* [[HTTP List Devices]]
 
 ## Message operations
 
-* [[HTTP Creating Messages]]
-* [[HTTP Fetching Messages]]
-* [[HTTP Streaming-Messages]]
+* [[HTTP Create Message]]
+* [[HTTP Fetch Message]]
+* [[HTTP Stream Messages]]
+* [[HTTP List Messages]]
 
+# Appendix
+
+* [[Date Field]]
