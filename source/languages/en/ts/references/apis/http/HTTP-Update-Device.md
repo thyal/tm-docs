@@ -1,5 +1,5 @@
 ---
-title: Update Device Configuration
+title: Update Device
 project: ts
 version: 0.0.1+
 document: api
@@ -9,34 +9,44 @@ keywords: [api, http, device]
 group_by: "Query Operations"
 ---
 
-Short description
+Update the representation of a _device_
 
 ## Request
 
 ```bash
-GET /.....
+PUT /device/<container>/<device>
 ```
 
-<div class="info">
-	<div class="title">Link filters</div>
-</div>
+Takes an object and updates the representation of the device with the
+new fields. The supported fields are specified in [[HTTP Create Device|HTTP Create Device#Request]].
+
+By default this operation replaces the current representation of the
+device. To perform a partial update use the `patch=true` query
+parameter.
+
 
 ## Response
 
-Normal status codes:
+**Normal status codes:**
 
-* `200 OK`
+* `200 OK` - on successful update, returns _device_ representation
+* `204 OK` - on successful update, no content return _(async)_
 
-Typical error codes:
+**Error codes:**
 
-* `400 Bad Request` - if the format of the query in the URL is invalid
-* `404 Not Found` - if the origin object of the walk was missing
-
-Important headers:
-
-* `Content-Type` - always `multipart/mixed`, with a boundary specified
+* `400 Bad Request` - when any input errors occured
+* `404 Not Found` - when the _container_ does not exist
 
 ## Example
 
 ```bash
+dev@lp:~ $ curl api.tiny-solution.com/device/YWIK -d '{"address":"MCwwLDAsMSwwLDAsMCwx"}'
+
+HTTP/1.1 200 Created
+Location: api.tiny-solution.com/YWIK/ClP4aTE=
+Allow: GET, POST
+Date: Fri, 01 Feb 2013 15:13:18 GMT
+Content-Length: x
+
+{"key":"YWIK/ClP4aTE=","address":"MCwwLDAsMSwwLDAsMCwx","type":"device","config":[]}
 ```

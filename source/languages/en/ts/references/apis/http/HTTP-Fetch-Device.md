@@ -9,34 +9,35 @@ keywords: [api, http]
 group_by: "Query Operations"
 ---
 
-Short description
+Fetch device representation.
 
 ## Request
 
 ```bash
-GET /.....
+GET /device/<container>/<device>
 ```
 
-<div class="info">
-	<div class="title">Link filters</div>
-</div>
+Returns an object with fields specified in [[HTTP Create Device|HTTP Create Device#Request]]
 
 ## Response
 
-Normal status codes:
+**Normal status codes:**
 
-* `200 OK`
+* `200 OK` - on successful retrieval of the device
 
-Typical error codes:
+**Error codes:**
 
-* `400 Bad Request` - if the format of the query in the URL is invalid
-* `404 Not Found` - if the origin object of the walk was missing
-
-Important headers:
-
-* `Content-Type` - always `multipart/mixed`, with a boundary specified
+* `404 Not Found` - if the device was not found
 
 ## Example
 
 ```bash
+dev@lp:~ $ curl api.tiny-solution.com/device/YWIK/ClP4aTE=
+
+HTTP/1.1 200 OK
+Allow: GET, PUT
+Date: Fri, 01 Feb 2013 15:13:18 GMT
+Content-Length: x
+
+{"key":"YWIK/ClP4aTE=","address":"MCwwLDAsMSwwLDAsMCwx","type":"device","config":[]}
 ```

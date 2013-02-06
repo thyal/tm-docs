@@ -1,5 +1,5 @@
 ---
-title: Fetch Device
+title: List devices
 project: ts
 version: 0.0.0+
 document: api
@@ -9,34 +9,36 @@ keywords: [api, http]
 group_by: "Query Operations"
 ---
 
-Short description
+List all the devices in a container
 
 ## Request
 
 ```bash
-GET /.....
+GET /device/<container>
 ```
 
-<div class="info">
-	<div class="title">Link filters</div>
-</div>
+Returns a list of device keys
 
 ## Response
 
-Normal status codes:
+**Normal status codes:**
 
-* `200 OK`
+* `200 OK` - on successful retrieval of device resources
 
-Typical error codes:
+**Error codes:**
 
-* `400 Bad Request` - if the format of the query in the URL is invalid
-* `404 Not Found` - if the origin object of the walk was missing
-
-Important headers:
-
-* `Content-Type` - always `multipart/mixed`, with a boundary specified
+* `404 Not Found` - if the container resource does not exits
 
 ## Example
 
 ```bash
+dev@lp:~ $ curl api.tiny-solution.com/device/YWIK
+
+HTTP/1.1 200 OK
+Allow: GET, POST
+Date: Fri, 01 Feb 2013 15:13:18 GMT
+Content-Length: x
+
+["YWIK/ClP4aTE="]
+```
 ```

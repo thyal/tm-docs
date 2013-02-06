@@ -9,34 +9,58 @@ keywords: [api, http-operation]
 group_by: "Query Operations"
 ---
 
-Short description
+Creates a new device in a container.
 
 ## Request
 
 ```bash
-GET /.....
+POST /device/<container>
 ```
 
-<div class="info">
-	<div class="title">Link filters</div>
-</div>
+Expects an object with the following scheme:
+
+<table>
+ <tr>
+  <th><b>Field</b></th>
+  <th><b>Data type</b></th>
+ </tr>
+ <tr>
+  <td><b>address*</b></td>
+  <td>8 byte address encoded as [[Base64|http://en.wikipedia.org/wiki/Base64]]</td>
+ </tr>
+ <tr>
+  <td><b>type</b></td>
+  <td>The type of device, only supports lowercase characters and underscore. <i>(default: <u>device</u>)</i></td>
+ </tr>
+ <tr>
+  <td><b>name</b></td>
+  <td>Name of device encoded as UTF-8 string <i>(default: hex representation of address)</i></td>
+ </tr>
+</table>
 
 ## Response
 
-Normal status codes:
+**Normal status codes:**
 
-* `200 OK`
+* `204 No Content` - on successful creation, no content return _(async)_
+* `301 Created` - on successful creation, returns _device_ representation
 
-Typical error codes:
+**Error codes:**
 
-* `400 Bad Request` - if the format of the query in the URL is invalid
-* `404 Not Found` - if the origin object of the walk was missing
+* `400 Bad Request` - when any errors where found in the input
+* `404 Not Found` - when the container does not exists
 
-Important headers:
-
-* `Content-Type` - always `multipart/mixed`, with a boundary specified
 
 ## Example
 
 ```bash
+dev@lp:~ $ curl api.tiny-solution.com/device/YWIK -d '{"address":"MCwwLDAsMSwwLDAsMCwx"}'
+
+HTTP/1.1 301 Created
+Location: api.tiny-solution.com/YWIK/ClP4aTE=
+Allow: GET, POST
+Date: Fri, 01 Feb 2013 15:13:18 GMT
+Content-Length: x
+
+{"key":"YWIK/ClP4aTE=","address":"MCwwLDAsMSwwLDAsMCwx","type":"device","config":[]}
 ```
