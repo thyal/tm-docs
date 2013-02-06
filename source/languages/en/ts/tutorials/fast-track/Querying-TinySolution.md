@@ -19,9 +19,9 @@ This page describes how to query data using the [[HTTP API]]
 
 ## Finding devices
 
-When a new device connects to TinySolution™, it's automatically added
-to the parent container. The [[HTTP List Devices|HTTP Listing Devices]]
-operation can be used to retrieve a list of all the devices in a container.
+When a new device connects to TinySolution™, the device will automatically
+be added to the parent container. The [[HTTP List Devices|HTTP Listing Devices]]
+operation can be used to retrieve a list of all the devices in the container.
 
 ```bash
 dev@lp:~ $ curl api.tiny-solution.com/container/ABCD
@@ -34,20 +34,20 @@ Content-Length: x
 [{"key":"ABCD",name:"Container #ABCD","devices":["ABCD/0bee89b07a248"]}]
 ```
 
-The `key` parameter is the same as we entered in the calibration
-memory of the TinyMesh module, `name` is in this case auto generated and
+The `key` parameter is the same as entered in the calibration memory
+of the TinyMesh device, `name` in this case is auto generated and
 finally `devices` is a list of id's used to identify a device (the
 gateway device in this case). If you go ahead and add a new device to
-the TinyMesh™ container it will automatically create a device object
+the TinyMesh™ container it will automatically create a new device object
 and you will be able to see it in the `devices` array.
 
 ## Retrieving Messages
 
 The most interesting data to look at is the messages. Most likely you
-would query a time series of message either by a device or by a
-container using the [[HTTP Fetch Messages|HTTP Fetching Messages]] operation. All the
-messages are then subjected to filtering and returned in the format
-defined by the `Accept` header.
+will query a time series of message either by a device or container
+using the [[HTTP Fetch Messages|HTTP Fetching Messages]] operation.
+If you have added any rules like filtering, this will be applied
+before the messages are returned in the format specified by the `Accept` header.
 
 **Fetch messages from the container**
 
@@ -64,10 +64,10 @@ Content-Length: x
 ```
 
 As seen above all queries must have a date range, by default the
-`date.to` is set to the current time. The [[Date Field]] support some basic
-math operations like "2013-02-02T:00:00:00Z-1WEEK", alternatively you
+`date.to` field is set to the current time. The [[Date Field]] supports
+some basic math operations like "2013-02-02T:00:00:00Z-1WEEK", alternatively you
 can use the string literal `NOW` to work with relative time; e.g.
-`NOW-1HOUR`. All the dates must be valid ISO 8601 datetimes.
+`NOW-1HOUR`. All the dates must be valid formated as ISO 8601 date time.
 
 ### Filtering responses
 

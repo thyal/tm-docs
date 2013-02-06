@@ -15,15 +15,15 @@ interest: [
 ]
 ---
 
-This page describes how you can connect a TinyMesh network to TinySolution.
+This page describes how you can connect a TinyMesh container to TinySolution.
 
 
 ## Gateway Device Configuration
 
-All networks connected to TinySolution requires a unique [[Container Address|Containers#Container-Address]]
+A _container_ connected to TinySolution requires a unique [[Container Address|Containers#Container-Address]]
 to perform a handshake. The [[Container Address|Containers#Container-Address]]
-is stored in the calibration memory and can be accessed by setting the
-Gateway Module in configuration mode (describe in the data sheet).
+is stored in the calibration memory of the device and can be configured
+by setting the Gateway Device in configuration mode.
 
 To perform the configuration we expect you to be familiar with
 configuring TinyMesh devices through the UART interface. If not you
@@ -34,7 +34,7 @@ should read the "Module Configuration" chapter in the TinyMesh data sheet.
  <p>
   To connect to the TinySolution web-service, the gateway module must
   use firmware revision _1.34_ or greater. Contact your local distributor
-  to aid you in flashing the gateway module.
+  for aid in flashing the gateway device.
  </p>
 </div>
 
@@ -68,9 +68,9 @@ FF __ __ __|__ __ __ __  ÿ_______
 <div class="info">
  <div class="title">ACK/NAK protocol</div>
  <p>
-  All messages received automatically triggers a acknowledge response
+  All messages received triggers an automatic acknowledge response
   consisting of a single byte: 6. This data is consumed by the `Gateway
-  Module` and is never passed into the mesh. This cannot currently disabled.
+  Devie` and is never passed into the mesh. This cannot currently disabled.
  </p>
 </div>
 {{/<=0.0.1}}
@@ -78,12 +78,12 @@ FF __ __ __|__ __ __ __  ÿ_______
 
 ## Network Connector Configuration
 
-To extend TinyMesh network layer onto the TCP/IP stack the gateway
-module must be connected to a [[Network Connector|Network Connectors]] by UART. There are
-2 common options:
+To connect your TinyMesh installation with TinySolution the gateway 
+device must be connected to a [[Network Connector|Network Connectors]] by UART.
+There are 2 common options:
 
-1. *Development:* Running a [[RS232-TCP/IP|Network Connectors#GURI]] proxy on a computer
-2. *Production:* Using a [[GPRS|Network Connectors#GPRS]] modem or similar
+1. *Production:* Using a [[GPRS|Network Connectors#GPRS]] modem or similar
+1. *Development:* Running a [[RS232-TCP/IP|Network Connectors#Software-Solution]] proxy on a computer
 
 The following information can be used for connecting:
 
@@ -111,22 +111,18 @@ The following information can be used for connecting:
 </table>
 
 
-## How TinySolution Identifies Devices
-
-When a device connects to TinySolution a handshake is performed. When
-connecting the device is asked for it's CAD (Container Address) with
-the following command (decimal representation):
-
-```erlang
-10 0 0 0 0 0 3 16 0 0
-```
-
-The expected response is a [[Get CAD|Messages#event]]
-message. When received, to validate the authenticity, TinySolution will
-check the digital signature included in the message; if successful
-the device is authenticated.
-
-There might be race-condition where the device sends a message before
-the [[Get CAD|Messages#event]] command is received, if so TinySolution will buffer that
-message until the device is successfully authorized or the connection
-is terminated.
+<div class="info">
+ <div class="title">How TinySolution Identifies Devices</div>
+ <p>
+  If you monitor the data going over the gateway device UART you can
+  observe the handshake. When connecting the gateway device
+  TinySolution will send a Get CAD (Container Address) message which
+  has the following decimal representation: `10 0 0 0 0 0 3 16 0 0`.
+ </p>
+ <p>
+  The expected response is a [[Get CAD|Messages#event]]
+  message. When received, to validate the authenticity, TinySolution will
+  check the digital signature included in the message; if successful
+  the device is authenticated.
+ </p>
+</div>

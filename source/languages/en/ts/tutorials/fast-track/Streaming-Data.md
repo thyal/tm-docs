@@ -15,7 +15,7 @@ interest: [
 ---
 
 To instantaneously receive data we can stream it from TinySolution.
-Streaming is a add-on feature that builds on the [[Query Module|Querying Data]],
+Streaming is a add-on feature that build on the [[Query Module|Querying Data]],
 this means functionality like filtering and time ranges apply as well.
 
 ## Stream data infinitely
@@ -54,7 +54,7 @@ connection will close.
 <div class="info">
  <div class="title">Resuming a stream</div>
  <p>
-  If the client gets disconnected it can resume the stream by
+  If the client disconnects, it can resume the stream by
   setting the `Last-Event-ID` HTTP Header to the ID of the last
   received message.
  </p>
