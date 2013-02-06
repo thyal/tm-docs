@@ -5,38 +5,46 @@ version: 0.0.0+
 document: api
 toc: true
 audience: advanced
-keywords: [api, http, message]
+keywords: [api, http, messages]
 group_by: "Query Operations"
 ---
 
-Short description
+Fetch a single message.
+
 
 ## Request
 
 ```bash
-GET /.....
+GET /message/:container/:device/:message
 ```
 
-<div class="info">
-	<div class="title">Link filters</div>
-</div>
+Returns a object containing fields according to [[Message Formats|Message Format]]
+or the binary TinyMesh message if `Accept` header is set to accept
+`application/octet-stream`.
+
 
 ## Response
 
-Normal status codes:
+**Normal status codes:**
 
-* `200 OK`
+* `200 OK` - on successful retrieval of message
 
-Typical error codes:
+**Error codes:**
 
-* `400 Bad Request` - if the format of the query in the URL is invalid
-* `404 Not Found` - if the origin object of the walk was missing
+* `404 Not Found` - when the message was not found
 
-Important headers:
-
-* `Content-Type` - always `multipart/mixed`, with a boundary specified
 
 ## Example
 
 ```bash
+curl -D - api.tiny-solution.com/message/YqZi/ClP4aTE=/20130201151318 
+
+HTTP/1.1 200 Created
+Allow: GET
+Date: Fri, 01 Feb 2013 15:13:18 GMT
+Content-Length: x
+
+{"key":"YqZi/ClP4aTE=/20130201151318","type":"command",
+"command":"serial","unique_id":51,"packet_number":177,
+"payload":"hello, world"}
 ```
