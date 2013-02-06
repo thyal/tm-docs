@@ -5,17 +5,21 @@ version: 0.0.0+
 document: api
 toc: true
 audience: advanced
-keywords: [api, http, containers]
+keywords: [api, http]
 group_by: "Query Operations"
 ---
 
-Fetch information about a single container.
+List all containers.
 
 ## Request
 
 ```bash
-GET /container/<container>
+GET /container/
 ```
+
+## Returns
+
+A list of all container ID's.
 
 ## Response
 
@@ -27,7 +31,6 @@ GET /container/<container>
 
 * `401 Unauthorized` - _when no user credentials are supplied_
 * `403 Forbidden` - _when the user lacks permission to create a container_
-* `404 Not Found` - _when container was not found_
 
 **Important headers:**
 
@@ -36,11 +39,11 @@ GET /container/<container>
 ## Example
 
 ```bash
-curl -D - api.tiny-solution.com/container/YWIK
+dev@lp:~ $ curl -D - api.tiny-solution.com/container
 HTTP/1.1 200 Ok
-Allow: GET, POST, PUT
+Allow: GET, POST
 Date: Fri, 01 Feb 2013 15:13:18 GMT
 Content-Length: x
 
-{"key":"YWIK","name":"Updated Container"}
+["YWIK","AA2="]
 ```

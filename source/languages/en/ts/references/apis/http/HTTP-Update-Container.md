@@ -14,7 +14,7 @@ Update container information
 ## Request
 
 ```bash
-PUT /container/YWiK
+PUT /container/<container>
 ```
 
 ## Response
@@ -37,11 +37,11 @@ PUT /container/YWiK
 ## Example
 
 ```bash
-curl -X PUT -D - api.tiny-solution.com/container/YWIK -d "{name : \"Container update\"}"
+dev@lp:~ $ curl -X PUT -D - api.tiny-solution.com/container/YWIK -d "{name : \"Container update\"}"
 HTTP/1.1 200 Ok
 Allow: GET, POST, PUT
 Date: Fri, 01 Feb 2013 15:13:18 GMT
 Content-Length: x
 
-{"key":"YWIK","name":"Container update"}
+{"key":"YWIK","name":"Container update","devices":[]}
 ```

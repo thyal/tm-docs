@@ -17,6 +17,13 @@ Create a new container
 POST /container/
 ```
 
+Expects a object with containing the index `name`.
+
+
+## Return
+
+A object containing the indexes: the `key`, `name`, and list of `devices`.
+
 ## Response
 
 **Normal status codes:**
@@ -38,11 +45,11 @@ POST /container/
 ## Example
 
 ```bash
-curl -D - api.tiny-solution.com/container -d "{name : \"First Container\"}"
+dev@lp:~ $ curl -D - api.tiny-solution.com/container -d "{name : \"First Container\"}"
 HTTP/1.1 301 Created
-Allow: GET, POST, PUT
+Allow: GET, PUT
 Date: Fri, 01 Feb 2013 15:13:18 GMT
 Content-Length: x
 
-{"key":"YWIK","name":"First Container"}
+{"key":"YWIK","name":"First Container","devices":[]}
 ```

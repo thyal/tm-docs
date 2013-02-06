@@ -36,11 +36,11 @@ GET /container/<container>
 ## Example
 
 ```bash
-curl -D - api.tiny-solution.com/container/YWIK
+dev@lp:~ $ curl -D - api.tiny-solution.com/container/YWIK
 HTTP/1.1 200 Ok
-Allow: GET, POST, PUT
+Allow: GET, PUT
 Date: Fri, 01 Feb 2013 15:13:18 GMT
 Content-Length: x
 
-{"key":"YWIK","name":"Updated Container"}
+{"key":"YWIK","name":"Updated Container","devices":[]}
 ```
