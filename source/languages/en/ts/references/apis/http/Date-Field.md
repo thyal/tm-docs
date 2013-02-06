@@ -6,7 +6,7 @@ document: api
 toc: true
 audience: advanced
 keywords: []
-group_by: "Query Operations"
+group_by: "Query Fields"
 ---
 
 The Date field is used to select a date time based on some simple
