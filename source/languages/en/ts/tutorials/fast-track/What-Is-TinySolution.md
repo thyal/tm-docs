@@ -39,6 +39,11 @@ Libraries]] for some of the common languages in the future.
 For development, the absolute easiest way is to interface TinySolution
 is either using your web-browser, `curl` or similar tool.
 
+<div class="info">
+ Throughout this guide we use `curl` in our example, some of the examples
+ can be viewed in your web-browser. Check out [[Client Libraries]] for
+ other alternative to `curl`
+</div>
 
 ### What Data Can I Query
 
