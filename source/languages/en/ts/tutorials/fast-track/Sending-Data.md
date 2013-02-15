@@ -16,31 +16,32 @@ interest: [
 ]
 ---
 
-This page describes how to transmit data to the TinyMesh™ using the [[HTTP API]].
+This page describes how to transmit data to TinyMesh™ Devices using the [[HTTP API]].
 
 ## Message representation
 
-TinySolution supports sending data in multiple formats, most notably
+TinySolution™ supports sending data in multiple formats, most notably
 XML, JSON and binary. The first two are a structured data formats which
-allow for a much more flexible way of working with data. Nonetheless
+allow for a much more flexible way of working with data.  Nonetheless
 we can send (and receive) binary data directly from the [[HTTP API|HTTP Creating Messages]]
-if we know the required addressing information. As we will see shortly,
-we can not only variate the format we are sending, but also the 
-representation we want in return.
+if we know the required addressing information. The data format we
+send data with can be varied using the `Accept` header field, when
+sending data the `Content-Type` header field is used to specify the
+format.
 
 ### Parameter Inference
 
-We don't want you to remember all the addressing and packet management
-details, therefore, when sending a message, we automatically add the
-correct parameters for `unique_id`, `packet_number` and other required
+To simplify Device addressing and packet management details when
+sending a message, TinySolution™ will automatically add the correct
+TinyMesh™ parameters for `unique_id`, `packet_number` and other required
 fields. This lets you focus on the task at hand instead of worrying
-about how to transform your business logic into TinyMesh messages.
+about how to transform your business logic into TinyMesh™ messages.
 
 ## Sending data
 
-When sending data, we only need to worry about the `device id` and our
-payload. In the case of sending a `get_status` message we can illustrate
-the simplicity:
+When sending data, we only need to know the `device id` and the payload
+data to be delivered. The following example shows the simplicity of
+querying for Device status by sending a `get_status` command.
 
 ```bash
 dev@lp:~ $ curl -XPOST api.tiny-solution.com/messages/ABCD/0bee89b07a248 -d \
@@ -55,18 +56,16 @@ Content-Length: x
 "type":"command","command":"get_status"}
 ```
 
-All messages belongs to a device, when we break down the resource URL
-
-When we break down the resource URL we see that `ABCD/0bee89b07a248`
-in reality is device `0bee89b07a248` in the container `ABCD`. If the 
-device does not exists we would get a `404 Not Found` error code in return.
+When we break down the resource URL we see that `ABCD/0bee89b07a248`
+in reality is Device `0bee89b07a248` in the Container `ABCD`. If the
+device did not exist, we would get a `404 Not Found` error code in return.
 
 <div class="info">
  <div class="title">Working with binary</div>
  <p>
-  When working with raw binary data we can choose to return the binary
-  as raw, hexadecimal or base64 encoded. The result will always return
-  `application/octet-stream` for `Content-Type` and
-  `Content-Transfer-Encoding` will be one of `binary`, `hex` or `base64`.
+  When working with raw binary data we may choose to return the binary
+  as raw, hexadecimal or base64 encoded. The result will always
+  return `application/octet-stream` for `Content-Type` and
+  `Content-Transfer-Encoding` will be one of `binary`, `hex` or `base64`.
  </p>
 </div>

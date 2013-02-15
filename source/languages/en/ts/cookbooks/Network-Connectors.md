@@ -32,7 +32,7 @@ For GPRS modems you can acquire a TinyMesh enabled plug-in card for the
 [[Sierra Wireless AirLink|http://www.sierrawireless.com/en/productsandservices/AirLink/Programmable_Modems/Fastrack_Xtend_EDGE.aspx]].
 
 
-## Software Solutions
+## Software Solutions (RS232-TCP/IP Proxy)
 
 We offer a free software solution based on [[Twisted|http://twistedmatrix.com]] to serve as a RS232-TCP/IP proxy. It can run on any platform
 supporting the [[Python programming language|http://python.org/]].

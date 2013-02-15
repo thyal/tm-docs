@@ -14,13 +14,15 @@ interest: [
 ]
 ---
 
-To instantaneously receive data we can stream it from TinySolution.
-Streaming is a add-on feature that build on the [[Query Module|Querying Data]],
-this means functionality like filtering and time ranges apply as well.
+To instantaneously receive data from Devices in a Container, you may
+enable data streaming from TinySolution™. Streaming is an add-on
+feature to the [[Query Module|Querying Data]], this includes
+functionality like filtering and time ranges aswell.
+
 
 ## Stream data infinitely
 
-By default there is no limitation on how long you can stream data.
+By default there is no limitation on how long you may stream data.
 The data is sent as chunks over HTTP, the connection is kept until
 the client disconnects.
 
@@ -38,24 +40,23 @@ Transfer-Encoding: chunked
 <div class="info">
  <div class="title">Data returned as JSON list</div>
  <p>
-  When returning JSON, all data is wrapped in a list this is due to
-  the fact that the keys in a JSON object are uniquely identified in
-  contrast to XML.
+  When returning JSON, all data is wrapped in a list, as the keys
+  in a JSON object are uniquely identified in contrast to XML.
  </p>
 </div>
 
 ### Stream for a defined time range
 
-Just as easy we can stream until a certain date, this is done by
-setting the `date.to` query parameter somewhere into the future (for
-instance by using `NOW+1HOUR`). If the date has already passed the
+Just as easy we may stream until a certain date, this is done by
+setting the `date.to` query parameter somewhere into the future (for
+instance by using `NOW+1HOUR`). If the date has already passed, the
 connection will close.
 
 <div class="info">
  <div class="title">Resuming a stream</div>
  <p>
-  If the client disconnects, it can resume the stream by
-  setting the `Last-Event-ID` HTTP Header to the ID of the last
+  If the client disconnects, it may resume the stream by
+  setting the `Last-Event-ID` HTTP Header to the ID of the last
   received message.
  </p>
 </div>
