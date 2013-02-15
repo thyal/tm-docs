@@ -16,4 +16,4 @@ h3.center-text Pick a project to get started:
 div#select-project
   - current_projects.each do |project, version|
     - version = $production ? "latest" : version[:deployment]
-    a.big-project-link(id=project href="/#{project}/#{version}/")== project
+    a.project-link(id=project href="/#{project}/#{version}/")== project
