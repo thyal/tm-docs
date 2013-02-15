@@ -22,3 +22,5 @@ en:
       introduction: "[[The TinySolution Fast Track]]"
       apis: "[[APIs]]"
       libraries: "[[Client Libraries]]"
+    names:
+        ts: "TinySolution™"
