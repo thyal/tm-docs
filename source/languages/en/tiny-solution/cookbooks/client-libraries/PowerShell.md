@@ -24,7 +24,7 @@ save it to your computer and run it by opening PowerShell.
 
 **ts-call.ps1**: Short code snippet to test API from PowerShell
 
-```powershell
+```clojure
 param($url)
 
 $req = new-object System.Net.WebClient;
