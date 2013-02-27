@@ -8,16 +8,16 @@ I18n.load_path = Dir[File.expand_path(File.join(File.dirname(__FILE__), '..', 's
 if ENV['TS_VERSION'].blank? || ENV['TS_VERSION'] !~ /[\d\.rc]+/
   versions = YAML::load(File.open('data/versions.yml'))
   for proj, vs in versions['currents']
-    proj = proj.upcase
+    proj = proj.upcase.gsub(/-/, '_')
     ENV["#{proj}_VERSION"] = vs
     puts "#{proj}_VERSION=#{ENV["#{proj}_VERSION"]}"
   end
 end
 
 $versions = {
-  :ts => ENV['TS_VERSION'].presence,
+  :'tiny-solution' => ENV['TS_VERSION'].presence,
 }
-$default_project = 'ts'
+$default_project = 'tiny-solution'
 
 #%w{versionify production_check index
 %w{production_check index

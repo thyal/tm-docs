@@ -1,6 +1,6 @@
-TinySolution:
+tiny-solution:
    - ['0.0.1']
 
 # describes the latest version per project
 currents:
-   TinySolution: '0.0.1'
+   tiny-solution: '0.0.1'

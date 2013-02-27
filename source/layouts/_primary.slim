@@ -11,7 +11,7 @@ aside#nav-container role="complementary"
     h3.responsive-link
       a href="/index.html"== I18n.t(:all_projects)
     - project = data.page.project || $default_project
-    - global_nav[project].each do |section|
+    - (global_nav[project] || []).each do |section|
       - add_class = section['class'] || ''
       - nav_data, active = build_nav(section['sub'], add_class)
       h3(class=(active ? "active #{add_class}" : add_class))
