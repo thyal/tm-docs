@@ -1,0 +1,6 @@
+ts:
+  - ['0.1']
+
+# describes the latest version per project
+currents:
+   ts: '0.1'

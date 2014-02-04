@@ -1,0 +1,19 @@
+---
+project: ts
+version: 0.0.0+
+document: tutorial
+toc: false
+index: true
+audience: beginner
+keywords: []
+---
+
+h1.center-text.extra-large
+  | Welcome&nbsp;
+  span.sans to the Docs!
+h3.center-text Pick a project to get started:
+
+div#select-project
+  - current_projects.each do |project, version|
+    - version = $production ? "latest" : version[:deployment]
+    a.big-project-link(id=project href="/#{project}/#{version}/")== project

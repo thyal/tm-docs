@@ -1,0 +1,26 @@
+ts:
+  - title: "Fast Track"
+    class: "start"
+    sub:
+      - "[[The TinySolution Fast Track]]" 
+      - "[[What is TinySolution?|What is TinySolution]]"
+      - "[[Connecting To TinySolution]]"
+      - "[[Sending Data]]"
+      - "[[Querying TinySolution]]"
+      - "[[Streaming Data]]"
+  - title: "APIs"
+    class: ""
+    sub:
+      - "[[HTTP API]]"
+  - title: "Integration"
+    sub:
+      - "[[Client libraries]]"
+      - "[[FAQs]]"
+
+root:
+  - title: "TinySolution"
+    class: "active"
+    sub:
+      - title: "APIs"
+        sub:
+          - "[[HTTP API]]"
