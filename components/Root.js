@@ -39,12 +39,25 @@ export default (props) => {
                   <li className="header"><a>Guide: Reading DLMS data</a></li>
                   <li className="header"><a>Guide: Wireless Sensor Networks</a></li>
                   <li className="header"><a>Guide: User Management</a></li>
+                  <li className="header"><a>Guide: Network Connectors</a></li>
+               </ul>
+
+               <ul className="nav">
+                  <li className="header">
+                     <a>TCP API</a>
+                     <ul className="nav">
+                        <li className=""><a>Authentication</a></li>
+                        <li className=""><a>Flow Control</a></li>
+                        <li className=""><a>Debugging</a></li>
+                        <li className=""><a>Security Considerations</a></li>
+                     </ul>
+                  </li>
                </ul>
 
                <ul className="nav">
                {_.map(groups, (items, group) =>
                      <li key={group} className={"header" + (hasChildURL(items, props.url) ? ' parent' : '')}>
-                        <a>Endpoint: {group}</a>
+                        <a>HTTP Endpoint: {group}</a>
                         <ul className="nav">
                            {_.map(_.sortBy(items, 'path'), (e, i) =>
                               <li key={i} className={e.url === props.url ? 'active' : ''}>
