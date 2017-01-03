@@ -1,0 +1,147 @@
+html, body {
+overflow: hidden;
+}
+.back-to-top {
+  padding: 4px 16px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+}
+.back-to-top:hover {
+  color: #3d3d7c;
+  text-decoration: none;
+}
+
+.docs-footer {
+  padding-bottom: 40px;
+  color: #777;
+  text-align: center;
+}
+.docs-footer > .container {
+	border-top: 1px solid #e5e5e5;
+	padding-top: 2.5em;
+}
+
+.docs-footer-links {
+  padding-left: 0;
+  margin-top: 20px;
+  color: #999;
+}
+.docs-footer-links li {
+  display: inline;
+  padding: 0;
+}
+.docs-footer-links li:after {
+    content: "\0000a0–";
+}
+.docs-footer-links li:last-child:after {
+    content: "";
+}
+.docs-footer-links li:first-child {
+  padding-left: 0;
+}
+.docs-footer-links li.active a { font-weight: bold; }
+
+@media (min-width: 768px) {
+  .docs-footer p {
+    margin-bottom: 0;
+  }
+}
+
+h1, h2 {
+	font-weight: bold;
+}
+
+.u-pull-right {
+  float: right !important; }
+.u-pull-left {
+  float: left !important; }
+
+.sidebar {
+   position: fixed;
+   left: 70%;
+   width: 30%;
+   /* make it scrollable by having same height as viewport */
+   overflow-y: scroll;
+   top: 0;
+   bottom: 0;
+   background: #f3f3f3;
+}
+
+.sidebar { border-left: 1px solid #dadada; }
+
+a {
+   text-decoration: none;
+}
+
+.nav {
+	margin: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+.nav > li {
+	position: relative;
+	display: block;
+	margin-bottom: 0px;
+}
+
+.nav > li > a {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+   cursor: pointer;
+}
+
+.nav > li > a:hover {
+   text-decoration: underline;
+   color: #777;
+}
+
+.nav li > a {
+	display: block;
+	padding: 4px 20px;
+	font-size: 13px;
+	font-weight: 500;
+	color: #999;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-ms-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+.nav .header {
+   padding-bottom: 4px;
+}
+
+.nav .header > a {
+	padding-left: 18px;
+	font-weight: bold;
+	color: #563d7c;
+	background-color: transparent;
+	/* border-left: 2px solid #563d7c; */
+   border-top: 2px solid transparent;
+   border-bottom: 2px solid transparent;
+	}
+.nav .active > a {
+   font-weight: bold;
+   color: #555;
+   text-decoration: none;
+}
+
+.nav .header.parent {
+   border-left: none;
+   background: #fafafa;
+   padding-bottom: 0px;
+   border-top: 2px solid #eeeeee;
+   border-bottom: 2px solid #cccccc;
+}
+.nav .header.parent > .nav {
+   border-left: none;
+}
+
+.nav .header.parent > a {
+   border-left: none;
+   background: transparent;
+}
+
