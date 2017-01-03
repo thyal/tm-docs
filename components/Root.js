@@ -2,7 +2,7 @@
 import React from 'react'
 import Endpoint from './Endpoint.js'
 import _ from 'lodash'
-
+import path from 'path'
 import crypto from 'crypto'
 
 const hash = (buf, n) => crypto.createHash('sha256').update(buf).digest('hex').slice(0, n || 7)
@@ -11,15 +11,17 @@ export default (props) => {
    let groups = _.groupBy(Endpoint.storage, 'group')
 
 
-   const hasChildURL = (items, match) => _.some(items, ({url}) => url === match)
+   const
+      csspath = path.relative('/' + props.url, '/css'),
+      hasChildURL = (items, match) => _.some(items, ({url}) => url === match)
 
    return <html>
       <head>
          <meta charSet='utf-8' />
          <title>test</title>
-         <link href='/css/normalize.css' rel='stylesheet' />
-         <link href='/css/skeleton.css' rel='stylesheet' />
-         <link href='/css/style.css' rel='stylesheet' />
+         <link href={csspath + '/normalize.css'} rel='stylesheet' />
+         <link href={csspath + '/skeleton.css'} rel='stylesheet' />
+         <link href={csspath + '/style.css'} rel='stylesheet' />
          <meta name='viewport' content='width=device-width, initial-scale=1' />
       </head>
       <body>
