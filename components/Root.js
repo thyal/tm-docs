@@ -12,16 +12,16 @@ export default (props) => {
 
 
    const
-      csspath = path.relative('/' + props.url, '/css'),
+      relpath = path.dirname(path.relative(props.url, '.')),
       hasChildURL = (items, match) => _.some(items, ({url}) => url === match)
 
    return <html>
       <head>
          <meta charSet='utf-8' />
          <title>test</title>
-         <link href={csspath + '/normalize.css'} rel='stylesheet' />
-         <link href={csspath + '/skeleton.css'} rel='stylesheet' />
-         <link href={csspath + '/style.css'} rel='stylesheet' />
+         <link href={relpath + '/css/normalize.css'} rel='stylesheet' />
+         <link href={relpath + '/css/skeleton.css'} rel='stylesheet' />
+         <link href={relpath + '/css/style.css'} rel='stylesheet' />
          <meta name='viewport' content='width=device-width, initial-scale=1' />
       </head>
       <body>
@@ -48,7 +48,7 @@ export default (props) => {
                         <ul className="nav">
                            {_.map(_.sortBy(items, 'path'), (e, i) =>
                               <li key={i} className={e.url === props.url ? 'active' : ''}>
-                                 <a href={"/" + e.url}>
+                                 <a href={relpath + "/" + e.url}>
                                     <span className="method">{e.method.toUpperCase()}</span> <span className="path">{e.path}</span>
                                  </a>
                               </li>)}
