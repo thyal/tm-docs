@@ -80,7 +80,7 @@ Page.Breadcrumbs = Breadcrumbs
 Page.Tree = ({url, target, tree}) => {
   return <ul>
     {_.map(tree, (v, k) =>
-      <li key={k}>
+      true !== v.hidden && <li key={k}>
         <a href={Root.link(url, v.url)}>{v.name || v.target}</a>
         <Page.Tree {...v} />
       </li>)}

@@ -197,3 +197,14 @@ a {
    color: #777;
 }
 
+
+
+
+p.warning {
+   color: red;
+   border: 1px solid red;
+   font-weight: bold;
+   border-radius: 3px;
+   padding: 5px 15px;
+   background: #ffc5c5;
+}

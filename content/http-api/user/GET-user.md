@@ -10,19 +10,18 @@ export default ({url, Page, Endpoint, Resource}) => {
          method="get"
          path="/user">
 
-         <Endpoint.Return code="200">A <Resource resource="network/:nid">Network Object</Resource></Endpoint.Return>
-         <Endpoint.Return code="401">A <Resource resource="error/no-auth">Error object</Resource></Endpoint.Return>
+         <Endpoint.Return code="200">A <Resource.Link resource="user">User object</Resource.Link></Endpoint.Return>
+         <Endpoint.Return code="401">A <Resource.Link resource="error/no-auth">Error object</Resource.Link></Endpoint.Return>
          <Endpoint.Return code="403">
-           Authentication failed, or no access to the resource. <Resource resource="error/auth">Error object</Resource>
+           Fails with a <Resource.Link resource="error/auth">Error object</Resource.Link> due to failed authentication, or using a non-user token
          </Endpoint.Return>
        </Endpoint>
 
        <p>
-        Retrieves the <Resource resource="network/:nid">Network resource</Resource> identified by&nbsp;
-        <Endpoint.Parameter>nid</Endpoint.Parameter>.
+        Retrieves the currently authenticated <Resource.Link resource="user">user</Resource.Link>, or an error
+        if unauthenticated or using a non-user access type - like <Resource.Link resource="token/:token">tokens</Resource.Link>.
        </p>
 
-       ## THIS IS A HEADER
      </ReactMarkdown>
 )}
 

@@ -77,18 +77,18 @@ export default class Root extends React.Component {
 
                   <ul className="nav">
                      {_.map(_.sortBy((Page.pages['/'] || {}).tree, 'weight'), (v, k) =>
-                     <li key={k} className={"section " + (v.className || '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
+                        true !== v.hidden && <li key={k} className={"section " + (v.className || '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
                         <a href={Root.link(null, v.url)}>{v.name || path.dirname(v.url)}</a>
 
                         <ul className="nav">
                            {_.map(_.sortBy(v.tree, 'weight'), (child, p) =>
-                              <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
+                              true !== child.hidden && <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
                                  {false !== child.name &&
                                     <a href={Root.link(null, child.url)}>{child.name || path.dirname(child.url)}</a>}
 
                                  <ul className="nav">
                                     {_.map(_.sortBy(child.tree, 'weight'), (leaf, l) =>
-                                       <li key={l} className={leaf.url === props.url ? 'active' : ''}>
+                                       true !== leaf.hidden && <li key={l} className={leaf.url === props.url ? 'active' : ''}>
                                           <a href={Root.link(null, leaf.url)}>{leaf.name || leaf.url}</a>
                                        </li>)}
                                  </ul>

@@ -240,8 +240,15 @@ class QueryParameter extends React.Component {
 Endpoint.Return = Return
 Endpoint.Parameter = Parameter
 Endpoint.QueryParameter = QueryParameter
-Endpoint.Link = ({children}) => {
-   return <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@todo link endpoint)</span>
+Endpoint.Link = ({endpoint, children}) => {
+   if (!endpoint)
+      return <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@UNDEFINED)</span>
+
+   let page = Endpoint.storage[endpoint]
+   if (!page)
+      return <span title={endpoint} style={{color: 'red', fontWeight: 'bold'}}>{children} (@not-found)</span>
+
+   return <a href={Root.link(null, page.url)}>{children}</a>
 }
 
 export default Endpoint

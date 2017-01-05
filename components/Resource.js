@@ -17,7 +17,7 @@ class Resource extends React.Component {
    }
 
    render() {
-      const {children, url, resource} = this.props
+      const {children, url, resource, inline} = this.props
 
       if (!url)
          return <span style={{fontWeight: 'bold', color: 'red'}}>some resource</span>
@@ -28,7 +28,7 @@ class Resource extends React.Component {
 
       return (
          <div className="resource">
-            <Page.Breadcrumbs page={Page.pages[Root.target(url)]} />
+            {true !== inline && <Page.Breadcrumbs page={Page.pages[Root.target(url)]} />}
 
             { React.Children.map(children, child => React.cloneElement(child, { resource: resource })) }
 
