@@ -2,19 +2,28 @@ import React from 'react'
 import path from 'path'
 import _ from 'lodash'
 
+import Root from './Root.js'
+
 let pages = {}
 
-const urltarget = (url) => {
-   if (url === 'index.html')
-      return '/'
-   else if (url.match(/\/index\.html$/))
-      return '/' + path.dirname(url)
-   else
-      return '/' + url.replace(/^\//, '')
+const Breadcrumb = (page) => {
+   return page.target ? null : <a href={Root.link(null, page.target)}>{page.name || page.url}</a>
 }
 
-const link = (from, to) =>
-   path.relative( ('' === path.extname(from) ? Page.path(from) : path.dirname(from)), urltarget(to) )
+
+const Breadcrumbs = ({page}) => {
+   // never that many layers so stack will never overflow
+
+   const appendParent = (p, acc) =>
+      p.parent && p.parent !== (acc[0] || {}).parent ? appendParent(Page.pages[p.parent], _.concat([p], acc)) : acc
+
+   const crumbs = _.concat([Page.pages['/'] || {url: './'}], appendParent(page, []))
+
+   return <ul className="breadcrumb">
+      {_.map(crumbs, ({url,name}, k) =>
+         <li key={k}><a href={Root.link(null, url || '')}>{name || url}</a></li>)}
+   </ul>
+}
 
 export default class Page extends React.Component {
    constructor(props) {
@@ -26,14 +35,14 @@ export default class Page extends React.Component {
    render() {
       let
          {url} = this.props,
-         isDir = '' === path.extname(url),
-         page = Page.pages[Page.path(url)],
+         isDir = '' === path.extname(url) || 'index.html' === url.substr(-10, 10),
+         page = Page.pages[Root.target(url)],
          parent = Page.pages[page.parent]
+
 
       return (
          <div>
-            <div><a href={link(url, parent.target)}>Go to Parent</a></div>
-
+            <Breadcrumbs page={page} />
             { this.props.children }
 
             <Page.Tree {...page} />
@@ -44,10 +53,12 @@ export default class Page extends React.Component {
    // register a component into the page hierarchy; requires a url property
    static register(props) {
       let
-         target = urltarget(props.url),
+         target = Root.target(props.url),
          parentpath = path.dirname(target)
 
-      pages[target] = _.assign(pages[target] || {tree: {}, target: target}, props, {parent: parentpath})
+      pages[target] = _.assign(pages[target] || {tree: {}, url: props.url, target: target},
+                               props,
+                               {parent: parentpath})
 
       if (parentpath !== target) {
          pages[parentpath] = pages[parentpath] || {tree: {}, target: parentpath}
@@ -62,22 +73,15 @@ export default class Page extends React.Component {
    static get tree() {
       return _.clone(tree)
    }
-
-   static link(from, to) {
-      return link(from, to)
-   }
-
-   static path(p) {
-      return urltarget(p)
-   }
 }
 
+Page.Breadcrumbs = Breadcrumbs
 
 Page.Tree = ({url, target, tree}) => {
   return <ul>
     {_.map(tree, (v, k) =>
       <li key={k}>
-        <a href={link(url, v.url)}>{v.name || v.target}</a>
+        <a href={Root.link(url, v.url)}>{v.name || v.target}</a>
         <Page.Tree {...v} />
       </li>)}
   </ul>

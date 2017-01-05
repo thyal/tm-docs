@@ -5,3 +5,6 @@ build:
 
 push:
 	git subtree push --prefix dist origin gh-pages
+
+watch: build
+	npm run watch

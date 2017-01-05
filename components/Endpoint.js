@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 import Page from './Page.js'
+import Root from './Root.js'
 
 let storage = {}
 
@@ -53,10 +54,12 @@ class Endpoint extends React.Component {
          qparams = React.Children.map(this.props.children, pickQParam),
          children = React.Children.map(this.props.children, pickData)
 
-      let page = Page.pages[Page.path(this.props.url)]
+      let page = Page.pages[Root.target(this.props.url)]
 
       return (
          <div className="endpoint">
+            <Page.Breadcrumbs page={Page.pages[Root.target(this.props.url)]} />
+
             <h3>{method.toUpperCase()} {path}</h3>
 
             <h6>https://http.cloud.tiny-mesh.com/v2{path}</h6>
@@ -237,7 +240,9 @@ class QueryParameter extends React.Component {
 Endpoint.Return = Return
 Endpoint.Parameter = Parameter
 Endpoint.QueryParameter = QueryParameter
-Endpoint.Link = ({children}) => <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@todo link endpoint)</span>
+Endpoint.Link = ({children}) => {
+   return <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@todo link endpoint)</span>
+}
 
 export default Endpoint
 

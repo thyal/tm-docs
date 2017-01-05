@@ -2,6 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import path from 'path'
 import Page from './Page.js'
+import Root from './Root.js'
 
 let definitions = {}
 
@@ -22,12 +23,12 @@ class Resource extends React.Component {
          return <span style={{fontWeight: 'bold', color: 'red'}}>some resource</span>
       let
          isDir = '' === path.extname(url),
-         page = Page.pages[Page.path(url)],
+         page = Page.pages[Root.target(url)],
          parent = Page.pages[page.parent]
 
       return (
          <div className="resource">
-            <div><a href={Page.link(url, parent.target)}>Go to Parent</a></div>
+            <Page.Breadcrumbs page={Page.pages[Root.target(url)]} />
 
             { React.Children.map(children, child => React.cloneElement(child, { resource: resource })) }
 
@@ -100,11 +101,7 @@ Resource.Link = ({children, resource, field, ...props}) => {
    if (!Resource.resources[resource])
       return <a title={"resource="+resource}>{children} (not found)</a>
 
-   let to = (props.relpath || relpath) + '/' + Resource.resources[resource].url
-   console.log('rel', url, relpath, Resource.resources[resource].url)
-   //let to = path.relative(Resource.resources[resource].url || "/")
-
-   return <a href={to}>{children}</a>
+   return <a href={Root.link(null, Resource.resources[resource].url || '')}>{children}</a>
 }
 
 export default Resource

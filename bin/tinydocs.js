@@ -79,7 +79,9 @@ f = ([file, relpath, elem, save]) => {
    let
       distfile = path.join('dist', relpath),
       cwd = process.cwd(),
-      dir = path.dirname(distfile).split(path.sep),
+      dir = path.dirname(distfile).split(path.sep)
+
+   let
       result = ReactDOMServer.renderToStaticMarkup(
          React.createElement(Component, {pages: elements,
                                          file,
@@ -108,13 +110,16 @@ let ungenerated = _.keys(Page.pages)
 
 let log = ({parent, target, url, tree}, n) => {
    ungenerated = _.without(ungenerated, target)
-   console.log(n || 0, parent, target, url)
+//   console.log(n || 0, parent, target, url)
    _.each(tree, (e) => log(e, (n || 0) + 1))
 }
 
 log(Page.pages['/'])
 
 if (_.size(ungenerated) > 0) {
+   console.error("Generated " + _.size(Page.pages) - _.size(ungenerated));
    console.error("The following pages are not linked anywhere:")
    _.each(ungenerated, (u) => console.error(" - " + u))
+} else {
+   console.error("Generated " + _.size(Page.pages) + ' page(s)')
 }
