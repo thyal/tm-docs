@@ -61,7 +61,7 @@ export default ({url, Page, Endpoint, Resource}) =>
       #### Revocation
       <p>
         Once a token is revoked the token will be unusable for any further requests.
-        Some examples of how to revocate are expiration, <Endpoint.Link endpoint="POST /auth/token/revoke/:fingerprint">user revocation</Endpoint.Link> or
+        Some examples of how to revocate are expiration, <Endpoint.Link endpoint="POST /auth/token/revoke/:fingerprint">token revocation</Endpoint.Link> or
         &nbsp;<Endpoint.Link endpoint="DELETE /auth/session">user logout</Endpoint.Link>, or usage (in case
         of <code>one-time-token</code>). Once revoked the time and reason will be set in
         <code>revoked.at</code> and <code>revoked.reason</code> respectively.

@@ -89,7 +89,10 @@ export default class Root extends React.Component {
                                  <ul className="nav">
                                     {_.map(_.sortBy(child.tree, 'weight'), (leaf, l) =>
                                        true !== leaf.hidden && <li key={l} className={leaf.url === props.url ? 'active' : ''}>
-                                          <a href={Root.link(null, leaf.url)}>{leaf.name || leaf.url}</a>
+                                          <a href={Root.link(null, leaf.url)}>
+                                             {leaf.name || leaf.url}
+                                             {true === leaf.unstable && <span className="text-right label label-warning" style={{float: 'right'}}>unstable</span>}
+                                          </a>
                                        </li>)}
                                  </ul>
                               </li>)}

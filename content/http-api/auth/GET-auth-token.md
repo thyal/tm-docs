@@ -1,28 +1,22 @@
 import React from 'react'
-import {ReactMarkdown} from '../../../components/Markdown.js'
 
-export default ({url, Page, Endpoint, Resource}) => {
-  return (
-     <ReactMarkdown>
-       <Endpoint
-         url={url}
-         group="auth"
-         method="get"
-         path="/auth/token">
+export default ({url, Page, Endpoint, Resource}) =>
+   <Endpoint
+      url={url}
+      group="auth"
+      method="get"
+      path="/auth/token"
+      weight={400}>
 
-         <Endpoint.Return code="200">A <Resource resource="network/:nid">Network Object</Resource></Endpoint.Return>
-         <Endpoint.Return code="401">A <Resource resource="error/no-auth">Error object</Resource></Endpoint.Return>
-         <Endpoint.Return code="403">
-           Authentication failed, or no access to the resource. <Resource resource="error/auth">Error object</Resource>
-         </Endpoint.Return>
-       </Endpoint>
+      <Endpoint.Return code="200">Returns a list of <Resource.Link resource="token/:token">authentication tokens</Resource.Link></Endpoint.Return>
+      <Endpoint.Return code="401">A <Resource.Link resource="error/no-auth">Error object</Resource.Link> due to no authentication provided</Endpoint.Return>
+      <Endpoint.Return code="403">
+         Fails with a <Resource.Link resource="error/auth">Error object</Resource.Link> due to failed authentication, or using a non-user token
+      </Endpoint.Return>
 
-       <p>
-        Retrieves the <Resource resource="network/:nid">Network resource</Resource> identified by&nbsp;
-        <Endpoint.Parameter>nid</Endpoint.Parameter>.
-       </p>
+      <p>
+         Retrieves a list over available non-session tokens for the authenticated entity
+      </p>
 
-       ## THIS IS A HEADER
-     </ReactMarkdown>
-)}
+   </Endpoint>
 
