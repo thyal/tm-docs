@@ -1,4 +1,6 @@
 import React from 'react'
+import _ from 'lodash'
+import Page from './Page.js'
 
 let storage = {}
 
@@ -37,7 +39,10 @@ const Params = ({params}) => {
 class Endpoint extends React.Component {
    constructor(props) {
       super(props)
-      storage[props.method.toUpperCase() + ' ' + props.path] = props
+      let name = props.method.toUpperCase() + ' ' + props.path
+      storage[name] = props
+
+      Page.register(_.assign({name}, props))
    }
 
    render() {
@@ -47,6 +52,8 @@ class Endpoint extends React.Component {
          params  = React.Children.map(this.props.children, pickParam),
          qparams = React.Children.map(this.props.children, pickQParam),
          children = React.Children.map(this.props.children, pickData)
+
+      let page = Page.pages[Page.path(this.props.url)]
 
       return (
          <div className="endpoint">
@@ -60,6 +67,8 @@ class Endpoint extends React.Component {
 
             <h4>Description</h4>
             { children }
+
+            <Page.Tree {...page} />
 
 {/*
             <h5>Example Request</h5>
@@ -228,6 +237,7 @@ class QueryParameter extends React.Component {
 Endpoint.Return = Return
 Endpoint.Parameter = Parameter
 Endpoint.QueryParameter = QueryParameter
+Endpoint.Link = ({children}) => <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@todo link endpoint)</span>
 
 export default Endpoint
 

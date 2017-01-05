@@ -110,6 +110,21 @@ a {
 	-o-transition: none;
 	transition: none;
 }
+.nav .section {
+   border-top: 2px transparent;
+   border-bottom: 2px transparent;
+}
+.nav .section.ancestor {
+   background-color: #eaeaea;
+   border-top: 2px solid #dddddd;
+   border-bottom: 2px solid #cccccc;
+}
+.nav .section > a {
+   padding: 10px;
+   font-weight: bold;
+   color: #333;
+}
+
 .nav .header {
    padding-bottom: 4px;
 }
@@ -120,9 +135,10 @@ a {
 	color: #563d7c;
 	background-color: transparent;
 	/* border-left: 2px solid #563d7c; */
-   border-top: 2px solid transparent;
-   border-bottom: 2px solid transparent;
+   border-top: 1px solid transparent;
+   border-bottom: 1px solid transparent;
 	}
+
 .nav .active > a {
    font-weight: bold;
    color: #555;
@@ -131,13 +147,23 @@ a {
 
 .nav .header.parent {
    border-left: none;
-   background: #fafafa;
+   background: #e3e3e3;
    padding-bottom: 0px;
-   border-top: 2px solid #eeeeee;
-   border-bottom: 2px solid #cccccc;
+   border-top: 1px solid #cfcfcf;
+   border-bottom: 1px solid #c3c3c3;
 }
+
+/* only show children if .ancestor and !collapse */
+.collapse .nav { display: none }
+.collapse.ancestor .nav { display: block }
+/* hide child elements of inactive .header nav's */
+.nav .header > .nav {
+   display: none;
+}
+
 .nav .header.parent > .nav {
    border-left: none;
+   display: block;
 }
 
 .nav .header.parent > a {

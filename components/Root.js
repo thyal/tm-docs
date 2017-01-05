@@ -1,6 +1,7 @@
 // Root.js
 import React from 'react'
 import Endpoint from './Endpoint.js'
+import Page from './Page.js'
 import _ from 'lodash'
 import path from 'path'
 import crypto from 'crypto'
@@ -11,9 +12,13 @@ export default (props) => {
    let groups = _.groupBy(Endpoint.storage, 'group')
 
 
+   global.url = props.url
    const
-      relpath = path.dirname(path.relative(props.url, '.')),
-      hasChildURL = (items, match) => _.some(items, ({url}) => url === match)
+      relpath = global.relpath = path.dirname(path.relative(props.url, '.')),
+      hasChildURL = (child, match) => {
+         return child.url === match || _.some(child.tree, ({url}) => url === match)
+      },
+      hasPrefix = (prefix, match) => prefix === match.substring(0, prefix.length)
 
    return <html>
       <head>
@@ -27,57 +32,33 @@ export default (props) => {
       <body>
          <div className="">
             <div className="" style={{overflowY: 'scroll', position: 'fixed', bottom: 0, top: 0, width: '70%'}}>
-               <div style={{padding: '15px 30px'}}>{ props.children }</div>
+               <div style={{padding: '15px 30px'}}>{ React.Children.map(props.children, child => React.cloneElement(child, {relpath: relpath})) }</div>
             </div>
 
             <div className="sidebar">
-               <h5 id="top" style={{paddingLeft: '13px', paddingTop: '1rem', paddingBottom: '2rem'}}>Tinymesh Cloud Docs</h5>
+               <h5 id="top" style={{paddingLeft: '13px', paddingTop: '1rem', paddingBottom: '2rem'}}><a href={relpath}>Tinymesh Cloud Docs</a></h5>
 
                <ul className="nav">
-                  <li className="header"><a>Guide: Getting Started</a></li>
-                  <li className="header"><a>Guide: Controlling GPIOs &ndash; lighting</a></li>
-                  <li className="header"><a>Guide: Reading DLMS data</a></li>
-                  <li className="header"><a>Guide: Wireless Sensor Networks</a></li>
-                  <li className="header"><a>Guide: User Management</a></li>
-                  <li className="header"><a>Guide: Network Connectors</a></li>
-               </ul>
+                  {_.map(_.sortBy((Page.pages['/'] || {}).tree, 'weight'), (v, k) =>
+                  <li key={k} className={"section " + (v.className || '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
+                     <a href={Page.path(v.url)}>{v.name || path.dirname(v.url)}</a>
 
-               <ul className="nav">
-                  <li className="header">
-                     <a>TCP API</a>
                      <ul className="nav">
-                        <li className=""><a>Authentication</a></li>
-                        <li className=""><a>Flow Control</a></li>
-                        <li className=""><a>Debugging</a></li>
-                        <li className=""><a>Security Considerations</a></li>
+                        {_.map(_.sortBy(v.tree, 'weight'), (child, p) =>
+                           <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
+                              {false !== child.name &&
+                                 <a href={Page.path(child.url)}>{child.name || path.dirname(child.url)}</a>}
+
+                              <ul className="nav">
+                                 {_.map(_.sortBy(child.tree, 'weight'), (leaf, l) =>
+                                    <li key={l} className={leaf.url === props.url ? 'active' : ''}>
+                                       <a href={relpath + "/" + leaf.url}>{leaf.name || leaf.url}</a>
+                                    </li>)}
+                              </ul>
+                           </li>)}
                      </ul>
                   </li>
-               </ul>
-
-               <ul className="nav">
-               {_.map(groups, (items, group) =>
-                     <li key={group} className={"header" + (hasChildURL(items, props.url) ? ' parent' : '')}>
-                        <a>HTTP Endpoint: {group}</a>
-                        <ul className="nav">
-                           {_.map(_.sortBy(items, 'path'), (e, i) =>
-                              <li key={i} className={e.url === props.url ? 'active' : ''}>
-                                 <a href={relpath + "/" + e.url}>
-                                    <span className="method">{e.method.toUpperCase()}</span> <span className="path">{e.path}</span>
-                                 </a>
-                              </li>)}
-                        </ul>
-                     </li>
-               )}
-               </ul>
-
-               <ul className="nav">
-                  <li className="header"><a>Resource: Network</a></li>
-                  <li className="header"><a>Resource: Device</a></li>
-                  <li className="header"><a>Resource: Message</a></li>
-                  <li className="header"><a>Resource: Organization</a></li>
-                  <li className="header"><a>Resource: Token</a></li>
-                  <li className="header"><a>Resource: User</a></li>
-                  <li className="header"><a>Resource: Channel</a></li>
+                  )}
                </ul>
 
                <hr style={{padding: '5px 0'}}/>

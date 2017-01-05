@@ -93,7 +93,7 @@ f = ([file, relpath, elem, save]) => {
 
       fs.writeFile(distfile, result, (err) => {
          if (err) throw err;
-         console.log('output: ' + file + ' -> ' + distfile)
+         //console.log('output: ' + file + ' -> ' + distfile)
       })
    }
 }
@@ -101,3 +101,20 @@ f = ([file, relpath, elem, save]) => {
 // just generate them twice and we'ere $$$
 elements.map(f)
 elements.map((e) => f(e.concat([true])))
+
+const _ = require('lodash')
+
+let ungenerated = _.keys(Page.pages)
+
+let log = ({parent, target, url, tree}, n) => {
+   ungenerated = _.without(ungenerated, target)
+   console.log(n || 0, parent, target, url)
+   _.each(tree, (e) => log(e, (n || 0) + 1))
+}
+
+log(Page.pages['/'])
+
+if (_.size(ungenerated) > 0) {
+   console.error("The following pages are not linked anywhere:")
+   _.each(ungenerated, (u) => console.error(" - " + u))
+}
