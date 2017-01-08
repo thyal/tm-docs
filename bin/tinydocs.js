@@ -12,6 +12,7 @@ var React = require('react')
 var ReactDOMServer = require('react-dom/server')
 var path = require('path')
 var fs = require('fs')
+var tidy = require('tidy-html5').tidy_html5
 //var program = require('commander')
 var ReactMarkdown = require(path.join(process.cwd(), 'components/Markdown.js')).ReactMarkdown
 
@@ -19,6 +20,9 @@ var version = '3.2.0'
 
 var walk = function(dir) {
    var results = []
+   if (fs.statSync(dir).isFile())
+      return [dir]
+
    var list = fs.readdirSync(dir)
 
    list.forEach(function(file) {
@@ -51,7 +55,11 @@ if (Component.default)
 
 flatMap = (list, f) => Array.prototype.concat.apply([], list.map(f))
 
-const files = flatMap(process.argv.slice(3), walk )
+const files = flatMap([process.argv[3]], walk )
+
+const args = process.argv.length <= 4 ? process.argv.slice(3) : process.argv.slice(4)
+const workingset = flatMap(args, walk )
+
 
 const Page = require(path.join(process.cwd(), 'components/Page.js')).default
 const Endpoint = require(path.join(process.cwd(), 'components/Endpoint.js')).default
@@ -88,38 +96,28 @@ f = ([file, relpath, elem, save]) => {
                                          url: relpath}, elem))
 
    if (save) {
-      dir.reduce((acc, comp) => {
-         fs.mkdir(path.join(cwd, acc.concat([comp]).join(path.sep)), () => null)
-         return acc.concat([comp])
-      }, [])
+      console.error(':: output ' + file + ' -> ' + distfile)
 
+      // tidy up the html since React gives us a mess without newlines
+      result = "<!DOCTYPE html>\n" + result
+      result = tidy(result, {
+         "indent-spaces": 4,
+         "indent": true,
+         "drop-empty-elements": false,
+         "quiet": true,
+         "tidy-mark": false
+      })
+
+      // assumes that the directory exists
       fs.writeFile(distfile, result, (err) => {
          if (err) throw err;
-         //console.log('output: ' + file + ' -> ' + distfile)
       })
    }
 }
 
 // just generate them twice and we'ere $$$
 elements.map(f)
-elements.map((e) => f(e.concat([true])))
+elements.filter( ([file]) => workingset.find( (x) => x === file)).map((e) => f(e.concat([true])))
 
-const _ = require('lodash')
-
-let ungenerated = _.keys(Page.pages)
-
-let log = ({parent, target, url, tree}, n) => {
-   ungenerated = _.without(ungenerated, target)
-//   console.log(n || 0, parent, target, url)
-   _.each(tree, (e) => log(e, (n || 0) + 1))
-}
-
-log(Page.pages['/'])
-
-if (_.size(ungenerated) > 0) {
-   console.error("Generated " + _.size(Page.pages) - _.size(ungenerated));
-   console.error("The following pages are not linked anywhere:")
-   _.each(ungenerated, (u) => console.error(" - " + u))
-} else {
-   console.error("Generated " + _.size(Page.pages) + ' page(s)')
-}
+// we can't know what's links don't "exist" until we have the entire tree. Let each
+// component be on each own

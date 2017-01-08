@@ -14,5 +14,13 @@ export default ({url, Page, Endpoint, Resource}) =>
       <span>Failed to auth error</span>
      </Resource>
 
+     <Resource resource="error/not-found" url={url} inline={true}>
+      <span>Failed to auth error</span>
+     </Resource>
+
+     <Resource resource="error/conflict" url={url} inline={true}>
+      <span>Failed to auth error</span>
+     </Resource>
+
   </div>
 

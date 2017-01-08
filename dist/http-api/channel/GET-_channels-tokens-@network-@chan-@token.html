@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            test
+        </title>
+        <link href="./../../css/normalize.css" rel="stylesheet">
+        <link href="./../../css/skeleton.css" rel="stylesheet">
+        <link href="./../../css/style.css" rel="stylesheet">
+        <meta name="viewport" content=
+        "width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class="">
+            <div class="" style=
+            "overflow-y:scroll;position:fixed;bottom:0;top:0;width:70%;">
+            <div style="padding:15px 30px;">
+                    <div>
+                        <div class="endpoint">
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href=
+                                    "./../../index.html">Tinymesh
+                                    Cloud Docs</a>
+                                </li>
+                                <li>
+                                    <a href="./../index.html">HTTP
+                                    API - v2</a>
+                                </li>
+                                <li>
+                                    <a href="./index.html">Channels
+                                    (beta) - @todo</a>
+                                </li>
+                                <li>
+                                    <a href=
+                                    "./GET-_channels-tokens-@network-@chan-@token.html">
+                                    GET
+                                    /_channels/tokens/:network/:chan/:token</a>
+                                </li>
+                            </ul>
+                            <h3>
+                                GET
+                                /_channels/tokens/:network/:chan/:token
+                            </h3>
+                            <h6>
+                                https://http.cloud.tiny-mesh.com/v2/_channels/tokens/:network/:chan/:token
+                            </h6>
+                            <div class="returns">
+                                <div class="return">
+                                    <b>200 OK</b> – A <span style=
+                                    "font-weight:bold;color:red;">some
+                                    resource</span>
+                                </div>
+                                <div class="return">
+                                    <b>401 Unauthorized</b> – A
+                                    <span style=
+                                    "font-weight:bold;color:red;">some
+                                    resource</span>
+                                </div>
+                                <div class="return">
+                                    <b>403 Forbidden</b> –
+                                    Authentication failed, or no
+                                    access to the resource.
+                                    <span style=
+                                    "font-weight:bold;color:red;">some
+                                    resource</span>
+                                </div>
+                            </div>
+                            <h4>
+                                Description
+                            </h4>
+                            <ul></ul>
+                        </div>
+                        <p>
+                            Retrieves the <span style=
+                            "font-weight:bold;color:red;">some
+                            resource</span> identified
+                            by&nbsp;<span>nid</span>.
+                        </p><span></span>
+                        <h2>
+                            <span>THIS IS A HEADER</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <h5 id="top" style=
+                "padding-left:13px;padding-top:1rem;padding-bottom:2rem;">
+                <a href="../..">Tinymesh Cloud Docs</a>
+                </h5>
+                <ul class="nav">
+                    <li class="section collapse">
+                        <a href="./../../guides/index.html">Guides
+                        &amp; Examples</a>
+                        <ul class="nav">
+                            <li class="header">
+                                <a href=
+                                "./../../guides/controlling-gpio-lighting/index.html">
+                                Controlling LEDs with GPIO pins</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../guides/getting-started/index.html">
+                                Getting Started</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../guides/reading-dlms-data/index.html">
+                                Automatic Meter Reading with
+                                DLMS</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../guides/user-management/index.html">
+                                Managing Users and Access
+                                Policies</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../guides/wireless-sensor-networks/index.html">
+                                guides/wireless-sensor-networks</a>
+                                <ul class="nav"></ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section ancestor">
+                        <a href="./../index.html">HTTP API - v2</a>
+                        <ul class="nav">
+                            <li class="header">
+                                <a href=
+                                "./../auth/index.html">Authentication
+                                - @review</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/GET-auth.html">GET
+                                        /auth</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/GET-auth-token.html">
+                                        GET /auth/token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/POST-auth-token.html">
+                                        POST /auth/token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/POST-auth-token-revoke-@fingerprint.html">
+                                        POST
+                                        /auth/token/revoke/:fingerprint</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/GET-auth-session.html">
+                                        GET
+                                        /auth/session<span class=
+                                        "text-right label label-warning"
+                                        style=
+                                        "float:right;">unstable</span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/POST-auth-session.html">
+                                        POST
+                                        /auth/session<span class=
+                                        "text-right label label-warning"
+                                        style=
+                                        "float:right;">unstable</span></a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../auth/DELETE-auth-session.html">
+                                        DELETE
+                                        /auth/session<span class=
+                                        "text-right label label-warning"
+                                        style=
+                                        "float:right;">unstable</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header parent">
+                                <a href="./index.html">Channels
+                                (beta) - @todo</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./DELETE-_channels-tokens-@network-@chan-@token.html">
+                                        DELETE
+                                        /_channels/tokens/:network/:chan/:token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./GET-_channels-chan-@network-@chan.html">
+                                        GET
+                                        /_channels/chan/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./GET-_channels-chan-@network.html">
+                                        GET
+                                        /_channels/chan/:network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./GET-_channels-io-@network-@chan.html">
+                                        GET
+                                        /_channels/io/:network/:chan</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href=
+                                        "./GET-_channels-tokens-@network-@chan-@token.html">
+                                        GET
+                                        /_channels/tokens/:network/:chan/:token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./GET-_channels-tokens-@network-@chan.html">
+                                        GET
+                                        /_channels/tokens/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./POST-_channels-chan-@network.html">
+                                        POST
+                                        /_channels/chan/:network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./POST-_channels-io-@network-@chan.html">
+                                        POST
+                                        /_channels/io/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./POST-_channels-tokens-@network-@chan.html">
+                                        POST
+                                        /_channels/tokens/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./PUT-_channels-chan-@network-@chan.html">
+                                        PUT
+                                        /_channels/chan/:network/:chan</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../device/index.html">Device
+                                Management - @review</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../device/GET-device.html">
+                                        GET /device</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../device/GET-device-@network.html">
+                                        GET /device/:network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../device/GET-device-@network-@device.html">
+                                        GET
+                                        /device/:network/:device</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../device/POST-device-@network.html">
+                                        POST /device/:network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../device/PUT-device-@network-@device.html">
+                                        PUT
+                                        /device/:network/:device</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../message/index.html">Device
+                                Communication - @todo</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../message/GET-message-@msg.html">
+                                        GET /message/:msg</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../message/GET-messages-@netsel-@devsel.html">
+                                        GET
+                                        /message/:netsel[/:devsel]</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../message/POST-message-@network-@device.html">
+                                        POST
+                                        /message/:network/:device</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../network/index.html">Network
+                                Management - @todo</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../network/GET-network-@nework.html">
+                                        GET /network/:network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../network/GET-network.html">
+                                        GET /network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../network/POST-network.html">
+                                        POST /network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../network/PUT-network-@nework.html">
+                                        PUT /network/:network</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../organization/index.html">Organizations
+                                - @todo</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/DELETE-organization-@org-user-@user.html">
+                                        DELETE
+                                        /organization/:org/user/:user</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/GET-organization-@org.html">
+                                        GET /organization/:org</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/GET-organization.html">
+                                        GET /organization</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/POST-organization-@org.html">
+                                        POST /organization/:org</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/PUT-organization-@org-user-@user.html">
+                                        PUT
+                                        /organization/:org/user/:user</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/PUT-organization-@org.html">
+                                        PUT /organization/:org</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../query/index.html">Data
+                                Queries &amp; Message streaming -
+                                @todo</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href="./../user/index.html">User
+                                Endpoints - @review</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../user/GET-user.html">GET
+                                        /user</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../user/PUT-user.html">PUT
+                                        /user</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <a href="./../../tcp-api/index.html">TCP
+                        API - v1</a>
+                        <ul class="nav">
+                            <li class="header">
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../../tcp-api/tcp-api/authentication.html">
+                                        Authentication - @todo</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../tcp-api/tcp-api/debugging.html">
+                                        Debugging - @todo</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../tcp-api/tcp-api/flow-control.html">
+                                        Flow Control - @todo</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../tcp-api/tcp-api/security-considerations.html">
+                                        Security Considerations -
+                                        @todo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="section">
+                        <a href=
+                        "./../../reference-guide/index.html">Reference
+                        Manual</a>
+                        <ul class="nav">
+                            <li class="header">
+                                <a href=
+                                "./../../reference-guide/device-configuration/index.html">
+                                Device Configuration - @todo</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../reference-guide/resources/index.html">
+                                Resources Definitions</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/network.html">
+                                        Network</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/device.html">
+                                        Device - @review</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/channel.html">
+                                        Channel</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/token.html">
+                                        Token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/user.html">
+                                        User</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/error.html">
+                                        Errors - @todo</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/organization.html">
+                                        Organization</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <hr style="padding:5px 0;">
+                <a class="back-to-top" href="#top">Back to top</a>
+            </div>
+        </div>
+    </body>
+</html>
