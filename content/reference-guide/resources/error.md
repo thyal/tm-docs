@@ -2,7 +2,7 @@ import React from 'react'
 
 export default ({url, Page, Endpoint, Resource}) =>
   <div>
-     <Resource resource="error/generic" url={url} name="Errors">
+     <Resource resource="error/generic" url={url} name="Errors - @todo">
       <span>This is a generic error</span>
      </Resource>
 
