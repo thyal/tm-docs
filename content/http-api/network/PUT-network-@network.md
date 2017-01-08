@@ -4,12 +4,13 @@ export default ({url, Page, Endpoint, Resource}) =>
    <Endpoint
       url={url}
       group="network"
-      method="post"
-      path="/network"
-      weight={10}>
+      method="put"
+      path="/network/:network"
+      weight={20}>
 
-      <Endpoint.Return code="201">
-         With the newly created <Resource.Link resource="network/:network">network resource</Resource.Link>
+
+      <Endpoint.Return code="200">
+         With the updated <Resource.Link resource="network/:network">network resource</Resource.Link>
       </Endpoint.Return>
 
       <Endpoint.Return code="401">
@@ -27,20 +28,7 @@ export default ({url, Page, Endpoint, Resource}) =>
         the <Resource.Link resource="organization/:org">organization</Resource.Link> does not exist.
       </Endpoint.Return>
 
-      <Endpoint.Parameter param="network">
-        The key of the <Resource.Link resource="network/:network">Network</Resource.Link> resource
-      </Endpoint.Parameter>
-
       <p>
-        Creates a new network resource.
+        Updates the network resource with new data
       </p>
-
-      <h4>Automatic Parent Assignment</h4>
-
-      <p>
-        By default the authenticated entity will be assigned as the sole parent. If desired multiple
-        parents can be added AS LONG AS: <em><b>a)</b> the user added exists</em>, <em><b>b)</b> the authenticated entity have
-        access to the organization.</em>
-      </p>
-
    </Endpoint>

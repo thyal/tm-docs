@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {ReactMarkdown} from '../../../components/Markdown.js'
 
 export default ({url, Page, Endpoint, Resource}) =>
-  <Page url={url} name="Organizations - @todo">
+  <Page url={url} name="Organizations">
 
     <ReactMarkdown>
       # Managing Organizations

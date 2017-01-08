@@ -29,61 +29,56 @@
                             </li>
                             <li>
                                 <a href="./index.html">Network
-                                Management - @todo</a>
+                                Management</a>
                             </li>
                             <li>
                                 <a href=
-                                "./GET-network-@nework.html">GET
+                                "./PUT-network-@network.html">PUT
                                 /network/:network</a>
                             </li>
                         </ul>
                         <h3>
-                            GET /network/:network
+                            PUT /network/:network
                         </h3>
                         <h6>
                             https://http.cloud.tiny-mesh.com/v2/network/:network
                         </h6>
                         <div class="returns">
                             <div class="return">
-                                <b>200 OK</b> – A <span style=
-                                "font-weight:bold;color:red;">some
-                                resource</span>
+                                <b>200 OK</b> – With the updated
+                                <a href=
+                                "./../../reference-guide/resources/network.html">
+                                network resource</a>
                             </div>
                             <div class="return">
-                                <b>401 Unauthorized</b> – A
-                                <span style=
-                                "font-weight:bold;color:red;">some
-                                resource</span>
+                                <b>401 Unauthorized</b> – <a href=
+                                "./../../reference-guide/resources/error.html">
+                                error object</a> caused by lack
+                                off, or failed authentication.
                             </div>
                             <div class="return">
-                                <b>403 Forbidden</b> –
-                                Authentication failed, or no access
-                                to the resource. <span style=
-                                "font-weight:bold;color:red;">some
-                                resource</span>
+                                <b>403 Forbidden</b> – When
+                                restricted a <a href=
+                                "./../../reference-guide/resources/error.html">
+                                error object</a> is returned
                             </div>
-                        </div>
-                        <div class="params">
-                            <h4>
-                                URL Parameters
-                            </h4>
-                            <ul class="parameters">
-                                <li class="parameter">
-                                    <code>:network</code> – The
-                                    Network ID, the Base36 encoded
-                                    value of <code>address</code>
-                                    key.
-                                </li>
-                            </ul>
+                            <div class="return">
+                                <b>404 Not Found</b> – If any
+                                members of the <code>parents</code>
+                                field is non-existing, ie the
+                                <a href=
+                                "./../../reference-guide/resources/user.html">
+                                user</a> or the <a href=
+                                "./../../reference-guide/resources/organization.html">
+                                organization</a> does not exist.
+                            </div>
                         </div>
                         <h4>
                             Description
                         </h4>
                         <p>
-                            Retrieves the <span style=
-                            "font-weight:bold;color:red;">some
-                            resource</span> identified
-                            by&nbsp;<span>nid</span>.
+                            Updates the network resource with new
+                            data
                         </p>
                         <ul></ul>
                     </div>
@@ -138,8 +133,7 @@
                         <ul class="nav">
                             <li class="header">
                                 <a href=
-                                "./../auth/index.html">Authentication
-                                - @review</a>
+                                "./../auth/index.html">Authentication</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -194,7 +188,9 @@
                             <li class="header">
                                 <a href=
                                 "./../channel/index.html">Channels
-                                (beta) - @todo</a>
+                                (beta)<span class=
+                                "text-right label label-info"
+                                style="float:right;">beta</span></a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -261,7 +257,7 @@
                             <li class="header">
                                 <a href=
                                 "./../device/index.html">Device
-                                Management - @review</a>
+                                Management</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -295,7 +291,7 @@
                             <li class="header">
                                 <a href=
                                 "./../message/index.html">Device
-                                Communication - @todo</a>
+                                Communication</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -318,13 +314,8 @@
                             </li>
                             <li class="header parent">
                                 <a href="./index.html">Network
-                                Management - @todo</a>
+                                Management</a>
                                 <ul class="nav">
-                                    <li class="active">
-                                        <a href=
-                                        "./GET-network-@nework.html">
-                                        GET /network/:network</a>
-                                    </li>
                                     <li class="">
                                         <a href=
                                         "./GET-network.html">GET
@@ -337,15 +328,19 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./PUT-network-@nework.html">
+                                        "./GET-network-@network.html">
+                                        GET /network/:network</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href=
+                                        "./PUT-network-@network.html">
                                         PUT /network/:network</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="header">
                                 <a href=
-                                "./../organization/index.html">Organizations
-                                - @todo</a>
+                                "./../organization/index.html">Organizations</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -384,13 +379,12 @@
                             <li class="header">
                                 <a href=
                                 "./../query/index.html">Data
-                                Queries &amp; Message streaming -
-                                @todo</a>
+                                Queries &amp; Message streaming</a>
                                 <ul class="nav"></ul>
                             </li>
                             <li class="header">
                                 <a href="./../user/index.html">User
-                                Endpoints - @review</a>
+                                Endpoints</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
@@ -445,7 +439,7 @@
                             <li class="header">
                                 <a href=
                                 "./../../reference-guide/device-configuration/index.html">
-                                Device Configuration - @todo</a>
+                                Device Configuration</a>
                                 <ul class="nav"></ul>
                             </li>
                             <li class="header">

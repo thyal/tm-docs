@@ -3,7 +3,7 @@ import _ from 'lodash'
 import {ReactMarkdown} from '../../../components/Markdown.js'
 
 export default ({url, Page, Endpoint, Resource}) =>
-  <Page url={url} name="User Endpoints - @review">
+  <Page url={url} name="User Endpoints">
 
     <ReactMarkdown>
       # User Endpoints

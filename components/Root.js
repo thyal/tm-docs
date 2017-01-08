@@ -84,7 +84,11 @@ export default class Root extends React.Component {
                            {_.map(_.sortBy(v.tree, 'weight'), (child, p) =>
                               true !== child.hidden && <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
                                  {false !== child.name &&
-                                    <a href={Root.link(null, child.url)}>{child.name || path.dirname(child.url)}</a>}
+                                    <a href={Root.link(null, child.url)}>
+                                       {child.name || path.dirname(child.url)}
+                                       {true === child.unstable && <span className="text-right label label-warning" style={{float: 'right'}}>unstable</span>}
+                                       {true === child.beta && <span className="text-right label label-info" style={{float: 'right'}}>beta</span>}
+                                    </a>}
 
                                  <ul className="nav">
                                     {_.map(_.sortBy(child.tree, 'weight'), (leaf, l) =>
