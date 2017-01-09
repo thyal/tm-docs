@@ -25,3 +25,6 @@ force-push:
 
 watch: build-all
 	npm run watch
+
+serve: build-all
+	cd ./dist && http-server
