@@ -1,29 +1,36 @@
 import React from 'react'
-import {ReactMarkdown} from '../../../components/Markdown.js'
 
-export default ({url, Page, Endpoint, Resource}) => {
-  return (
-     <ReactMarkdown>
-       <Endpoint
-         url={url}
-         stability="alpha"
-         group="channels"
-         method="post"
-         path="/_channels/io/:network/:chan">
+export default ({url, Page, Endpoint, Resource}) =>
+   <Endpoint
+      url={url}
+      stability="alpha"
+      group="channels"
+      method="post"
+      path="/_channels/io/:network/:chan"
+      beta={true}>
 
-         <Endpoint.Return code="200">A <Resource resource="network/:nid">Network Object</Resource></Endpoint.Return>
-         <Endpoint.Return code="401">A <Resource resource="error/no-auth">Error object</Resource></Endpoint.Return>
-         <Endpoint.Return code="403">
-           Authentication failed, or no access to the resource. <Resource resource="error/auth">Error object</Resource>
-         </Endpoint.Return>
-       </Endpoint>
+      <Endpoint.Parameter param="network">
+        The key of the <Resource.Link resource="network/:network">network</Resource.Link> resource
+      </Endpoint.Parameter>
 
-       <p>
-        Retrieves the <Resource resource="network/:nid">Network resource</Resource> identified by&nbsp;
-        <Endpoint.Parameter>nid</Endpoint.Parameter>.
-       </p>
+      <Endpoint.Parameter param="chan">
+        The key of the <Resource.Link resource="channel/:chan">channel</Resource.Link> resource
+      </Endpoint.Parameter>
 
-       ## THIS IS A HEADER
-     </ReactMarkdown>
-)}
+      <p>
+        Pushes a list of messages onto the <Resource.Link resource="channel/:chan">channel</Resource.Link>.
+      </p>
 
+      <p>
+        A succesfull response includes the fields <code>saved</code> (list of saved msgids)
+        and <code>remaining</code> (unsigned integer with amount of items it failed to push to
+        channel). An additional field <code>reason</code> may be added to responses where <code>remaining > 0</code>,
+        this field states the size of the unpushed events in the request.
+      </p>
+
+      <p className="alert alert-info">
+        Although documented, the Channels API is under review and testing. The API may be
+        deprecated, renamed, deleted or changed in backwards incompatible ways. If you have any
+        feedback on the API we would love to hear from you!
+      </p>
+   </Endpoint>
