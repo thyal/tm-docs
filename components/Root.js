@@ -91,7 +91,7 @@ export default class Root extends React.Component {
                                     </a>}
 
                                  <ul className="nav">
-                                    {_.map(_.sortBy(child.tree, 'weight'), (leaf, l) =>
+                                    {_.map(_.sortBy(child.tree, 'weight', 'path'), (leaf, l) =>
                                        true !== leaf.hidden && <li key={l} className={leaf.url === props.url ? 'active' : ''}>
                                           <a href={Root.link(null, leaf.url)}>
                                              {leaf.name || leaf.url}

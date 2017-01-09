@@ -37,13 +37,24 @@ const Params = ({params}) => {
          </ul>
       </div> }
 
+const methodWeight = {
+   'get':    1,
+   'put':    2,
+   'post':   3,
+   'delete': 4
+}
+
 class Endpoint extends React.Component {
    constructor(props) {
       super(props)
-      let name = props.method.toUpperCase() + ' ' + props.path
+      let
+         name = props.method.toUpperCase() + ' ' + props.path,
+         weight = (props.path.split(/\//).length * 10)
+
+
       storage[name] = props
 
-      Page.register(_.assign({name}, props))
+      Page.register(_.assign({name, weight}, props))
    }
 
    render() {

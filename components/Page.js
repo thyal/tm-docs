@@ -54,11 +54,13 @@ export default class Page extends React.Component {
    static register(props) {
       let
          target = Root.target(props.url),
-         parentpath = path.dirname(target)
+         parentpath = path.dirname(target),
+         weight = props.url.split(/\//).length,
+         defpage = pages[target] || {tree: {},
+                                     url: props.url,
+                                     target: target}
 
-      pages[target] = _.assign(pages[target] || {tree: {}, url: props.url, target: target},
-                               props,
-                               {parent: parentpath})
+      pages[target] = _.assign(defpage, {weight: weight}, props, {parent: parentpath})
 
       if (parentpath !== target) {
          pages[parentpath] = pages[parentpath] || {tree: {}, target: parentpath}
