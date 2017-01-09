@@ -8,7 +8,7 @@ export default ({url, Page, Endpoint, Resource}) => {
          url={url}
          group="message"
          method="post"
-         path="/message/:network/:device">
+         path="/message/:network[/:device]">
 
          <Endpoint.Return code="200">A <Resource resource="network/:nid">Network Object</Resource></Endpoint.Return>
          <Endpoint.Return code="401">A <Resource resource="error/no-auth">Error object</Resource></Endpoint.Return>

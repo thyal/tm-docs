@@ -77,7 +77,7 @@ export default class Root extends React.Component {
 
                   <ul className="nav">
                      {_.map(_.sortBy((Page.pages['/'] || {}).tree, 'weight'), (v, k) =>
-                        true !== v.hidden && <li key={k} className={"section " + (v.className || '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
+                        true !== v.hidden && <li key={k} className={"section " + (v.collapse ? 'collapse ' : '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
                         <a href={Root.link(null, v.url)}>{v.name || path.dirname(v.url)}</a>
 
                         <ul className="nav">
@@ -96,6 +96,7 @@ export default class Root extends React.Component {
                                           <a href={Root.link(null, leaf.url)}>
                                              {leaf.name || leaf.url}
                                              {true === leaf.unstable && <span className="text-right label label-warning" style={{float: 'right'}}>unstable</span>}
+                                             {true === leaf.beta && <span className="text-right label label-info" style={{float: 'right'}}>beta</span>}
                                           </a>
                                        </li>)}
                                  </ul>

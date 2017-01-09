@@ -2,7 +2,7 @@ import React from 'react'
 import {ReactMarkdown} from '../../../components/Markdown.js'
 
 export default ({url, Page, Endpoint, Resource}) =>
-  <Resource resource="device/:network/:device" url={url} name="Device - @review" weight={30}>
+  <Resource resource="device/:network/:device" url={url} name="Device" weight={30}>
 
     <Resource.Field field="key" readonly="true">
       The unique key, either given or randomly generated, within the network.
@@ -57,8 +57,8 @@ export default ({url, Page, Endpoint, Resource}) =>
       </p>
 
       <p>
-        Devices are the main flow of communication, you can send <Endpoint.Link from={url} method="post" path="/message/:network/:device">messages</Endpoint.Link> or&nbsp;
-        <Endpoint.Link method="get" path="/messages/:network/:device" from={url}>query- or stream data</Endpoint.Link>.
+        Devices are the main flow of communication, you can send <Endpoint.Link endpoint="POST /message/:network[/:device]">messages</Endpoint.Link> or&nbsp;
+        <Endpoint.Link endpoint="GET /messages/:netsel[/:devsel]" from={url}>query- or stream data</Endpoint.Link>.
       </p>
 
       ### Device provisioning

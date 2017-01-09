@@ -32,8 +32,7 @@
                                 Definitions</a>
                             </li>
                             <li>
-                                <a href="./device.html">Device -
-                                @review</a>
+                                <a href="./device.html">Device</a>
                             </li>
                         </ul>
                         <div>
@@ -49,12 +48,12 @@
                             <p>
                                 Devices are the main flow of
                                 communication, you can send
-                                <span style=
-                                "color:red;font-weight:bold;">messages
-                                (@UNDEFINED)</span>
-                                or&nbsp;<span style=
+                                <a href="./../../http-api/message/POST-message-@network-@device.html">
+                                messages</a> or&nbsp;<span title=
+                                "GET /messages/:netsel[/:devsel]"
+                                style=
                                 "color:red;font-weight:bold;">query-
-                                or stream data (@UNDEFINED)</span>.
+                                or stream data (@not-found)</span>.
                             </p><span></span>
                             <h3>
                                 <span>Device provisioning</span>
@@ -211,7 +210,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="section">
+                    <li class="section collapse">
                         <a href="./../../http-api/index.html">HTTP
                         API - v2</a>
                         <ul class="nav">
@@ -392,7 +391,7 @@
                                         <a href=
                                         "./../../http-api/message/POST-message-@network-@device.html">
                                         POST
-                                        /message/:network/:device</a>
+                                        /message/:network[/:device]</a>
                                     </li>
                                 </ul>
                             </li>
@@ -440,25 +439,29 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../../http-api/organization/POST-organization-@org.html">
-                                        POST /organization/:org</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
                                         "./../../http-api/organization/PUT-organization-@org.html">
                                         PUT /organization/:org</a>
                                     </li>
                                     <li class="">
                                         <a href=
+                                        "./../../http-api/organization/POST-organization-@org.html">
+                                        POST /organization/:org</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
                                         "./../../http-api/organization/DELETE-organization-@org-user-@user.html">
                                         DELETE
-                                        /organization/:org/user/:user</a>
+                                        /organization/:org/user/:user<span class="text-right label label-info"
+                                        style=
+                                        "float:right;">beta</span></a>
                                     </li>
                                     <li class="">
                                         <a href=
                                         "./../../http-api/organization/PUT-organization-@org-user-@user.html">
                                         PUT
-                                        /organization/:org/user/:user</a>
+                                        /organization/:org/user/:user<span class="text-right label label-info"
+                                        style=
+                                        "float:right;">beta</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -488,38 +491,35 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="section">
+                    <li class="section collapse">
                         <a href="./../../tcp-api/index.html">TCP
                         API - v1</a>
                         <ul class="nav">
                             <li class="header">
-                                <ul class="nav">
-                                    <li class="">
-                                        <a href=
-                                        "./../../tcp-api/tcp-api/authentication.html">
-                                        Authentication - @todo</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../../tcp-api/tcp-api/debugging.html">
-                                        Debugging - @todo</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../../tcp-api/tcp-api/flow-control.html">
-                                        Flow Control - @todo</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../../tcp-api/tcp-api/security-considerations.html">
-                                        Security Considerations -
-                                        @todo</a>
-                                    </li>
-                                </ul>
+                                <a href=
+                                "./../../tcp-api/authentication.html">
+                                Authentication</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../tcp-api/linklevel.html">Protocol</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../tcp-api/debugging.html">Debugging</a>
+                                <ul class="nav"></ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../../tcp-api/security.html">Security
+                                Considerations</a>
+                                <ul class="nav"></ul>
                             </li>
                         </ul>
                     </li>
-                    <li class="section ancestor">
+                    <li class="section collapse ancestor">
                         <a href="./../index.html">Reference
                         Manual</a>
                         <ul class="nav">
@@ -535,8 +535,7 @@
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
-                                        "./error.html">Errors -
-                                        @todo</a>
+                                        "./error.html">Errors</a>
                                     </li>
                                     <li class="">
                                         <a href=
@@ -548,8 +547,7 @@
                                     </li>
                                     <li class="active">
                                         <a href=
-                                        "./device.html">Device -
-                                        @review</a>
+                                        "./device.html">Device</a>
                                     </li>
                                     <li class="">
                                         <a href=

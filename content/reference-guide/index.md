@@ -2,7 +2,7 @@ import React from 'react'
 import {ReactMarkdown} from '../../components/Markdown.js'
 
 export default ({url, Page, Endpoint, Resource}) =>
-  <Page url={url} weight={100} name="Reference Manual">
+  <Page url={url} weight={100} name="Reference Manual" collapse>
 
     <ReactMarkdown>
       # Tinymesh Docs

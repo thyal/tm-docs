@@ -98,6 +98,13 @@ f = ([file, relpath, elem, save]) => {
    if (save) {
       console.error(':: output ' + file + ' -> ' + distfile)
 
+      dir.reduce((acc, comp) => {
+         try {
+         fs.mkdirSync(path.join(cwd, acc.concat([comp]).join(path.sep)), () => null)
+         } catch(e) { }
+         return acc.concat([comp])
+      }, [])
+
       // tidy up the html since React gives us a mess without newlines
       result = "<!DOCTYPE html>\n" + result
       result = tidy(result, {
