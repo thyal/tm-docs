@@ -28,6 +28,10 @@ export default ({url, Page, Endpoint, Resource}) =>
         the <Resource.Link resource="organization/:org">organization</Resource.Link> does not exist.
       </Endpoint.Return>
 
+      <Endpoint.Parameter param="network">
+        The key of the <Resource.Link resource="network/:network">Network</Resource.Link> resource
+      </Endpoint.Parameter>
+
       <p>
         Updates the network resource with new data
       </p>

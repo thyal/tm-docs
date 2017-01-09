@@ -73,6 +73,19 @@
                                 organization</a> does not exist.
                             </div>
                         </div>
+                        <div class="params">
+                            <h4>
+                                URL Parameters
+                            </h4>
+                            <ul class="parameters">
+                                <li class="parameter">
+                                    <code>:network</code> – The key
+                                    of the <a href=
+                                    "./../../reference-guide/resources/network.html">
+                                    Network</a> resource
+                                </li>
+                            </ul>
+                        </div>
                         <h4>
                             Description
                         </h4>
@@ -194,39 +207,9 @@
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
-                                        "./../channel/DELETE-_channels-tokens-@network-@chan-@token.html">
-                                        DELETE
-                                        /_channels/tokens/:network/:chan/:token</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../channel/GET-_channels-chan-@network-@chan.html">
-                                        GET
-                                        /_channels/chan/:network/:chan</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
                                         "./../channel/GET-_channels-chan-@network.html">
                                         GET
                                         /_channels/chan/:network</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../channel/GET-_channels-io-@network-@chan.html">
-                                        GET
-                                        /_channels/io/:network/:chan</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../channel/GET-_channels-tokens-@network-@chan-@token.html">
-                                        GET
-                                        /_channels/tokens/:network/:chan/:token</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../channel/GET-_channels-tokens-@network-@chan.html">
-                                        GET
-                                        /_channels/tokens/:network/:chan</a>
                                     </li>
                                     <li class="">
                                         <a href=
@@ -236,9 +219,33 @@
                                     </li>
                                     <li class="">
                                         <a href=
+                                        "./../channel/GET-_channels-chan-@network-@chan.html">
+                                        GET
+                                        /_channels/chan/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../channel/PUT-_channels-chan-@network-@chan.html">
+                                        PUT
+                                        /_channels/chan/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../channel/GET-_channels-io-@network-@chan.html">
+                                        GET
+                                        /_channels/io/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
                                         "./../channel/POST-_channels-io-@network-@chan.html">
                                         POST
                                         /_channels/io/:network/:chan</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../channel/GET-_channels-tokens-@network-@chan.html">
+                                        GET
+                                        /_channels/tokens/:network/:chan</a>
                                     </li>
                                     <li class="">
                                         <a href=
@@ -248,9 +255,15 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../channel/PUT-_channels-chan-@network-@chan.html">
-                                        PUT
-                                        /_channels/chan/:network/:chan</a>
+                                        "./../channel/DELETE-_channels-tokens-@network-@chan-@token.html">
+                                        DELETE
+                                        /_channels/tokens/:network/:chan/:token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../channel/GET-_channels-tokens-@network-@chan-@token.html">
+                                        GET
+                                        /_channels/tokens/:network/:chan/:token</a>
                                     </li>
                                 </ul>
                             </li>
@@ -271,14 +284,14 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../device/GET-device-@network-@device.html">
-                                        GET
-                                        /device/:network/:device</a>
+                                        "./../device/POST-device-@network.html">
+                                        POST /device/:network</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../device/POST-device-@network.html">
-                                        POST /device/:network</a>
+                                        "./../device/GET-device-@network-@device.html">
+                                        GET
+                                        /device/:network/:device</a>
                                     </li>
                                     <li class="">
                                         <a href=
@@ -344,9 +357,8 @@
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
-                                        "./../organization/DELETE-organization-@org-user-@user.html">
-                                        DELETE
-                                        /organization/:org/user/:user</a>
+                                        "./../organization/GET-organization.html">
+                                        GET /organization</a>
                                     </li>
                                     <li class="">
                                         <a href=
@@ -355,24 +367,25 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../organization/GET-organization.html">
-                                        GET /organization</a>
+                                        "./../organization/POST-organization-@org.html">
+                                        POST /organization/:org</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./../organization/POST-organization-@org.html">
-                                        POST /organization/:org</a>
+                                        "./../organization/PUT-organization-@org.html">
+                                        PUT /organization/:org</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../organization/DELETE-organization-@org-user-@user.html">
+                                        DELETE
+                                        /organization/:org/user/:user</a>
                                     </li>
                                     <li class="">
                                         <a href=
                                         "./../organization/PUT-organization-@org-user-@user.html">
                                         PUT
                                         /organization/:org/user/:user</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../organization/PUT-organization-@org.html">
-                                        PUT /organization/:org</a>
                                     </li>
                                 </ul>
                             </li>
@@ -449,6 +462,16 @@
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
+                                        "./../../reference-guide/resources/error.html">
+                                        Errors - @todo</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/resources/organization.html">
+                                        Organization</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
                                         "./../../reference-guide/resources/network.html">
                                         Network</a>
                                     </li>
@@ -471,16 +494,6 @@
                                         <a href=
                                         "./../../reference-guide/resources/user.html">
                                         User</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../../reference-guide/resources/error.html">
-                                        Errors - @todo</a>
-                                    </li>
-                                    <li class="">
-                                        <a href=
-                                        "./../../reference-guide/resources/organization.html">
-                                        Organization</a>
                                     </li>
                                 </ul>
                             </li>

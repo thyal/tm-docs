@@ -11,7 +11,7 @@ export default ({url, Page, Endpoint, Resource}) =>
       <p>
          Networks are an integral part of the data model provided by Tinymesh Cloud.
          They encapsulate all the <Resource.Link resource="device/:network/:device">devices</Resource.Link>,
-         provides a way of managing ACL's rules and common setting accross the device set.
+         provides a way of managing ACL's rules and common settings accross the device set.
       </p>
 
     </ReactMarkdown>

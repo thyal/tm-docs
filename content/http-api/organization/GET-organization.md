@@ -1,28 +1,26 @@
 import React from 'react'
-import {ReactMarkdown} from '../../../components/Markdown.js'
 
-export default ({url, Page, Endpoint, Resource}) => {
-  return (
-     <ReactMarkdown>
-       <Endpoint
-         url={url}
-         group="organization"
-         method="get"
-         path="/organization">
+export default ({url, Page, Endpoint, Resource}) =>
+   <Endpoint
+      url={url}
+      group="organization"
+      method="get"
+      path="/organization">
 
-         <Endpoint.Return code="200">A <Resource resource="network/:nid">Network Object</Resource></Endpoint.Return>
-         <Endpoint.Return code="401">A <Resource resource="error/no-auth">Error object</Resource></Endpoint.Return>
-         <Endpoint.Return code="403">
-           Authentication failed, or no access to the resource. <Resource resource="error/auth">Error object</Resource>
-         </Endpoint.Return>
-       </Endpoint>
+      <Endpoint.Return code="200">
+         Returns a list of <Resource.Link resource="organization/:org">Organization objects</Resource.Link>
+      </Endpoint.Return>
 
-       <p>
-        Retrieves the <Resource resource="network/:nid">Network resource</Resource> identified by&nbsp;
-        <Endpoint.Parameter>nid</Endpoint.Parameter>.
-       </p>
+      <Endpoint.Return code="401">
+         When no, or invalid, authentication was given <Resource.Link resource="error/no-auth">error object</Resource.Link>
+      </Endpoint.Return>
 
-       ## THIS IS A HEADER
-     </ReactMarkdown>
-)}
+      <Endpoint.Return code="403">
+         Returns a <Resource.Link resource="error/auth">error object</Resource.Link> when
+         authentication failed or no access to the resource
+      </Endpoint.Return>
 
+      <p>
+        Retreives a list of organizations that are accessible by the current authentication.
+      </p>
+   </Endpoint>
