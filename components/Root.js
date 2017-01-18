@@ -49,7 +49,8 @@ export default class Root extends React.Component {
          hasChildURL = (child, match) => {
             return child.url === match || _.some(child.tree, ({url}) => url === match)
          },
-         hasPrefix = (prefix, match) => prefix === match.substring(0, prefix.length)
+         hasPrefix = (prefix, match) => prefix === match.substring(0, prefix.length),
+         page = Page.page(url)
 
       const subTree = (e) => {
          let result = _.sortBy((e || {}).tree, 'weight', 'path')
@@ -59,7 +60,7 @@ export default class Root extends React.Component {
       return <html>
          <head>
             <meta charSet='utf-8' />
-            <title>test</title>
+            <title>{page && page.name ? page.name : path.basename(props.url, '.html')} - Documentation - Tiny Mes AS</title>
             <link href={Root.link(null, '/css/normalize.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/skeleton.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/style.css')} rel='stylesheet' />
