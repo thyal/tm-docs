@@ -8,6 +8,7 @@ let storage = {}
 const pickReturn = (t) => Endpoint.Return === t.type ? t : null
 const pickParam = (t) => Endpoint.Parameter === t.type ? t : null
 const pickQParam = (t) => Endpoint.QueryParameter === t.type ? t : null
+const pickReqHeader = (t) => Endpoint.ReqHeader === t.type ? t : null
 const pickData = (t) => !pickReturn(t) && !pickParam(t) && !pickQParam(t) ? t : null
 
 const Returns = ({returns}) =>
@@ -16,16 +17,32 @@ const Returns = ({returns}) =>
    </div>
 
 
-const QueryParams = ({qparams}) =>
-   React.Children.count(qparams) > 0 &&
+const QueryParams = ({params}) =>
+   React.Children.count(params) > 0 &&
       <div className="qparams">
          <h4>Query Parameters</h4>
 
          <ul className="query-parameters">
-            { qparams.map( ({param, children}) => <li className="query-parameter"><code>{ param }</code>  &ndash; { children }</li>)}
+            { params.map( ({props}, k) =>
+               <li key={k} className="query-parameter">
+                  <code>{ props.param }</code>  &ndash; { props.children }
+               </li>)}
          </ul>
       </div>
 
+
+const ReqHeaders = ({headers}) =>
+   React.Children.count(headers) > 0 &&
+      <div className="req-headers">
+         <h4>Request Headers</h4>
+
+         <ul className="request-headers">
+            { headers.map( ({props}, k) =>
+               <li key={k} className="request-header">
+                  <code>{ props.header }</code>  &ndash; { props.children }
+               </li>)}
+         </ul>
+      </div>
 
 const Params = ({params}) => {
    return React.Children.count(params) > 0 &&
@@ -33,7 +50,10 @@ const Params = ({params}) => {
          <h4>URL Parameters</h4>
 
          <ul className="parameters">
-            { params.map( ({props}, i) => <li key={i} className="parameter"><code>:{ props.param }</code>  &ndash; { props.children }</li>)}
+            { params.map( ({props}, i) =>
+               <li key={i} className="parameter">
+                  <code>:{ props.param }</code>  &ndash; { props.children }
+               </li>)}
          </ul>
       </div> }
 
@@ -63,6 +83,7 @@ class Endpoint extends React.Component {
          returns = React.Children.map(this.props.children, pickReturn),
          params  = React.Children.map(this.props.children, pickParam),
          qparams = React.Children.map(this.props.children, pickQParam),
+         headers = React.Children.map(this.props.children, pickReqHeader),
          children = React.Children.map(this.props.children, pickData)
 
       let page = Page.pages[Root.target(this.props.url)]
@@ -77,7 +98,8 @@ class Endpoint extends React.Component {
 
             <Returns returns={returns} />
             <Params params={params} />
-            <QueryParams qparams={ qparams } />
+            <QueryParams params={ qparams } />
+            <ReqHeaders headers={ headers } />
 
             <h4>Description</h4>
             { children }
@@ -229,20 +251,18 @@ class Return extends React.Component {
 }
 
 class Parameter extends React.Component {
-   constructor(props) {
-      super(props)
-   }
-
    render() {
       return <span>{ this.props.children }</span>
    }
 }
 
 class QueryParameter extends React.Component {
-   constructor(props) {
-      super(props)
+   render() {
+      return <span>{ this.props.children }</span>
    }
+}
 
+class ReqHeader extends React.Component {
    render() {
       return <span>{ this.props.children }</span>
    }
@@ -251,6 +271,7 @@ class QueryParameter extends React.Component {
 Endpoint.Return = Return
 Endpoint.Parameter = Parameter
 Endpoint.QueryParameter = QueryParameter
+Endpoint.ReqHeader = ReqHeader
 Endpoint.Link = ({endpoint, children}) => {
    if (!endpoint)
       return <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@UNDEFINED)</span>

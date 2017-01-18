@@ -11,7 +11,7 @@ export default ({url, Page, Endpoint, Resource}) => {
       weight={10}>
 
       <Endpoint.Return code="200">
-         A list of <Resource.Link resource="network/:nid">Network Objects</Resource.Link>
+         A list of <Resource.Link resource="network/:network">Network Objects</Resource.Link>
       </Endpoint.Return>
 
       <Endpoint.Return code="401">
@@ -25,7 +25,7 @@ export default ({url, Page, Endpoint, Resource}) => {
 
       <ReactMarkdown>
         <p>
-          Retrieves a list of <Resource.Link resource="network/:nid" from={url}>Network resources</Resource.Link> associated
+          Retrieves a list of <Resource.Link resource="network/:network" from={url}>Network resources</Resource.Link> associated
           with the authenticated entity.
         </p>
 

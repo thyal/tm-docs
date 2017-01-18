@@ -39,8 +39,6 @@ class Resource extends React.Component {
             </ul>
 
             <div>
-               <span className="inline-block"><b>Versions &ndash;</b></span>
-
                <Page.Siblings url={url} className="inline-block">
                  {({name, url, active}, k) =>
                    <li key={k} className={true === active ? 'active' : ''}>

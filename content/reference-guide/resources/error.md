@@ -24,6 +24,21 @@ export default ({url, Page, Endpoint, Resource}) =>
       </pre>
      </Resource>
 
+     <Resource resource="error/auth" url={url} inline={true}>
+      <h3>Error - Permissions</h3>
+
+      <p>
+        Authentication error given when authentication failed
+      </p>
+
+      <pre>
+{`{
+  "error": "access denied"
+}`}
+      </pre>
+     </Resource>
+
+
      <Resource resource="error/permissions" url={url} inline={true}>
       <h3>Error - Permissions</h3>
 
