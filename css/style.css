@@ -341,3 +341,16 @@ p.warning {
 .alert-danger .alert-link {
   color: #843534;
 }
+
+ul.siblings > li {
+   display: inline-block;
+   margin: 0 1rem;
+}
+
+ul.siblings > li.active a {
+   font-weight: bold;
+}
+
+.inline-block {
+   display: inline-block;
+}
