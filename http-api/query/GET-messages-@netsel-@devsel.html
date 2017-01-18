@@ -28,103 +28,299 @@
                                 - v2</a>
                             </li>
                             <li>
-                                <a href="./index.html">Channels
-                                (beta)</a>
+                                <a href="./index.html">Data Queries
+                                &amp; Message streaming</a>
                             </li>
                             <li>
                                 <a href=
-                                "./GET-_channels-io-@network-@chan.html">
-                                GET
-                                /_channels/io/:network/:chan</a>
+                                "./GET-messages-@netsel-@devsel.html">
+                                GET /messages/:netsel[/:devsel]</a>
                             </li>
                         </ul>
                         <h3>
-                            GET /_channels/io/:network/:chan
+                            GET /messages/:netsel[/:devsel]
                         </h3>
                         <h6>
-                            https://http.cloud.tiny-mesh.com/v2/_channels/io/:network/:chan
+                            https://http.cloud.tiny-mesh.com/v2/messages/:netsel[/:devsel]
                         </h6>
-                        <div class="returns">
-                            <div class="return">
-                                <b>200 OK</b> – A list of <a href=
-                                "./../../reference-guide/resources/channel.html">
-                                channel resources</a>
-                            </div>
-                            <div class="return">
-                                <b>401 Unauthorized</b> – Returns a
-                                <a href=
-                                "./../../reference-guide/resources/error.html">
-                                error object</a> when no
-                                authentication given or
-                                authentication failed
-                            </div>
-                            <div class="return">
-                                <b>403 Forbidden</b> – Returns a
-                                <a href=
-                                "./../../reference-guide/resources/error.html">
-                                error object</a> when no access to
-                                the resource
-                            </div>
-                        </div>
+                        <div class="returns"></div>
                         <div class="params">
                             <h4>
                                 URL Parameters
                             </h4>
                             <ul class="parameters">
                                 <li class="parameter">
-                                    <code>:network</code> – The key
+                                    <code>:netsel</code> – The key
                                     of the <a href=
                                     "./../../reference-guide/resources/network.html">
-                                    Network</a> resource
+                                    network</a> resource
                                 </li>
                                 <li class="parameter">
-                                    <code>:chan</code> – The key of
-                                    the <a href=
-                                    "./../../reference-guide/resources/channel.html">
-                                    Network</a> resource
+                                    <code>:devsel</code> – The key
+                                    of the <a href=
+                                    "./../../reference-guide/resources/device.html">
+                                    device</a> resource
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="qparams">
+                            <h4>
+                                Query Parameters
+                            </h4>
+                            <ul class="query-parameters">
+                                <li class="query-parameter">
+                                    <code>data.encoding</code> –
+                                    Specifies the encoding of
+                                    binary data fields (like
+                                    proto/tm.data for serial data
+                                    events). The value can be
+                                    either <code>base64</code>,
+                                    <code>hex</code> or
+                                    <code>binary</code>. Data
+                                    encoding may also be set by the
+                                    <code>X-Data-Encoding</code>
+                                    header, if both header and
+                                    query parameter option is used
+                                    the header will have higher
+                                    priority.
+                                </li>
+                                <li class="query-parameter">
+                                    <code>date.from</code> – The
+                                    <a href=
+                                    "#date-format">datetime</a> to
+                                    start query timerange from.
+                                    <em>Default: NOW//-1HOUR</em>
+                                </li>
+                                <li class="query-parameter">
+                                    <code>date.to</code> – The
+                                    <a href=
+                                    "#date-format">datetime</a> to
+                                    end the query timerange
+                                </li>
+                                <li class="query-parameter">
+                                    <code>filter.pick</code> – A
+                                    comma separated list of fields
+                                    to include in results. Nested
+                                    paths can be selected by using
+                                    dot notation:
+                                    <code>proto/tm.rssi</code>
+                                </li>
+                                <li class="query-parameter">
+                                    <code>filter.omit</code> – A
+                                    comma separated list of fields
+                                    to exclude from results. Nested
+                                    paths can be selected by using
+                                    dot notation:
+                                    <code>proto/tm.rssi</code>
+                                </li>
+                                <li class="query-parameter">
+                                    <code>query</code> – A string
+                                    <a href="#query">query</a> to
+                                    filter results by
+                                </li>
+                                <li class="query-parameter">
+                                    <code>sort.by</code> – A path
+                                    to use for sorting the
+                                    resultset. Nested paths can be
+                                    selected by using dot notation:
+                                    <code>proto/tm.rssi</code>.<em><b>Note:</b>
+                                    This field has no effect when
+                                    using <code>stream</code> or
+                                    <code>continuous</code>.</em>
+                                </li>
+                                <li class="query-parameter">
+                                    <code>sort.order</code> –
+                                    Either <code>ascending</code>
+                                    or <code>descending</code>.
+                                    <em>Default:
+                                    descending</em><em><b>Note:</b>
+                                    This field has no effect when
+                                    using <code>stream</code> or
+                                    <code>continuous</code>.</em>
+                                </li>
+                                <li class="query-parameter">
+                                    <code>limit</code> – Limits the
+                                    amount of items in the
+                                    resultset. If
+                                    <code>continuous</code> is used
+                                    the query will terminate once
+                                    the limit is reached
+                                </li>
+                                <li class="query-parameter">
+                                    <code>offset</code> – Skips
+                                    <code>n</code> first elements
+                                    of resultset.
+                                </li>
+                                <li class="query-parameter">
+                                    <code>continuous</code> –
+                                    Subscribes to the resource in
+                                    question and deliver data as it
+                                    arrives in the service. When
+                                    used in conjunction with
+                                    <code>date.to</code> or
+                                    <code>limit</code> the query
+                                    will terminate when either
+                                    precondition is met.
+                                </li>
+                                <li class="query-parameter">
+                                    <code>stream</code> – Sets the
+                                    HTTP response transfer encoding
+                                    to <code>Chunked</code> and
+                                    return each item in the result
+                                    set as a distinct chunk.
+                                </li>
+                                <li class="query-parameter">
+                                    <code>map</code> – A comma
+                                    separated list of <a href=
+                                    "#processing-steps">processing
+                                    steps</a> to apply to the
+                                    result stream.<em>(Default:
+                                    <code>unpack,filter,sort,slice</code>)</em>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="req-headers">
+                            <h4>
+                                Request Headers
+                            </h4>
+                            <ul class="request-headers">
+                                <li class="request-header">
+                                    <code>X-Data-Encoding</code> –
+                                    Specifies the encoding of
+                                    binary data fields, can be
+                                    either <code>base64</code>,
+                                    <code>hex</code> or
+                                    <code>binary</code>. Data
+                                    encoding may also be set by the
+                                    <code>data.encoding</code>
+                                    query parameter. If both header
+                                    and query parameter option is
+                                    used the header will have
+                                    higher priority.
                                 </li>
                             </ul>
                         </div>
                         <h4>
                             Description
-                        </h4>
+                        </h4><span>Specifies the encoding of binary
+                        data fields, can be either
+                        <code>base64</code>, <code>hex</code> or
+                        <code>binary</code>. Data encoding may also
+                        be set by the <code>data.encoding</code>
+                        query parameter. If both header and query
+                        parameter option is used the header will
+                        have higher priority.</span>
+                        <hr>
+                        <h3 id="date-format">
+                            Date Format
+                        </h3>
                         <p>
-                            Continously receive data from
-                            <code>:network/:chan</code>
-                        </p>
-                        <p>
-                            Sets the HTTP transfer-encoding
-                            response to <code>Chunked</code>, then
-                            delivers each event received on the
-                            channel to the listening channel.
+                            The date formate is a variation of ISO
+                            8601 dates. They can be represented in
+                            their full form like
+                            <code>2017-01-18T19:09:03.641951Z</code>
+                            or by picking only the <code>n</code>
+                            first segments like
+                            <code>2017-01-18</code> and the rest of
+                            the date will be infered.<br>
+                            Alternatively the value
+                            <code>NOW</code> may be used to
+                            represent the current server time.
                         </p>
                         <h4>
-                            Delivery semantics
+                            Manipulating the datetime
                         </h4>
                         <p>
-                            A successfull request to this endpoint
-                            reads a stream of events from the
-                            channel. All events persisted in the
-                            channel are FIFO and may be though of
-                            as extremely minimalistic queue. When
-                            the server writes events to the
-                            response the event is considered
-                            succesfully delivered and will be
-                            removed from he head of the channel as
-                            soon as a low-level acknowledge (ie TCP
-                            ack) is received from the client.
-                            <b>This method provides no flow control
-                            and extremely weak delivery guarantees,
-                            <em>do not use</em>.</b>
+                            A datefield may be manipulated by
+                            adding or subtracting time units from
+                            the base datetime. For instance
+                            <code>NOW//-1WEEK</code> will pick the
+                            datetime exactly 1 week back in time,
+                            multiple constructs can be chained as
+                            you liked
+                            <code>NOW//-1MONTH//+1HOUR</code>.<br>
                         </p>
-                        <p class="alert alert-info">
-                            Although documented, the Channels API
-                            is under review and testing. The API
-                            may be deprecated, renamed, deleted or
-                            changed in backwards incompatible ways.
-                            If you have any feedback on the API we
-                            would love to hear from you!
+                        <p>
+                            The supported <code>UNITS</code> for
+                            the dateparser are as following:
+                            <code>YEAR</code>,<code>MONTH</code>,
+                            <code>WEEK</code>, <code>HOUR</code>,
+                            <code>MINUTE</code> or
+                            <code>SECOND</code>.
                         </p>
+                        <p>
+                            Due to the complexity of dates and
+                            their localized versions it's generally
+                            considered good practice to give exact
+                            UTC datetimes in your queries, if you
+                            need complex time ranges like
+                            &nbsp;<em>last sunday in last year</em>
+                            you should generated these dates on the
+                            client side.
+                        </p>
+                        <h3 id="query">
+                            Query Format
+                        </h3>
+                        <p>
+                            Simple rules to filter the resultset.
+                            Queries takes the form <code>expr :=
+                            &lt;k || val&gt; &lt;op&gt; &lt;k ||
+                            val&gt;</code>, for example:
+                            <code>proto/tm.rssi &gt; 100</code>.
+                        </p>
+                        <p>
+                            <code>k</code> may be any nested path
+                            in dot notation, <code>op</code> may be
+                            one of the following equality
+                            operators: <code>==</code>,
+                            <code>!=</code>, <code>&lt;</code>,
+                            <code>&gt;=</code> or
+                            <code>&gt;=</code>.<br>
+                            <code>val</code> must be a scaler value
+                            <code>string := "abc" or 'def'</code>,
+                            <code>integer := 78491</code> or
+                            <code>float := 3.14</code>.<br>
+                        </p>
+                        <p>
+                            Some basic arithematic can be performed
+                            on <code>k</code> and <code>val</code>,
+                            like matching on rssi in dBm: <code>-50
+                            &lt; proto/tm.rssi * -0.5</code>
+                        </p>
+                        <h3 id="processing-steps">
+                            Processing steps
+                        </h3>
+                        <p>
+                            Processing steps enable certain parts
+                            of the return chain. The available
+                            processing steps are as following:
+                        </p>
+                        <ul>
+                            <li>
+                                <code>unpack</code> — unpacks the
+                                raw packet data
+                            </li>
+                            <li>
+                                <code>filter</code> — apply
+                                <code>query</code> rules,
+                                <code>filter.pick</code> and
+                                <code>filter.omit</code>
+                            </li>
+                            <li>
+                                <code>sort</code> — applies sorting
+                            </li>
+                            <li>
+                                <code>slice</code> — apply
+                                <code>limit</code> and
+                                <code>offset</code>
+                            </li>
+                            <li>
+                                <code>raw</code> — set
+                                <code>proto/tm</code> field to the
+                                raw contents of the packet
+                            </li>
+                        </ul>
+                        <p>
                         <ul></ul>
                     </div>
                 </div>
@@ -230,15 +426,16 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="header parent">
-                                <a href="./index.html">Channels
+                            <li class="header">
+                                <a href=
+                                "./../channel/index.html">Channels
                                 (beta)<span class=
                                 "text-right label label-info"
                                 style="float:right;">beta</span></a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
-                                        "./GET-_channels-chan-@network.html">
+                                        "./../channel/GET-_channels-chan-@network.html">
                                         GET
                                         /_channels/chan/:network<span class="text-right label label-info"
                                         style=
@@ -246,7 +443,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./POST-_channels-chan-@network.html">
+                                        "./../channel/POST-_channels-chan-@network.html">
                                         POST
                                         /_channels/chan/:network<span class="text-right label label-info"
                                         style=
@@ -254,7 +451,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./GET-_channels-chan-@network-@chan.html">
+                                        "./../channel/GET-_channels-chan-@network-@chan.html">
                                         GET
                                         /_channels/chan/:network/:chan<span class="text-right label label-info"
                                         style=
@@ -262,15 +459,15 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./PUT-_channels-chan-@network-@chan.html">
+                                        "./../channel/PUT-_channels-chan-@network-@chan.html">
                                         PUT
                                         /_channels/chan/:network/:chan<span class="text-right label label-info"
                                         style=
                                         "float:right;">beta</span></a>
                                     </li>
-                                    <li class="active">
+                                    <li class="">
                                         <a href=
-                                        "./GET-_channels-io-@network-@chan.html">
+                                        "./../channel/GET-_channels-io-@network-@chan.html">
                                         GET
                                         /_channels/io/:network/:chan<span class="text-right label label-info"
                                         style=
@@ -278,7 +475,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./POST-_channels-io-@network-@chan.html">
+                                        "./../channel/POST-_channels-io-@network-@chan.html">
                                         POST
                                         /_channels/io/:network/:chan<span class="text-right label label-info"
                                         style=
@@ -286,7 +483,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./GET-_channels-tokens-@network-@chan.html">
+                                        "./../channel/GET-_channels-tokens-@network-@chan.html">
                                         GET
                                         /_channels/tokens/:network/:chan<span class="text-right label label-info"
                                         style=
@@ -294,7 +491,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./POST-_channels-tokens-@network-@chan.html">
+                                        "./../channel/POST-_channels-tokens-@network-@chan.html">
                                         POST
                                         /_channels/tokens/:network/:chan<span class="text-right label label-info"
                                         style=
@@ -302,7 +499,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./DELETE-_channels-tokens-@network-@chan-@token.html">
+                                        "./../channel/DELETE-_channels-tokens-@network-@chan-@token.html">
                                         DELETE
                                         /_channels/tokens/:network/:chan/:token<span class="text-right label label-info"
                                         style=
@@ -310,7 +507,7 @@
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./GET-_channels-tokens-@network-@chan-@token.html">
+                                        "./../channel/GET-_channels-tokens-@network-@chan-@token.html">
                                         GET
                                         /_channels/tokens/:network/:chan/:token<span class="text-right label label-info"
                                         style=
@@ -439,14 +636,13 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="header">
-                                <a href=
-                                "./../query/index.html">Data
-                                Queries &amp; Message streaming</a>
+                            <li class="header parent">
+                                <a href="./index.html">Data Queries
+                                &amp; Message streaming</a>
                                 <ul class="nav">
-                                    <li class="">
+                                    <li class="active">
                                         <a href=
-                                        "./../query/GET-messages-@netsel-@devsel.html">
+                                        "./GET-messages-@netsel-@devsel.html">
                                         GET
                                         /messages/:netsel[/:devsel]</a>
                                     </li>
