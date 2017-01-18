@@ -51,6 +51,11 @@ export default class Root extends React.Component {
          },
          hasPrefix = (prefix, match) => prefix === match.substring(0, prefix.length)
 
+      const subTree = (e) => {
+         let result = _.sortBy((e || {}).tree, 'weight', 'path')
+         return e && true === e.reverse ? result.reverse() : result
+      }
+
       return <html>
          <head>
             <meta charSet='utf-8' />
@@ -76,12 +81,12 @@ export default class Root extends React.Component {
                   <h5 id="top" style={{paddingLeft: '13px', paddingTop: '1rem', paddingBottom: '2rem'}}><a href={relpath}>Tinymesh Cloud Docs</a></h5>
 
                   <ul className="nav">
-                     {_.map(_.sortBy((Page.pages['/'] || {}).tree, 'weight'), (v, k) =>
+                     {_.map(subTree(Page.pages['/']), (v, k) =>
                         true !== v.hidden && <li key={k} className={"section " + (v.collapse ? 'collapse ' : '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
                         <a href={Root.link(null, v.url)}>{v.name || path.dirname(v.url)}</a>
 
                         <ul className="nav">
-                           {_.map(_.sortBy(v.tree, 'weight', 'path'), (child, p) =>
+                           {_.map(subTree(v), (child, p) =>
                               true !== child.hidden && <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
                                  {false !== child.name &&
                                     <a href={Root.link(null, child.url)}>
@@ -91,7 +96,7 @@ export default class Root extends React.Component {
                                     </a>}
 
                                  <ul className="nav">
-                                    {_.map(_.sortBy(child.tree, 'weight', 'path'), (leaf, l) =>
+                                    {_.map(subTree(child), (leaf, l) =>
                                        true !== leaf.hidden && <li key={l} className={leaf.url === props.url ? 'active' : ''}>
                                           <a href={Root.link(null, leaf.url)}>
                                              {leaf.name || leaf.url}

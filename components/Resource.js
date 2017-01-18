@@ -37,6 +37,19 @@ class Resource extends React.Component {
                <li key={k} className={readonly ? "read-only" : ""}><code>{field}</code> &ndash; {children}</li>
             )}
             </ul>
+
+            <div>
+               <span className="inline-block"><b>Versions &ndash;</b></span>
+
+               <Page.Siblings url={url} className="inline-block">
+                 {({name, url, active}, k) =>
+                   <li key={k} className={true === active ? 'active' : ''}>
+                     <a href={Root.link(null, url)}>
+                       {name || path.basename(url, '.html')}
+                     </a>
+                   </li>}
+               </Page.Siblings>
+            </div>
          </div>
       )
    }

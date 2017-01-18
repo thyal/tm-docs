@@ -1,18 +1,11 @@
 import React from 'react'
-import {ReactMarkdown} from '../../../components/Markdown.js'
 
 export default ({url, Page, Endpoint, Resource}) =>
-  <Page url={url} name="Device Configuration">
+  <Resource
+    reverse={true}
+    resource="config/:vsn"
+    url={url}
+    name="Device Configuration">
 
-    <ReactMarkdown>
-      # Device Configuration
-
-    </ReactMarkdown>
-
-  </Page>
-
-
-
-
-
-
+    <h2>All types of configuration</h2>
+  </Resource>

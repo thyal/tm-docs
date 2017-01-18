@@ -61,6 +61,7 @@ const args = process.argv.length <= 4 ? process.argv.slice(3) : process.argv.sli
 const workingset = flatMap(args, walk )
 
 
+const Root = require(path.join(process.cwd(), 'components/Root.js')).default
 const Page = require(path.join(process.cwd(), 'components/Page.js')).default
 const Endpoint = require(path.join(process.cwd(), 'components/Endpoint.js')).default
 const Resource = require(path.join(process.cwd(), 'components/Resource.js')).default
@@ -73,6 +74,7 @@ let elements = files.map( (file) => {
        outputfile = path.relative(process.cwd(), file).replace(ext, ''),
        relpath = outputfile.split(path.sep).slice(1).join(path.sep) + '.html',
        props = {
+         Root,
          Endpoint,
          Resource,
          Page,

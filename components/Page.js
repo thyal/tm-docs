@@ -72,6 +72,20 @@ export default class Page extends React.Component {
       return _.clone(pages)
    }
 
+
+   static page(url) {
+      return _.clone(pages[Root.target(url)])
+   }
+
+   static parent(url) {
+      const page = pages[Root.target(url)]
+
+      if (!page)
+         return undefined
+
+      return _.clone(pages[page.parent])
+   }
+
    static get tree() {
       return _.clone(tree)
    }
@@ -79,12 +93,41 @@ export default class Page extends React.Component {
 
 Page.Breadcrumbs = Breadcrumbs
 
-Page.Tree = ({url, target, tree}) => {
+Page.Tree = ({url, target, tree, reverse}) => {
+  let result = _.sortBy(tree, 'weight', 'path')
+
+  if (true === reverse)
+    result = result.reverse()
+
   return <ul>
-    {_.map(_.sortBy(tree, 'weight', 'path'), (v, k) =>
+    {_.map(result, (v, k) =>
       true !== v.hidden && <li key={k}>
         <a href={Root.link(url, v.url)}>{v.name || v.target}</a>
         <Page.Tree {...v} />
       </li>)}
   </ul>
 }
+
+
+class Siblings extends React.Component {
+   render() {
+      const
+         {url, children, className} = this.props,
+         Child = children,
+         {tree, reverse} = Page.parent(url)
+
+      let result = _.sortBy(tree, 'weight', 'path')
+
+      if (true === reverse)
+        result = result.reverse()
+
+      return (
+            <ul className={'siblings ' + (className ? className : '')}>
+               {_.map(result, (props, k) =>
+                  <Child key={k} active={url === props.url} {...props} />)}
+            </ul>
+      )
+   }
+}
+
+Page.Siblings = Siblings
