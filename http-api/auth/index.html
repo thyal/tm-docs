@@ -91,13 +91,15 @@
                         <pre>
 <code>method = "POST"
 url = "https://http.cloud.tiny-mesh.com/v2/auth/token"
+payload = "{\"name\": \"new token\"}"
 
-payload = "{\"name\": \"new token\"}"key = "?6~2y#/ty`z#6'pu2 ZTJ,v5oz;sL&gt;mYK]3Ca~ .m(qp5)G[9dC5J8\gIre3tPis"
+key = "?6~2y#/ty`z#6'pu2 ZTJ,v5oz;sL&gt;mYK]3Ca~ .m(qp5)G[9dC5J8\gIre3tPis"
 fingerprint = "62bc14b17af79b920931ace4b6808dd9"
 
 signature = SHA256-HMAC(key, method + "\n" + url + "\n" + payload)
 
 headers = {"Authorization" =&gt; fingerprint + " " + signature}
+
 request(method, url, headers, payload)</code>
 </pre>
                         <h4>
