@@ -45,8 +45,8 @@ export default ({url, Page, Endpoint, Resource}) =>
     <pre>
       <code>
         method = "POST"{'\n'}
-        url = "https://http.cloud.tiny-mesh.com/v2/auth/token"{'\n\n'}
-        payload = {'"{\\"name\\": \\"new token\\"}"'}
+        url = "https://http.cloud.tiny-mesh.com/v2/auth/token"{'\n'}
+        payload = {'"{\\"name\\": \\"new token\\"}"'}{'\n\n'}
 
         key = "?6~2y#/ty`z#6'pu2 ZTJ,v5oz;sL>mYK]3Ca~ .m(qp5)G[9dC5J8\gIre3tPis"{'\n'}
         fingerprint = "62bc14b17af79b920931ace4b6808dd9"{'\n\n'}
