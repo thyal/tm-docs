@@ -125,7 +125,7 @@ Page.Tree = ({url, target, tree, reverse}) => {
 class Siblings extends React.Component {
    render() {
       const
-         {url, children, className} = this.props,
+         {url, children, className, siblings} = this.props,
          Child = children,
          {tree, reverse} = Page.parent(url)
 
@@ -134,12 +134,15 @@ class Siblings extends React.Component {
       if (true === reverse)
         result = result.reverse()
 
-      return (
-            <ul className={'siblings ' + (className ? className : '')}>
-               {_.map(result, (props, k) =>
-                  <Child key={k} active={url === props.url} {...props} />)}
-            </ul>
-      )
+      if (siblings)
+         return (
+               <ul className={'siblings ' + (className ? className : '')}>
+                  {_.map(result, (props, k) =>
+                     <Child key={k} active={url === props.url} {...props} />)}
+               </ul>
+         )
+      else
+         return null
    }
 }
 

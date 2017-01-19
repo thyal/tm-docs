@@ -17,7 +17,7 @@ class Resource extends React.Component {
    }
 
    render() {
-      const {children, url, resource, inline} = this.props
+      const {children, url, resource, inline, siblings} = this.props
 
       if (!url)
          return <span style={{fontWeight: 'bold', color: 'red'}}>some resource</span>
@@ -39,7 +39,7 @@ class Resource extends React.Component {
             </ul>
 
             <div>
-               <Page.Siblings url={url} className="inline-block">
+               <Page.Siblings url={url} className="inline-block" siblings={siblings}>
                  {({name, url, active}, k) =>
                    <li key={k} className={true === active ? 'active' : ''}>
                      <a href={Root.link(null, url)}>
