@@ -121,6 +121,28 @@ Page.Tree = ({url, target, tree, reverse}) => {
   </ul>
 }
 
+class Neighbours extends React.Component {
+  render() {
+    let
+      current = this.props.url,
+      {className, name} = this.props,
+      {tree, reverse} = Page.parent(current),
+      result = _.sortBy(tree, 'weight', 'path'),
+      pos = _.findIndex(result, ({url}) => url === current),
+      prev = 0 < pos ? result[pos-1] : null,
+      next = -1 !== pos ? result[pos+1] || null : null
+
+      return (
+        <ul className={'siblings ' + (className ? className : '')}>
+          {prev && <li><a href={Root.link(null, prev.url)}>Previous: {prev.name || path.basename(prev.url, '.html')}</a></li>}
+          <li className="active"><a href={Root.link(null, current)}>{name || path.basename(current, '.html')}</a></li>
+          {next && <li><a href={Root.link(null, next.url)}>Next: {next.name || path.basename(next.url, '.html')}</a></li>}
+        </ul>
+      )
+    }
+}
+
+Page.Neighbours = Neighbours
 
 class Siblings extends React.Component {
    render() {
