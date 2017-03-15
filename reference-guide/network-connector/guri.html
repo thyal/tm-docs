@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            Network - Documentation - Tiny Mes AS
+            GURI (CLI) - Documentation - Tiny Mes AS
         </title>
         <link href="./../../css/normalize.css" rel="stylesheet">
         <link href="./../../css/skeleton.css" rel="stylesheet">
@@ -16,121 +16,105 @@
             <div class="" style=
             "overflow-y:scroll;position:fixed;bottom:0;top:0;width:70%;">
             <div style="padding:15px 30px;">
-                    <div class="resource">
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href=
-                                "./../../index.html">Tinymesh Cloud
-                                Docs</a>
-                            </li>
-                            <li>
-                                <a href="./../index.html">Reference
-                                Manual</a>
-                            </li>
-                            <li>
-                                <a href="./index.html">Resources
-                                Definitions</a>
-                            </li>
-                            <li>
-                                <a href=
-                                "./network.html">Network</a>
-                            </li>
-                        </ul>
-                        <div>
-                            <span></span>
-                            <h1>
-                                <span>Network resource</span>
+                    <div>
+                        <div class="resource">
+                            <ul class="breadcrumb">
+                                <li>
+                                    <a href=
+                                    "./../../index.html">Tinymesh
+                                    Cloud Docs</a>
+                                </li>
+                                <li>
+                                    <a href=
+                                    "./../index.html">Reference
+                                    Manual</a>
+                                </li>
+                                <li>
+                                    <a href="./index.html">Network
+                                    Connectors</a>
+                                </li>
+                                <li>
+                                    <a href="./guri.html">GURI
+                                    (CLI)</a>
+                                </li>
+                            </ul>
+                            <h1 resource="connector/guri">
+                                GURI (CLI)
                             </h1>
-                            <p class="lead">
-                                Networks groups a set of <a href=
-                                "./device.html">devices</a> into
-                                one logical unit.
+                            <p class="lead" resource=
+                            "connector/guri">
+                                Command line tool for communicating
+                                serialport data with remote TCP, or
+                                TLS endpoint.
                             </p>
+                            <h4 resource="connector/guri">
+                                Installation
+                            </h4>
+                            <p resource="connector/guri">
+                                The executable is statically
+                                compiled can used without any
+                                installation. Download the correct
+                                release for your platform from
+                                <a href=
+                                "https://github.com/tinymesh/guri/release">
+                                our GitHub Release page</a>
+                            </p>
+                            <h4 resource="connector/guri">
+                                Usage
+                            </h4>
+                            <p class="alert alert-info" resource=
+                            "connector/guri">
+                                This Network Connector does not
+                                support auto-provisioning and you
+                                must configure the Tinymesh Gateway
+                                separately. See the <a href=
+                                "./../../guides/getting-started/index.html">
+                                Getting Started</a> guide for more
+                                information.
+                            </p>
+                            <p resource="connector/guri">
+                                Connecting to the <a href=
+                                "./../../tcp-api/index.html">TCP
+                                API</a> is done by opening a
+                                bidirectional pipe between the
+                                serialport and the upstream socket.
+                            </p>
+                            <pre resource="connector/guri">
+<code># On Windows serialports are named COM??
+guri-windows-386.exe COM13
+
+# On Linux all USB serialports are typically named /dev/ttyUSB??
+./guri-linux-amd64 /dev/ttyUSB0</code>
+</pre>
+                            <h4 resource="connector/guri">
+                                Disabling TLS
+                            </h4>
+                            <p resource="connector/guri">
+                                In some cases you may not be able
+                                to use the encrypted TLS API due to
+                                firewall restrictions. In such
+                                cases you can use use the
+                                unencrypted TCP Endpoint.
+                            </p>
+                            <pre>
+<code># use the --tls flag to control TLS usage set the correct port using --remote
+./guri-linux-amd64 --tls=false --remote=tcp.cloud.tiny-mesh.com:7001</code>
+</pre>
                             <p>
-                                Networks provides some default
-                                settings like <code>types</code>
-                                and <code>provisioning</code>, and
-                                the ability to restrict access
-                                using ACL's.
+                            <p resource="connector/guri">
+                                <b>Note that this is not
+                                recommended as sending unencrypted
+                                data enables a potential attacker
+                                to intercept, read, or modify data
+                                being communicated. Consider using
+                                the <a href=
+                                "./../../http-api/index.html">HTTP
+                                API</a> or other methods to connect
+                                your gatway.</b>
                             </p>
+                            <ul></ul>
+                            <div></div>
                         </div>
-                        <ul>
-                            <li class="">
-                                <code>key</code> – The unique
-                                identifier for the network
-                            </li>
-                            <li class="">
-                                <code>parents</code> – A set of
-                                entities with access to the
-                                network, each entity is a string in
-                                the
-                                form<code>&lt;type&gt;/&lt;resource&gt;</code>.
-                                Example
-                                <code>organization/tinymesh</code>
-                                or<code>user/demo@tiny-mesh.com</code>
-                            </li>
-                            <li class="">
-                                <code>address</code> – A unsigend
-                                32-bit integer representing the
-                                Tinymesh NID (encoded as
-                                big-endian)
-                            </li>
-                            <li class="">
-                                <code>name</code> – A UTF-8 encoded
-                                string used for humans to identify
-                                the network.
-                            </li>
-                            <li class="">
-                                <code>location</code> – A set of
-                                user defined tags for location,
-                                each tag must be UTF-8 encoded and
-                                maximum 32 bytes long. Maximum size
-                                of the set is 32 items.
-                            </li>
-                            <li class="">
-                                <code>provision.default</code> –
-                                The default provisioning, the modes
-                                are described in <a href=
-                                "./device.html">devices</a>
-                            </li>
-                            <li class="">
-                                <code>provision.type</code> – The
-                                default <code>type</code> for
-                                automatically created <a href=
-                                "./device.html">devices</a>
-                            </li>
-                            <li class="">
-                                <code>devices</code> – A list of
-                                <a href="./device.html">device
-                                keys</a> in the network
-                            </li>
-                            <li class="">
-                                <code>channels</code> – A list of
-                                available <a href=
-                                "./channel.html">channels</a>
-                            </li>
-                            <li class="">
-                                <code>groups</code> – A list of
-                                groups (maximum 256) available for
-                                multicast, currently unsupported.
-                            </li>
-                            <li class="">
-                                <code>types</code> – A set of types
-                                (defaults to <code>end-device,
-                                gateway and device</code>) used to
-                                differentiate between different
-                                devices.
-                            </li>
-                            <li class="">
-                                <code>meta.created</code> – ISO
-                                8601 datetime of creation
-                            </li>
-                            <li class="">
-                                <code>meta.updated</code> – Last
-                                updates ISO 8601 datetime
-                            </li>
-                        </ul>
-                        <div></div>
                     </div>
                 </div>
             </div>
@@ -595,53 +579,59 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="header">
-                                <a href=
-                                "./../network-connector/index.html">
-                                Network Connectors</a>
+                            <li class="header parent">
+                                <a href="./index.html">Network
+                                Connectors</a>
                                 <ul class="nav">
-                                    <li class="">
-                                        <a href=
-                                        "./../network-connector/guri.html">
-                                        GURI (CLI)</a>
+                                    <li class="active">
+                                        <a href="./guri.html">GURI
+                                        (CLI)</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="header parent">
-                                <a href="./index.html">Resources
+                            <li class="header">
+                                <a href=
+                                "./../resources/index.html">Resources
                                 Definitions</a>
                                 <ul class="nav">
                                     <li class="">
                                         <a href=
-                                        "./error.html">Errors</a>
+                                        "./../resources/error.html">
+                                        Errors</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./organization.html">Organization</a>
+                                        "./../resources/organization.html">
+                                        Organization</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./messages/index.html">Messages</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href=
-                                        "./network.html">Network</a>
+                                        "./../resources/messages/index.html">
+                                        Messages</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./device.html">Device</a>
+                                        "./../resources/network.html">
+                                        Network</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./channel.html">Channel</a>
+                                        "./../resources/device.html">
+                                        Device</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./token.html">Token</a>
+                                        "./../resources/channel.html">
+                                        Channel</a>
                                     </li>
                                     <li class="">
                                         <a href=
-                                        "./user.html">User</a>
+                                        "./../resources/token.html">
+                                        Token</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../resources/user.html">User</a>
                                     </li>
                                 </ul>
                             </li>

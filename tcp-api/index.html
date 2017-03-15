@@ -27,34 +27,72 @@
                                 v1</a>
                             </li>
                         </ul>
-                        <div>
-                            <span></span>
-                            <h1>
-                                <span>TCP API</span>
-                            </h1>
-                        </div>
-                        <ul>
-                            <li>
-                                <a href=
-                                "./authentication.html">Authentication</a>
-                                <ul></ul>
-                            </li>
-                            <li>
-                                <a href=
-                                "./linklevel.html">Protocol</a>
-                                <ul></ul>
-                            </li>
-                            <li>
-                                <a href=
-                                "./debugging.html">Debugging</a>
-                                <ul></ul>
-                            </li>
-                            <li>
-                                <a href="./security.html">Security
-                                Considerations</a>
-                                <ul></ul>
-                            </li>
-                        </ul>
+                        <h1>
+                            TCP API version 1
+                        </h1>
+                        <p class="lead">
+                            TCP API is the simplest way of
+                            communicating between a Tinymesh
+                            gateway and the upstream service.
+                        </p>
+                        <p>
+                            Under the hood it uses TCP/IP and the
+                            Tinymesh protocol for authentication
+                            and data transmission.
+                        </p>
+                        <h4>
+                            API Endpoints
+                        </h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Type
+                                    </td>
+                                    <td>
+                                        Endpoint
+                                    </td>
+                                    <td>
+                                        Port
+                                    </td>
+                                    <td>
+                                        Comment
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        TLS/SSL enabled
+                                    </td>
+                                    <td>
+                                        tcp.cloud.tiny-mesh.com
+                                    </td>
+                                    <td>
+                                        7002
+                                    </td>
+                                    <td>
+                                        Preferred transport
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Unencrypted
+                                    </td>
+                                    <td>
+                                        tcp.cloud.tiny-mesh.com
+                                    </td>
+                                    <td>
+                                        7001
+                                    </td>
+                                    <td>
+                                        See <a href=
+                                        "./security.html">security
+                                        considerations</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -77,8 +115,29 @@
                             <li class="header">
                                 <a href=
                                 "./../guides/getting-started/index.html">
-                                Getting Started</a>
-                                <ul class="nav"></ul>
+                                Quick Start</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/intro.html">
+                                        Introduction</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/initial-configuration.html">
+                                        Initial Configuration</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/connecting.html">
+                                        Connecting your Gateway</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/querying.html">
+                                        Querying Data</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="header">
                                 <a href=
@@ -492,6 +551,18 @@
                                         <a href=
                                         "./../reference-guide/device-configuration/1.00.html">
                                         1.00</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../reference-guide/network-connector/index.html">
+                                Network Connectors</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../reference-guide/network-connector/guri.html">
+                                        GURI (CLI)</a>
                                     </li>
                                 </ul>
                             </li>
