@@ -31,10 +31,34 @@
                                 Considerations</a>
                             </li>
                         </ul>
+                        <h2 id="tls-ssl">
+                            Security Considerations
+                        </h2>
+                        <h3>
+                            Setups without encryption support
+                        </h3>
                         <p>
-                            hello
+                            The TCP API provides two transports,
+                            one with TLS/SSL encryption and one
+                            unencrypted. We highly recommend using
+                            TLS/SSL transport, but recognize that
+                            some Network Connectors solutions does
+                            not include TLS/SSL support.<br>
+                            If you you are using the unencrypted
+                            transport you are susceptible to
+                            man-in-the-middle attacks, making it
+                            possible for unauthorized third parties
+                            to observe or potentially change your
+                            data.
                         </p>
-                        <ul></ul>
+                        <p>
+                            If you are using the unencrypted API we
+                            strongly recommend that you perform
+                            your own risk assesment and then get in
+                            touch with our support team to find the
+                            best possible solution to secure your
+                            communication.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -57,8 +81,29 @@
                             <li class="header">
                                 <a href=
                                 "./../guides/getting-started/index.html">
-                                Getting Started</a>
-                                <ul class="nav"></ul>
+                                Quick Start</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/intro.html">
+                                        Introduction</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/initial-configuration.html">
+                                        Initial Configuration</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/connecting.html">
+                                        Connecting your Gateway</a>
+                                    </li>
+                                    <li class="">
+                                        <a href=
+                                        "./../guides/getting-started/querying.html">
+                                        Querying Data</a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="header">
                                 <a href=
@@ -472,6 +517,18 @@
                                         <a href=
                                         "./../reference-guide/device-configuration/1.00.html">
                                         1.00</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="header">
+                                <a href=
+                                "./../reference-guide/network-connector/index.html">
+                                Network Connectors</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../reference-guide/network-connector/guri.html">
+                                        GURI (CLI)</a>
                                     </li>
                                 </ul>
                             </li>
