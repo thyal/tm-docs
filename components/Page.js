@@ -34,7 +34,7 @@ export default class Page extends React.Component {
 
    render() {
       let
-         {url} = this.props,
+         {url, subtree} = this.props,
          isDir = '' === path.extname(url) || 'index.html' === url.substr(-10, 10),
          page = Page.pages[Root.target(url)],
          parent = Page.pages[page.parent]
@@ -45,7 +45,7 @@ export default class Page extends React.Component {
             <Breadcrumbs page={page} />
             { this.props.children }
 
-            <Page.Tree {...page} />
+            {subtree && <Page.Tree {...page} />}
          </div>
       )
    }
