@@ -354,3 +354,8 @@ ul.siblings > li.active a {
 .inline-block {
    display: inline-block;
 }
+
+dl > dt { font-weight: bold; }
+
+code .red {color: red;}
+code .green {color: green;}
