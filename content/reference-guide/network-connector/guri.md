@@ -2,8 +2,8 @@ import React from 'react'
 
 export default ({url, Page, Resource}) =>
   <div>
-    <Resource resource="connector/guri" url={url} name="GURI">
-      <h1>GURI</h1>
+    <Resource resource="connector/guri" url={url} name="GURI (CLI)">
+      <h1>GURI (CLI)</h1>
 
       <p className="lead">
         Command line tool for communicating serialport data with remote TCP, or TLS endpoint.
