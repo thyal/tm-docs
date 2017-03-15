@@ -109,10 +109,12 @@ Resource.Param = Field
 Resource.FieldSet = FieldSet
 // link to the resource, possibly annotated with a specific field
 Resource.Link = ({children, resource, field, ...props}) => {
-   if (!Resource.resources[resource])
-      return <a title={"resource="+resource}>{children} (not found)</a>
+   let [path, hash] = resource ? resource.split(/#[^#]*$/) : []
+   if (!Resource.resources[path])
+      return <a title={"resource="+path}>{children} (not found)</a>
 
-   return <a href={Root.link(null, Resource.resources[resource].url || '')}>{children}</a>
+   const link = (Resource.resources[path].url || '') + (hash ? '#' + hash : '')
+   return <a href={Root.link(null, link)}>{children}</a>
 }
 
 export default Resource
