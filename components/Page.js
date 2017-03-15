@@ -45,7 +45,7 @@ export default class Page extends React.Component {
             <Breadcrumbs page={page} />
             { this.props.children }
 
-            {subtree && <Page.Tree {...page} />}
+            {false !== subtree && <Page.Tree {...page} />}
          </div>
       )
    }
