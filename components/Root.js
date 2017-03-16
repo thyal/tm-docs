@@ -64,6 +64,7 @@ export default class Root extends React.Component {
             <link href={Root.link(null, '/css/normalize.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/skeleton.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/style.css')} rel='stylesheet' />
+            <link href={Root.link(null, '/css/print.css')} rel='stylesheet' media="print" />
             {/*
             <link rel="canonical" href={'/' + url} />
             */}
@@ -72,7 +73,7 @@ export default class Root extends React.Component {
          </head>
          <body>
             <div className="">
-               <div className="" style={{overflowY: 'scroll', position: 'fixed', bottom: 0, top: 0, width: '70%'}}>
+               <div className="main">
                   <div style={{padding: '15px 30px'}}>
                      { React.Children.map(props.children, child => React.cloneElement(child, {relpath: relpath, root: this})) }
                   </div>
