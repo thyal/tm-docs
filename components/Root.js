@@ -60,7 +60,8 @@ export default class Root extends React.Component {
       return <html>
          <head>
             <meta charSet='utf-8' />
-            <title>{page && page.name ? page.name : path.basename(props.url, '.html')} - Documentation - Tiny Mes AS</title>
+            <title>{page && page.name ? page.name : path.basename(props.url, '.html')} - Documentation - Tiny Mesh AS</title>
+
             <link href={Root.link(null, '/css/normalize.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/skeleton.css')} rel='stylesheet' />
             <link href={Root.link(null, '/css/style.css')} rel='stylesheet' />
