@@ -1,37 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
 
-const scriptHTML = `
-function toPaddedHex(n) {
-  return "0x" + ("0" + n.toString(16)).slice(-2)
-}
-window.setNID = function(parts) {
-  document.getElementById("nid-input-0").innerHTML = toPaddedHex(parts[0]);
-  document.getElementById("nid-input-1").innerHTML = toPaddedHex(parts[1]);
-  document.getElementById("nid-input-2").innerHTML = toPaddedHex(parts[2]);
-  document.getElementById("nid-input-3").innerHTML = toPaddedHex(parts[3]);
-}
-
-window.handleNID = function(event) {
-  console.log('parse NID')
-  var value = document.getElementById("input-nid").value;
-
-  var addr = parseInt(value, 10)
-
-
-
-  if (value.match(/^[0-9]+$/)) {
-      console.log('good0-address', addr)
-      window.setNID([(addr >> 24) & 255, (addr >> 16) & 255, (addr >> 8) & 255, (addr >> 0) & 255])
-      document.getElementById("nid-error").innerHTML = ""
-    } else {
-      console.log('bad-address', addr)
-      window.setNID([0, 0, 0, 0])
-      document.getElementById("nid-error").innerHTML = "Invalid address, enter numbers only"
-  }
-}
-`
-
 export default ({url, name, Root, Page, Resource}) => {
   return (
     <Page url={url}
@@ -83,11 +52,11 @@ export default ({url, name, Root, Page, Resource}) => {
         </ol>
       </p>
 
-      <script type="text/javascript" dangerouslySetInnerHTML={{__html: scriptHTML}} />
-
       <div dangerouslySetInnerHTML={{__html: `
-        <input type="text" id="input-nid" onChange="window.handleNID()" />
-        <button class="button button-primary">Generate Config</button>
+        <input type="text" id="input-nid" onChange="window.configTools.handleNID('input-nid', ['nid-input-0', 'nid-input-1', 'nid-input-2', 'nid-input-3'], 'nid-error')" />
+        <button class="button button-primary" onClick="window.configTools.handleNID('input-nid', ['nid-input-0', 'nid-input-1', 'nid-input-2', 'nid-input-3'], 'nid-error')">
+          Generate Config
+        </button>
       `}} />
 
       <span className="error" id="nid-error" style={{color: 'red'}} />

@@ -119,6 +119,7 @@ export default class Root extends React.Component {
                </div>
 
             </div>
+            <script type="text/javascript" src={Root.link(null, '/app.js')} />
          </body>
       </html>
    }
