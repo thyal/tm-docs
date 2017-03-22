@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            Initial Configuration - Documentation - Tiny Mes AS
+            Initial Configuration - Documentation - Tiny Mesh AS
         </title>
         <link href="./../../css/normalize.css" rel="stylesheet">
         <link href="./../../css/skeleton.css" rel="stylesheet">
@@ -45,22 +45,34 @@
                             All Tinymesh Devices comes
                             pre-configured with a Unique ID (UID)
                             to distinguish them from each other. In
-                            addition one may configure a System ID
+                            addition you can configure a System ID
                             (SID) to create multiple Tinymesh
                             Networks running in the same location.
-                            Last there is a Network ID (NID) that
-                            allows gateways identify which Network
-                            they belong to in the Tinymesh Cloud.
+                            Last there's the Network ID (NID) that
+                            allows gateways to identify with a
+                            remote service (ie, Tinymesh Cloud).
                         </p>
                         <p>
-                            These different addresses are
-                            permanently stored in the Configuration
-                            and Calibration Memory of the Tinymesh
+                            These different ID's are permanently
+                            stored in the Configuration and
+                            Calibration Memory of the Tinymesh
                             Device. To connect the Gateway to the
-                            Cloud Service we must create a new
-                            Network, and a Gateway Device in the
-                            Cloud Service and then configure the
-                            Network ID (NID) in the Gateway device.
+                            Cloud Service we need to define the
+                            Network and Gateway Device in the Cloud
+                            Service and then configure the Network
+                            ID (NID) in the Gateway device.
+                        </p>
+                        <p>
+                            The actual configuration will be
+                            handled by a <a href=
+                            "./../../reference-guide/network-connector/index.html">
+                            Network Connector</a> like <a href=
+                            "./../../reference-guide/network-connector/guri.html">
+                            GURI</a> or similar <em>(if desired you
+                            can also <a href=
+                            "./../../reference-guide/knowledge/manual-gw-configuration.html">
+                            configuring the Tinymesh Gateways
+                            manually</a>).</em>
                         </p>
                         <p class="alert alert-warning">
                             <b>Tinymesh Firmware Version
@@ -72,118 +84,25 @@
                             Contact your local distributor for aid
                             in flashing the Gateway Device.
                         </p>
+                        <h4>
+                            Connecting your first Network
+                        </h4>
                         <p>
-                            The following steps must be done to
-                            configure the device, enter the
-                            <a href="./../../reference-guide/resources/network.html">
-                            Network Address</a> (returned from the
-                            API). Use the "Generate Config" option
-                            to create a working configuration
+                            Assuming you already have a Tinymesh
+                            device we must define the Network in
+                            the Cloud Service before we it can
+                            connect. Sign in to the <a href=
+                            "https://cloud.tiny-mesh.com">Cloud
+                            Workbench</a>, in the Dashboard you can
+                            find the link to create a new network
+                            on the left side. If you don't have an
+                            account already just sign up using the
+                            <a href=
+                            "https://cloud.tiny-mesh.com">Cloud
+                            Workbench</a>; Once signed in you will
+                            immediately be prompted to create your
+                            first network.
                         </p>
-                        <ol>
-                            <li>Connect the Gateway Device to a
-                            serial port interface
-                            </li>
-                            <li>Set the Device in configuration
-                            mode by pressing the <em>Configuration
-                            Button</em>
-                            </li>
-                            <li>Open the serialport using your
-                            favourite Terminal Emulator (default
-                            baudrate: 19200)
-                            </li>
-                            <li>Observe that the Gateway device
-                            sends a prompt (<code>&gt;</code>) to
-                            indicate that we have entered
-                            configuration mode
-                            </li>
-                            <li>Write <code>G</code> to the
-                            serialport to configure it for Gateway
-                            operation
-                            </li>
-                            <li>Edit the Configuration Memory by
-                            writing <code>M</code> (no prompt will
-                            be displayed)
-                            </li>
-                            <li>Configure packet mode operation by
-                            writing two bytes <code>0x03
-                            0x00</code>
-                            </li>
-                            <li>Execute the '0xFF' command to
-                            terminate the Configuration Memory
-                            command
-                            </li>
-                            <li>Edit the Calibration Memory by
-                            writing <code>HW</code>
-                            </li>
-                            <li>Configure the Network ID (NID) by
-                            writing 8 bytes <code>0x17 NN 0x18 NN
-                            0x19 NN 0x1A NN</code>
-                            </li>
-                            <li>Execute the '0xFF' command to
-                            terminate the Calibration Memory
-                            command
-                            </li>
-                            <li>Execute the X command to set the
-                            device normal state
-                            </li>
-                        </ol>
-                        <p><script type="text/javascript">
-function toPaddedHex(n) {
-                        return "0x" + ("0" + n.toString(16)).slice(-2)
-                        }
-                        window.setNID = function(parts) {
-                        document.getElementById("nid-input-0").innerHTML = toPaddedHex(parts[0]);
-                        document.getElementById("nid-input-1").innerHTML = toPaddedHex(parts[1]);
-                        document.getElementById("nid-input-2").innerHTML = toPaddedHex(parts[2]);
-                        document.getElementById("nid-input-3").innerHTML = toPaddedHex(parts[3]);
-                        }
-
-                        window.handleNID = function(event) {
-                        console.log('parse NID')
-                        var value = document.getElementById("input-nid").value;
-
-                        var addr = parseInt(value, 10)
-
-
-
-                        if (value.match(/^[0-9]+$/)) {
-                        console.log('good0-address', addr)
-                        window.setNID([(addr >> 24) & 255, (addr >> 16) & 255, (addr >> 8) & 255, (addr >> 0) & 255])
-                        document.getElementById("nid-error").innerHTML = ""
-                        } else {
-                        console.log('bad-address', addr)
-                        window.setNID([0, 0, 0, 0])
-                        document.getElementById("nid-error").innerHTML = "Invalid address, enter numbers only"
-                        }
-                        }
-                        </script>
-                        <div>
-                            <input type="text" id="input-nid"
-                            onchange="window.handleNID()">
-                            <button class=
-                            "button button-primary">Generate
-                            Config</button>
-                        </div><span class="error" id="nid-error"
-                        style="color:red;"></span>
-                        <pre>
-<code><span class="red"><b>(rx)</b> &gt;
-</span><span class="green"><b>(tx)</b> G
-</span><span class="red"><b>(rx)</b> &gt;
-</span><span class="green"><b>(tx)</b> M
-</span><span class="green"><b>(tx)</b> 0x03 0x00
-</span><span class="green"><b>(tx)</b> 0xFF
-</span><span class="red"><b>(rx)</b> &gt;
-</span><span class="green"><b>(tx)</b> HW
-</span><span class="green"><b>(tx)</b> 0x17 <span id=
-"nid-input-0">0x00</span> 0x18 <span id=
-"nid-input-1">0x00</span> 0x19 <span id=
-"nid-input-2">0x00</span> 0x1a <span id="nid-input-3">0x00</span> 
-</span><span class="green"><b>(tx)</b> 0xFF
-</span><span class="red"><b>(rx)</b> &gt;
-</span><span class="green"><b>(tx)</b> X
-</span></code>
-</pre>
                         <ul class="siblings inline-block">
                             <li>
                                 <a href="./intro.html">Previous:
@@ -213,12 +132,6 @@ function toPaddedHex(n) {
                         <a href="./../index.html">Guides &amp;
                         Examples</a>
                         <ul class="nav">
-                            <li class="header">
-                                <a href=
-                                "./../controlling-gpio-lighting/index.html">
-                                Controlling LEDs with GPIO pins</a>
-                                <ul class="nav"></ul>
-                            </li>
                             <li class="header parent">
                                 <a href="./index.html">Quick
                                 Start</a>
@@ -237,31 +150,7 @@ function toPaddedHex(n) {
                                         "./connecting.html">Connecting
                                         your Gateway</a>
                                     </li>
-                                    <li class="">
-                                        <a href=
-                                        "./querying.html">Querying
-                                        Data</a>
-                                    </li>
                                 </ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../reading-dlms-data/index.html">
-                                Automatic Meter Reading with
-                                DLMS</a>
-                                <ul class="nav"></ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../user-management/index.html">Managing
-                                Users and Access Policies</a>
-                                <ul class="nav"></ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../wireless-sensor-networks/index.html">
-                                guides/wireless-sensor-networks</a>
-                                <ul class="nav"></ul>
                             </li>
                         </ul>
                     </li>
@@ -721,12 +610,27 @@ function toPaddedHex(n) {
                                     </li>
                                 </ul>
                             </li>
+                            <li class="header">
+                                <a href=
+                                "./../../reference-guide/knowledge/index.html">
+                                Knowledge Library</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/knowledge/manual-gw-configuration.html">
+                                        Manually Configuring
+                                        Tinymesh Gateways</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
                 <hr style="padding:5px 0;">
                 <a class="back-to-top" href="#top">Back to top</a>
             </div>
-        </div>
+        </div><script type="text/javascript" src=
+        "./../../js/app.js">
+</script>
     </body>
 </html>

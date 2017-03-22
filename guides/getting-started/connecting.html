@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            Connecting your Gateway - Documentation - Tiny Mes AS
+            Connecting your Gateway - Documentation - Tiny Mesh AS
         </title>
         <link href="./../../css/normalize.css" rel="stylesheet">
         <link href="./../../css/skeleton.css" rel="stylesheet">
@@ -38,107 +38,206 @@
                                 Gateway</a>
                             </li>
                         </ul>
-                        <h1>
-                            Connecting your gateway
-                        </h1>
-                        <p>
-                            After you have configured your gateway
-                            (previous step) it can be connected to
-                            the Cloud Service. This can be done by
-                            using a <a href=
-                            "./../../reference-guide/network-connector/index.html">
-                            Network Connector</a>.
-                        </p>
-                        <p>
-                            For field deployments you would want a
-                            dedicated machine or embedded device to
-                            handle this for you but for testing and
-                            development we will use software that
-                            we can run directly from our computer.
-                        </p>
-                        <p>
-                            Download the <a href=
-                            "https://github.com/tinymesh/guri/releases">
-                            GURI application</a> for your platform
-                            and run it from the command line using
-                            the following.
-                        </p>
-                        <p>
-                            If you are unfamiliar with using the
-                            command line it may be opened by
-                            running <code>cmd.exe</code> under
-                            Windows. Once you have opened the
-                            terminal you must navigate to the
-                            folder where you saved
-                            <code>GURI</code>. This can be done by
-                            issuing the command <code>cd</code>
-                            followed with the path to the directory
-                            it was saved
-                        </p>
-                        <p>
-                            First we will list all the available
-                            ports, then we can use the result to
-                            open the right serialport (easily
-                            identified by looking for the line
-                            <code>usb?=true</code>)
-                        </p>
-                        <h6>
-                            For Windows
-                        </h6>
-                        <pre>
-<code>&gt; guri-windows-amd64.exe --list
-path=COM1 usb?=false vid= pid= serial=
-path=COM7 <b>usb?=true</b> vid=0403 pid=6001 serial=A5042CTA
+                        <div class="no-target target" id=
+                        "platform-target">
+                            <h1>
+                                Connecting your gateway
+                            </h1>
+                            <p class="lead">
+                                To connect your Tinymesh Gateway a
+                                definition in the Tinymesh Cloud™
+                                <em>(if you haven't defined your
+                                Network yet do so by using the
+                                <a href=
+                                "https://cloud.tiny-mesh.com">Cloud
+                                Workbench</a>)</em>.<br>
+                                Navigate to your Network in the
+                                Cloud Workbench where you will find
+                                the <a href=
+                                "./../../reference-guide/resources/network.html">
+                                Network ID</a> <em>(a 32 bits
+                                hexadecimal address)</em>.
+                            </p>
+                            <p>
+                                For our connection we will use
+                                <a href=
+                                "./../../reference-guide/network-connector/guri.html">
+                                GURI</a>, a command line based
+                                Network Connector, to setup the
+                                link between the Tinymesh
+                                serialport and the upstream Cloud
+                                Service<a><sup>[1]</sup></a>.
+                            </p>
+                            <p>
+                                As seen in the example below we run
+                                the executable from the Command
+                                Line. you can use the argument
+                                <code>-list</code> to print all the
+                                available serial ports. Once you
+                                identified your serial port use it
+                                as argument to use that serial port
+                                for communication. You can see that
+                                we specify the
+                                <code>-auto-configure</code> and
+                                <code>-nid=&lt;Network
+                                ID&gt;</code> arguments, these
+                                allow us to automatically configure
+                                the device for Gateway operations.
+                                <b>Substitute the value of
+                                <code>-nid=..</code> with your
+                                Network ID</b>
+                            </p>
+                            <ol>
+                                <li>
+                                    <small>This software also make
+                                    sure that he Tinymesh gateway
+                                    device is correctly
+                                    configured.</small>
+                                </li>
+                            </ol>
+                            <div class="columns">
+                                <div class="column-left">
+                                    <div>
+                                        <p class=
+                                        "platform-meta targets">
+                                            <a class="button" href=
+                                            "#platform=win32">Windows</a>
+                                            <a class="button" href=
+                                            "#platform=mac">Mac
+                                            OS</a> <a class=
+                                            "button" href=
+                                            "#platform=linux">Linux</a>
+                                            <a class="button" href=
+                                            "#platform=source">Source</a>
+                                        </p>
+                                        <h4>
+                                            <span style=
+                                            "font-weight:bold;">Download
+                                            GURI</span><br>
+                                            <small><span class=
+                                            "platform platform-win32">
+                                            for
+                                            Windows</span><span class="platform platform-mac">for
+                                            Mac
+                                            OS</span><span class=
+                                            "platform platform-linux">for
+                                            Linux</span><span class="platform platform-source">Source
+                                            Code</span></small>
+                                        </h4>
+                                        <p class=
+                                        "platform platform-win32 platform-mac platform-linux">
+                                        <a href=
+                                        "https://release.tiny-mesh.com/tinymesh/guri"
+                                            id="target-link" class=
+                                            "button button-primary">
+                                            Download<span class=
+                                            "platform platform-win32">&nbsp;exe</span><span class="platform platform-mac">&nbsp;app</span>
+                                            <span id=
+                                            "target-arch">(64bit)</span></a><br>
+                                            <span>Different
+                                            architecture? <a href=
+                                            "https://release.tiny-mesh.com/tinymesh/guri">
+                                            See all download
+                                            options</a></span>
+                                        </p>
+                                        <p class=
+                                        "platform platform-source">
+                                            <a href=
+                                            "https://release.tiny-mesh.com/tinymesh/guri/source"
+                                            class=
+                                            "button button-primary target-arch-all">
+                                            Download (source
+                                            code)</a><br>
+                                            Or clone the repository
+                                            using Git from
+                                            <a target="new" href=
+                                            "https://github.com/tinymesh/guri">
+                                            tinymesh/guri</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="column-right">
+                                    <div>
+                                        <b>Using GURI from the
+                                        Command Line</b>
+                                        <pre style=
+                                        "overflow:hidden;">
+<code>&gt; <span>guri-<span><span class=
+"platform platform-win32">windows</span><span class=
+"platform platform-linux">linux</span><span class=
+"platform platform-mac">darwin</span><span class=
+"platform platform-source">dist</span></span>-<span><span class=
+"arch arch-amd64">amd64</span><span class=
+"arch arch-386">386</span></span><span class=
+"platform platform-win32">.exe</span></span> -list
+path=<span><span class=
+"platform platform-win32">COM1</span><span class=
+"platform platform-linux">/dev/ttyS1</span><span class=
+"platform platform-mac">/dev/ttyS1</span></span> usb?=false vid= pid= serial=
+path=<b><span><span class=
+"platform platform-win32">COM3</span><span class=
+"platform platform-linux">/dev/ttyUSB0</span><span class=
+"platform platform-mac">/dev/tty.usbserial-A5042CXY</span></span></b> usb?=true vid=0403 pid=6001 serial=A5042CXY
 
-&gt; guri-windows-amd64.exe --reconnect=true COM3
+
+&gt; <span>guri-<span><span class=
+"platform platform-win32">windows</span><span class=
+"platform platform-linux">linux</span><span class=
+"platform platform-mac">darwin</span><span class=
+"platform platform-source">dist</span></span>-<span><span class=
+"arch arch-amd64">amd64</span><span class=
+"arch arch-386">386</span></span><span class=
+"platform platform-win32">.exe</span></span> -auto-configure <b>-nid=aa:bb:cc:dd</b> <b>COM3</b>
+guri - version 0.0.1-alpha
+serial:open <span><span class=
+"platform platform-win32">COM3</span><span class=
+"platform platform-linux">/dev/ttyUSB0</span><span class=
+"platform platform-mac">/dev/tty.usbserial-A5042CXY</span></span>
+remote: using TCP w/TLS
+upstream:recv[true] [10 0 0 0 0 0 3 16 0 0]
+downstream:recv[true] [35 1 0 0 0 1 0 0 0 ... ]
+upstream:recv[true] [6]
 </code>
 </pre>
-                        <h6>
-                            For Linux
-                        </h6>
-                        <pre>
-<code>$ ./guri-linux-amd64 --list
-path=/dev/ttyS0 usb?=false vid= pid= serial=
-path=/dev/ttyUSB0 <b>usb?=true</b> vid=0403 pid=6001 serial=A5042CTA
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                                Check for the line
+                                <code>upstream:recv[] [6]</code>
+                                which tells us that the cloud
+                                Acknowledged the packet we sent.
+                                This means that we have
+                                successfully configured our device
+                                as a Gateway, to verify the that we
+                                the device authenticated check the
+                                Cloud Workbench.
+                            </p>
+                            <ul class="siblings inline-block">
+                                <li>
+                                    <a href=
+                                    "./initial-configuration.html">Previous:
+                                    Initial Configuration</a>
+                                </li>
+                                <li class="active">
+                                    <a href=
+                                    "./connecting.html">Connecting
+                                    Your Gateway</a>
+                                </li>
+                                <li>
+                                    <a href="./querying.html">Next:
+                                    Querying Data</a>
+                                </li>
+                            </ul>
+                        </div><script type="text/javascript" src=
+                        "./../../js/ua-parser.min.js">
+</script><script type="text/javascript">
+var callback = function() {
+                        utils.platformTarget('platform-target');
+                        };
 
-$ ./guri-linux-amd64 --reconnect=true /dev/ttyUSB0
-</code>
-</pre>
-                        <p>
-                        <p>
-                            Once connected you will some output:
-                        </p>
-                        <pre>
-<code>2017/03/15 19:31:48.118130 guri - version 0.0.1-alpha
-2017/03/15 19:31:48.118208 serial:open /dev/ttyUSB0
-2017/03/15 19:31:48.119081 remote: using TCP w/TLS
-2017/03/15 19:31:56.097801 upstream:recv[true] [10 0 0 0 0 0 3 16 0 0]
-2017/03/15 19:31:56.126250 downstream:recv[true] [35 1 0 0 0 1 0 0 0 0 0 0 0 ...]
-2017/03/15 19:31:56.426717 upstream:recv[true] [6]
-...</code>
-</pre>
-                        <p>
-                        <p>
-                            Next up we will use the API's available
-                            to communicate with the devices in our
-                            Network.
-                        </p>
-                        <ul class="siblings inline-block">
-                            <li>
-                                <a href=
-                                "./initial-configuration.html">Previous:
-                                Initial Configuration</a>
-                            </li>
-                            <li class="active">
-                                <a href=
-                                "./connecting.html">Connecting Your
-                                Gateway</a>
-                            </li>
-                            <li>
-                                <a href="./querying.html">Next:
-                                Querying Data</a>
-                            </li>
-                        </ul>
+                        window.onload = window.onhashchange = callback;
+                        </script>
                         <ul></ul>
                     </div>
                 </div>
@@ -153,12 +252,6 @@ $ ./guri-linux-amd64 --reconnect=true /dev/ttyUSB0
                         <a href="./../index.html">Guides &amp;
                         Examples</a>
                         <ul class="nav">
-                            <li class="header">
-                                <a href=
-                                "./../controlling-gpio-lighting/index.html">
-                                Controlling LEDs with GPIO pins</a>
-                                <ul class="nav"></ul>
-                            </li>
                             <li class="header parent">
                                 <a href="./index.html">Quick
                                 Start</a>
@@ -177,31 +270,7 @@ $ ./guri-linux-amd64 --reconnect=true /dev/ttyUSB0
                                         "./connecting.html">Connecting
                                         your Gateway</a>
                                     </li>
-                                    <li class="">
-                                        <a href=
-                                        "./querying.html">Querying
-                                        Data</a>
-                                    </li>
                                 </ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../reading-dlms-data/index.html">
-                                Automatic Meter Reading with
-                                DLMS</a>
-                                <ul class="nav"></ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../user-management/index.html">Managing
-                                Users and Access Policies</a>
-                                <ul class="nav"></ul>
-                            </li>
-                            <li class="header">
-                                <a href=
-                                "./../wireless-sensor-networks/index.html">
-                                guides/wireless-sensor-networks</a>
-                                <ul class="nav"></ul>
                             </li>
                         </ul>
                     </li>
@@ -661,12 +730,27 @@ $ ./guri-linux-amd64 --reconnect=true /dev/ttyUSB0
                                     </li>
                                 </ul>
                             </li>
+                            <li class="header">
+                                <a href=
+                                "./../../reference-guide/knowledge/index.html">
+                                Knowledge Library</a>
+                                <ul class="nav">
+                                    <li class="">
+                                        <a href=
+                                        "./../../reference-guide/knowledge/manual-gw-configuration.html">
+                                        Manually Configuring
+                                        Tinymesh Gateways</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
                 <hr style="padding:5px 0;">
                 <a class="back-to-top" href="#top">Back to top</a>
             </div>
-        </div>
+        </div><script type="text/javascript" src=
+        "./../../js/app.js">
+</script>
     </body>
 </html>
