@@ -1,14 +1,19 @@
 import React from 'react'
+import l from 'lodash'
 
-export default ({url, Page}) =>
-  <Page url={url} name="Quick Start" subtree={false} next="/guides/getting-started/intro.html">
+export default ({url, pages, Page}) => {
+  const next = l.sortBy(Page.page(url).tree, 'weight')[0]
+  return (
+  <Page url={url} name="Quick Start" next="/guides/getting-started/intro.html" weight={0} subtree={false}>
 
     <h1>Quick Start Guide</h1>
 
     <p>
       Tinymesh Cloud™ is a SaaS platform that extends Tinymesh™ networks with a secure communication- and data storage infrastructure, allowing additional services to easily communicate and configure Tinymesh™ devices.
 
-      The Tinymesh Cloud™ service aims to simplify the development cycle as well as deployment and maintenance of existing Tinymesh™ networks. Some of it's features include:
+      The Tinymesh Cloud™ service is a realtime view into your Tinymesh Network
+      that helps you in maintenance, deployment and development of your application.
+      By using the Service you get access to:
 
       <ul>
         <li>High-availability infrastructure for secure communication</li>
@@ -19,23 +24,14 @@ export default ({url, Page}) =>
 
     <h4>What is the Tinymesh Cloud™ Quick Start Guide?</h4>
     <p>
-      The Fast Track consists of a few hands-on steps to quickly get you up and
-      running with Tinymesh Cloud™. All the steps include descriptions and examples
-      to get you up to speed on our platform.
-
+      The Quick Start Guide is a general overview of the Tinymesh Cloud service
+      and a few hands-on steps to quickly enable your Tinymesh Network for online
+      communication.<br />
+    </p>
+    <p>
       This guide targets developers that have minimal experience with the Tinymesh Cloud service, and serves as a setup reference for new installations.
     </p>
 
-    <h4>What does the Quick Start Guide cover?</h4>
-    <p>
-      The Quick Start Guide takes you through the following sections:
-
-      <ul>
-        <li><Page.link url="/guides/getting-started/intro.html">What is Tinymesh Cloud?: High level overview of the Tinymesh Cloud architecture</Page.link></li>
-        <li><Page.link url="/guides/getting-started/initial-configuration.html">Connecting to Tinymesh Cloud: Initial configuration needed to use Tinymesh Cloud</Page.link></li>
-
-        <li><Page.link url="/guides/getting-started/communcating.html">Using Tinymesh Cloud To Send Data: How to  communicate</Page.link></li>
-        <li><Page.link url="/guides/getting-started/querying.html">Querying Data: A review of standard query operations.</Page.link></li>
-      </ul>
-    </p>
+    <Page.link parent={url} url={next.url}><b>Get started with your first Tinymesh Network</b></Page.link>
   </Page>
+)}

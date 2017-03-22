@@ -81,6 +81,86 @@
     }
   };
 
+  var uaparser
+
+  utils.connectURL = "https://release.tiny-mesh.com/tinymesh/guri";
+
+  var _archMap = {
+    'ia32': '386'
+  };
+
+  var _prettyArchMap = {
+    'ia32': '32bit',
+    'amd64': '64bit',
+  };
+
+  var _platformMap = {
+    'win32': 'windows',
+    'mac':   'darwin',
+  };
+
+  utils.archMap = function(arch) {
+    return _archMap[arch] || arch;
+  };
+
+  utils.prettyArchMap = function(arch) {
+    return _prettyArchMap[arch] || arch;
+  };
+
+  utils.platformMap = function(platform) {
+    return _platformMap[platform] || platform;
+  };
+
+  utils.platformTarget = function(id) {
+    var elem = document.getElementById(id);
+
+    if (!elem)
+      return;
+
+    if (!utils.uaparser)
+      uaparser = new UAParser();
+
+    var
+      hostOs = uaparser.getOS().name.toLowerCase().replace(' ', '-'),
+      hostArch = uaparser.getCPU().architecture,
+      os = hostOs,
+      arch = hostArch,
+      hash = window.location.hash.match(/^#platform=(.*?)$/);
+
+    if (hash && hash[1]) {
+      os = hash[1];
+    } else if (!hash && (os !== 'windows' && os !== 'linux' && os !== 'mac-os')) {
+      os = 'source';
+    }
+
+    var classes = [
+      "target",
+      "target-os-" + os,
+      "target-arch-" + arch,
+      "host-os-" + hostOs,
+      "host-arch-" + hostArch
+    ];
+
+
+
+    if (hostOs !== os)
+      classes = classes.concat(['targetted-platform'])
+
+    elem.className = classes.join(' ');
+
+    // set download links
+    var
+      targetArch = document.getElementById('target-arch'),
+      targetLink = document.getElementById('target-link');
+
+    if (targetArch)
+      targetArch.innerHTML = '(' + utils.prettyArchMap(arch).toUpperCase() + ')';
+
+    if (targetLink)
+      targetLink.href = utils.connectURL + '/' + utils.platformMap(os) + '/' + utils.archMap(arch) + '?download=true'
+  };
+
+
   window.utils = utils;
 
 

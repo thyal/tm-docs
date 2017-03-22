@@ -2,6 +2,7 @@ import React from 'react'
 
 export default ({url, Root, Page}) =>
   <Page url={url}
+        hidden={true}
         name="Querying Data"
         weight={40}>
 

@@ -368,3 +368,63 @@ dl > dt { font-weight: bold; }
 
 code .red {color: red;}
 code .green {color: green;}
+
+
+
+
+.target .button {
+    border: none;
+    border-bottom: 2px solid #eee;
+    border-radius: 0px;
+}
+
+.arch, .platform, .alien-platform { display: none; }
+
+.no-target .platform-all,
+.target .platform-meta { display: inherit; }
+
+.target-os-win32 .platform-win32,
+.target-os-mac   .platform-mac,
+.target-os-linux .platform-linux,
+.target-os-source .platform-source,
+.target-arch-amd64 .arch-amd64,
+.target-arch-386 .arch-386,
+.targetted-platform .alien-platform  { display: inherit; }
+
+.platform.alert {  display: inline-block;}
+
+.target-os-source.targetted-platform .alien-platform  { display: none; }
+
+.target-os-mac .targets > .button[href="#platform=mac"],
+.target-os-linux .targets > .button[href="#platform=linux"],
+.target-os-source .targets > .button[href="#platform=source"],
+.target-os-win32 .targets > .button[href="#platform=win32"] {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0;
+}
+
+.columns {
+  position: relative;
+  padding: 30px 0;
+  margin: 38px 0 0;
+  border-top: 3px solid #eee;
+
+}
+.column-left, .column-right {
+  display: inline-block;
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  min-width: 380px;
+  vertical-align: top;
+}
+.columns .column-left {
+  text-align: center;
+  float: left;
+
+}
+.columns .column-right {
+  padding-top: 38px;
+  float: right;
+}

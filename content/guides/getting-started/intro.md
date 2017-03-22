@@ -19,20 +19,17 @@ export default ({url, Root, Page, Resource}) =>
       All your applications will address the high-level API which utilises the HTTP
       protocol as transport and consumes JSON or binary data. <Resource.Link resource="device/:network/:device">Device</Resource.Link>{' '}
       and <Resource.Link resource="network/:network">Network</Resource.Link> metadata
-      , along with communication utilities,
-      can be easily be accessed using modern HTTP libraries available for all common languages.
+      , along with utilities for communication,
+      can be accessed using modern HTTP libraries available for all common languages.
     </p>
 
-    <h4>What Data Can I Query</h4>
     <p>
-      Tinymesh Cloud™ contains{' '}
-      <Resource.Link resource="organization/:org">organizations</Resource.Link>,{' '}
-      <Resource.Link resource="network/:network">networks</Resource.Link>,{' '}
-      <Resource.Link resource="user">users</Resource.Link>,{' '}
-      <Resource.Link resource="device/:network/:device">devices</Resource.Link> and{' '}
-      <Resource.Link resource="message/:key">messages</Resource.Link>.
-      All data can be queried and interacted with through the <Page.link url="http-api">HTTP API</Page.link>. A very common
-      scenario is to provision a <Resource.Link resource="network/:network">networks</Resource.Link> and either consuming a realtime stream or process data batches at a given interval.
+      Tinymesh Cloud™ contains several different types of resources from {' '}
+      <Resource.Link resource="network/:network">Networks</Resource.Link> and{' '}
+      <Resource.Link resource="device/:network/:device">Devices</Resource.Link> to{' '}
+      <Resource.Link resource="organization/:org">Organizations</Resource.Link> and {' '}
+      <Resource.Link resource="user">Users</Resource.Link>.
+      All data can be queried and interacted with through the <Page.link parent={url} url="http-api">HTTP API</Page.link>.
     </p>
 
     <h4>Some usefull terms</h4>
@@ -57,7 +54,7 @@ export default ({url, Root, Page, Resource}) =>
       <dd>A device capable of routing Tinymesh Packets </dd>
 
       <dt>End-device</dt>
-      <dd>A battery powered device, not capable of routing</dd>
+      <dd>A battery powered device, incapable of routing</dd>
     </dl>
 
     <Page.Neighbours url={url} name="Introduction" className="inline-block" />
