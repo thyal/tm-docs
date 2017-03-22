@@ -34,9 +34,8 @@ export default ({url, Page, Endpoint, Resource}) =>
           <td>Unencrypted</td>
           <td>tcp.cloud.tiny-mesh.com</td>
           <td>7001</td>
-          <td>See <Page.link url="tcp-api/security.html">security considerations</Page.link></td>
+          <td>See <Page.link parent={url} url="tcp-api/security.html">security considerations</Page.link></td>
         </tr>
       </tbody>
     </table>
   </Page>
-

@@ -29,7 +29,7 @@ export default ({url, Page, Endpoint, Resource}) =>
       During the initial connection some information will be deduced from the device, for instance
       configuration settings like <b>@todo-CRC-checksums</b>, <b>@todo - ACK/NAK</b> etc
       will be set either by requesting information from device or feature discovery -
-      These options are covered in the <Page.link url="tcp-api/linklevel.html">Protocol</Page.link>
+      These options are covered in the <Page.link parent={url} url="tcp-api/linklevel.html">Protocol</Page.link>
     </p>
 
     <b>Succesfull handshake as seen by gateway</b>

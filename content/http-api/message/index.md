@@ -21,7 +21,7 @@ export default ({url, Root, Page}) =>
 
     <p>
       Using the endpoints defined you can retreive message from the server or queue
-      messages for the device. Additionally the <Page.link url="http-api/query" /> endpoint
+      messages for the device. Additionally the <Page.link parent={url} url="http-api/query" /> endpoint
       may be used for querying the message store.
     </p>
   </Page>

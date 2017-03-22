@@ -30,6 +30,9 @@ export default class Root extends React.Component {
    }
 
    static target(url) {
+      if (!url) {
+        throw new Error("invalid target url")
+      }
       if (url === 'index.html')
          return '/'
       else if (url.match(/\/index\.html$/))

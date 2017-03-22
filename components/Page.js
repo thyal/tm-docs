@@ -91,17 +91,20 @@ export default class Page extends React.Component {
    }
 }
 
-Page.link = ({url, name, children}) => {
+Page.link = (props) => {
+   const {url, name, parent, children} = props
    const page = Page.page(url)
 
-   if (!page)
+   if (!page) {
+     if (processed) console.log('!! invalid link: ' + (parent ? parent : '....') + ' -> ' + url)
       return <a>{children} - NOT FOUND</a>
-   else
+   } else {
       return (
          <a href={Root.link(null, page.url)}>
             {children || name || path.basename(url, 'html')}
          </a>
       )
+    }
 }
 
 Page.Breadcrumbs = Breadcrumbs
