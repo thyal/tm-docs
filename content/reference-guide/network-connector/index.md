@@ -22,7 +22,7 @@ export default ({url, Page}) =>
     <p>
       The main distinction between the two being that the first acts as a
       transparent proxy between the UART and TCP/IP socket, while the second
-      uses the <Page.link url="http-api/channel">/channels HTTP API</Page.link> with
+      uses the <Page.link parent={url} url="http-api/channel">/channels HTTP API</Page.link> with
       a high-level protocol.
     </p>
 

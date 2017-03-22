@@ -24,12 +24,12 @@ export default ({url, Page, Resource}) =>
       <p className="alert alert-info">
         This Network Connector does not support auto-provisioning and you must configure
         the Tinymesh Gateway separately.
-        See the <Page.link url="guides/getting-started">Getting Started</Page.link> guide
+        See the <Page.link parent={url} url="guides/getting-started">Getting Started</Page.link> guide
         for more information.
       </p>
 
       <p>
-        Connecting to the <Page.link url="tcp-api">TCP API</Page.link> is done by opening
+        Connecting to the <Page.link parent={url} url="tcp-api">TCP API</Page.link> is done by opening
         a bidirectional pipe between the serialport and the upstream socket.
       </p>
       <pre>
@@ -59,7 +59,7 @@ export default ({url, Page, Resource}) =>
         <b>Note that
         this is not recommended as sending unencrypted data enables a potential attacker to
         intercept, read, or modify data being communicated. Consider using the{' '}
-        <Page.link url="http-api">HTTP API</Page.link> or other methods to connect your gatway.</b>
+        <Page.link parent={url} url="http-api">HTTP API</Page.link> or other methods to connect your gatway.</b>
       </p>
 
     </Resource>
