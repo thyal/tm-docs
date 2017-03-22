@@ -17,6 +17,7 @@ var tidy = require('tidy-html5').tidy_html5
 var ReactMarkdown = require(path.join(process.cwd(), 'components/Markdown.js')).ReactMarkdown
 
 var version = '3.2.0'
+var processed
 
 var walk = function(dir) {
    var results = []
@@ -123,9 +124,10 @@ f = ([file, relpath, elem, save]) => {
       })
    }
 }
-
 // just generate them twice and we'ere $$$
+global.processed = false
 elements.map(f)
+global.processed = true
 elements.filter( ([file]) => workingset.find( (x) => x === file)).map((e) => f(e.concat([true])))
 
 // we can't know what's links don't "exist" until we have the entire tree. Let each
