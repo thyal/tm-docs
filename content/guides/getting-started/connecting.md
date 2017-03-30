@@ -149,7 +149,7 @@ export default ({url, Root, Page, Resource}) =>
       <Page.Neighbours url={url} name="Connecting Your Gateway" className="inline-block" />
     </div>
 
-    <script type="text/javascript" src={Root.link(null, 'js/ua-parser.min.js')} />
+    <script type="text/javascript" src={Root.link(url, 'js/ua-parser.min.js')} />
     <script type="text/javascript" dangerouslySetInnerHTML={{__html: `
       var callback = function() {
         utils.platformTarget('platform-target');

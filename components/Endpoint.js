@@ -272,7 +272,7 @@ Endpoint.Return = Return
 Endpoint.Parameter = Parameter
 Endpoint.QueryParameter = QueryParameter
 Endpoint.ReqHeader = ReqHeader
-Endpoint.Link = ({endpoint, children}) => {
+Endpoint.Link = ({url, endpoint, children}) => {
    if (!endpoint)
       return <span style={{color: 'red', fontWeight: 'bold'}}>{children} (@UNDEFINED)</span>
 
@@ -280,8 +280,7 @@ Endpoint.Link = ({endpoint, children}) => {
    if (!page)
       return <span title={endpoint} style={{color: 'red', fontWeight: 'bold'}}>{children} (@not-found)</span>
 
-   return <a href={Root.link(null, page.url)}>{children}</a>
+   return <a href={Root.link(url, page.url)}>{children}</a>
 }
 
 export default Endpoint
-

@@ -96,11 +96,13 @@ Page.link = (props) => {
    const page = Page.page(url)
 
    if (!page) {
-     if (processed) console.log('!! invalid link: ' + (parent ? parent : '....') + ' -> ' + url)
+      if (processed)
+         console.log('!! invalid link: ' + (parent ? parent : '....') + ' -> ' + url)
+
       return <a>{children} - NOT FOUND</a>
    } else {
       return (
-         <a href={Root.link(null, page.url)}>
+         <a href={Root.link(url, page.url)}>
             {children || name || path.basename(url, 'html')}
          </a>
       )
@@ -118,9 +120,10 @@ Page.Tree = ({url, target, tree, reverse}) => {
   return <ul>
     {_.map(result, (v, k) =>
       true !== v.hidden && <li key={k}>
-        <a href={Root.link(url, v.url)}>{v.name || v.target}</a>
-        <Page.Tree {...v} />
-      </li>)}
+         <a href={Root.link(url, v.url)}>{v.name || v.target}</a>
+         <Page.Tree {...v} url={url} />
+      </li>
+   )}
   </ul>
 }
 
@@ -137,9 +140,9 @@ class Neighbours extends React.Component {
 
       return (
         <ul className={'siblings ' + (className ? className : '')}>
-          {prev && <li><a href={Root.link(null, prev.url)}>Previous: {prev.name || path.basename(prev.url, '.html')}</a></li>}
-          <li className="active"><a href={Root.link(null, current)}>{name || path.basename(current, '.html')}</a></li>
-          {next && <li><a href={Root.link(null, next.url)}>Next: {next.name || path.basename(next.url, '.html')}</a></li>}
+          {prev && <li><a href={Root.link(current, prev.url)}>Previous: {prev.name || path.basename(prev.url, '.html')}</a></li>}
+          <li className="active"><a href={Root.link(current, current)}>{name || path.basename(current, '.html')}</a></li>
+          {next && <li><a href={Root.link(current, next.url)}>Next: {next.name || path.basename(next.url, '.html')}</a></li>}
         </ul>
       )
     }

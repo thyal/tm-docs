@@ -26,7 +26,7 @@ export default class Root extends React.Component {
          from = path.dirname(from)
 
       //console.log(from, to, path.relative(from.replace(/^\//, ''), to))
-      return './' + path.relative(from.replace(/^\//, ''), to.replace(/^\//, '') || '/')
+      return path.relative(from.replace(/^\//, ''), to.replace(/^\//, '') || '/')
    }
 
    static target(url) {
@@ -65,10 +65,10 @@ export default class Root extends React.Component {
             <meta charSet='utf-8' />
             <title>{page && page.name ? page.name : path.basename(props.url, '.html')} - Documentation - Tiny Mesh AS</title>
 
-            <link href={Root.link(null, '/css/normalize.css')} rel='stylesheet' />
-            <link href={Root.link(null, '/css/skeleton.css')} rel='stylesheet' />
-            <link href={Root.link(null, '/css/style.css')} rel='stylesheet' />
-            <link href={Root.link(null, '/css/print.css')} rel='stylesheet' media="print" />
+            <link href={Root.link(url, '/css/normalize.css')} rel='stylesheet' />
+            <link href={Root.link(url, '/css/skeleton.css')} rel='stylesheet' />
+            <link href={Root.link(url, '/css/style.css')} rel='stylesheet' />
+            <link href={Root.link(url, '/css/print.css')} rel='stylesheet' media="print" />
             {/*
             <link rel="canonical" href={'/' + url} />
             */}
@@ -89,13 +89,13 @@ export default class Root extends React.Component {
                   <ul className="nav">
                      {_.map(subTree(Page.pages['/']), (v, k) =>
                         true !== v.hidden && <li key={k} className={"section " + (v.collapse ? 'collapse ' : '') + (hasPrefix(path.dirname(v.url), props.url) ? ' ancestor' : '')}>
-                        <a href={Root.link(null, v.url)}>{v.name || path.dirname(v.url)}</a>
+                        <a href={Root.link(url, v.url)}>{v.name || path.dirname(v.url)}</a>
 
                         <ul className="nav">
                            {_.map(subTree(v), (child, p) =>
                               true !== child.hidden && <li key={p} className={"header" + (hasChildURL(child, props.url) ? ' parent' : '')}>
                                  {false !== child.name &&
-                                    <a href={Root.link(null, child.url)}>
+                                    <a href={Root.link(url, child.url)}>
                                        {child.name || path.dirname(child.url)}
                                        {true === child.unstable && <span className="text-right label label-warning" style={{float: 'right'}}>unstable</span>}
                                        {true === child.beta && <span className="text-right label label-info" style={{float: 'right'}}>beta</span>}
@@ -104,7 +104,7 @@ export default class Root extends React.Component {
                                  <ul className="nav">
                                     {_.map(subTree(child), (leaf, l) =>
                                        true !== leaf.hidden && <li key={l} className={leaf.url === props.url ? 'active' : ''}>
-                                          <a href={Root.link(null, leaf.url)}>
+                                          <a href={Root.link(url, leaf.url)}>
                                              {leaf.name || leaf.url}
                                              {true === leaf.unstable && <span className="text-right label label-warning" style={{float: 'right'}}>unstable</span>}
                                              {true === leaf.beta && <span className="text-right label label-info" style={{float: 'right'}}>beta</span>}
@@ -123,7 +123,7 @@ export default class Root extends React.Component {
                </div>
 
             </div>
-            <script type="text/javascript" src={Root.link(null, '/js/app.js')} />
+            <script type="text/javascript" src={Root.link(url, '/js/app.js')} />
          </body>
       </html>
    }

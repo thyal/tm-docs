@@ -42,7 +42,7 @@ class Resource extends React.Component {
                <Page.Siblings url={url} className="inline-block" siblings={siblings}>
                  {({name, url, active}, k) =>
                    <li key={k} className={true === active ? 'active' : ''}>
-                     <a href={Root.link(null, url)}>
+                     <a href={Root.link(url, url)}>
                        {name || path.basename(url, '.html')}
                      </a>
                    </li>}
@@ -108,14 +108,13 @@ Resource.Field = Field
 Resource.Param = Field
 Resource.FieldSet = FieldSet
 // link to the resource, possibly annotated with a specific field
-Resource.Link = ({children, resource, field, ...props}) => {
+Resource.Link = ({url, children, resource, field, ...props}) => {
    let [path, hash] = resource ? resource.split(/#[^#]*$/) : []
    if (!Resource.resources[path])
       return <a title={"resource="+path}>{children} (not found)</a>
 
    const link = (Resource.resources[path].url || '') + (hash ? '#' + hash : '')
-   return <a href={Root.link(null, link)}>{children}</a>
+   return <a href={Root.link(url, link)}>{children}</a>
 }
 
 export default Resource
-
