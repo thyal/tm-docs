@@ -44,38 +44,37 @@
                             </h1>
                             <p class="lead">
                                 To connect your Tinymesh Gateway a
-                                definition in the Tinymesh Cloud™
-                                <em>(if you haven't defined your
-                                Network yet do so by using the
-                                <a href=
+                                definition must exists in the
+                                Tinymesh Cloud™ <em>(if you haven't
+                                defined your Network yet do so by
+                                using the <a href=
                                 "https://cloud.tiny-mesh.com">Cloud
                                 Workbench</a>)</em>.<br>
                                 Navigate to your Network in the
                                 Cloud Workbench where you will find
                                 the <a href=
                                 "../../reference-guide/resources/network.html">
-                                Network ID</a> <em>(a 32 bits
-                                hexadecimal address)</em>.
+                                Network ID</a>, a automatically
+                                assigned 32 bits id.
                             </p>
                             <p>
                                 For our connection we will use
                                 <a href="guri.html">GURI</a>, a
                                 command line based Network
-                                Connector, to setup the link
-                                between the Tinymesh serialport and
-                                the upstream Cloud
-                                Service<a><sup>[1]</sup></a>.
+                                Connector software, for linking the
+                                Tinymesh Gateway and the Tinymesh
+                                Cloud Service<a><sup>[1]</sup></a>.
                             </p>
                             <p>
-                                As seen in the example below we run
-                                the executable from the Command
-                                Line. you can use the argument
+                                As seen in the example below, we
+                                run the executable from the Command
+                                Line. Use the argument
                                 <code>-list</code> to print all the
                                 available serial ports. Once you
-                                identified your serial port use it
-                                as argument to use that serial port
-                                for communication. You can see that
-                                we specify the
+                                have identified your serial port,
+                                use the port name as the argument
+                                to GURI. You can see that we
+                                specify the
                                 <code>-auto-configure</code> and
                                 <code>-nid=&lt;Network
                                 ID&gt;</code> arguments, these
@@ -83,7 +82,8 @@
                                 the device for Gateway operations.
                                 <b>Substitute the value of
                                 <code>-nid=..</code> with your
-                                Network ID</b>
+                                Network ID (obtained from the Cloud
+                                Workbench)</b>
                             </p>
                             <ol>
                                 <li>
@@ -203,12 +203,12 @@ upstream:recv[true] [6]
                             <p>
                                 Check for the line
                                 <code>upstream:recv[] [6]</code>
-                                which tells us that the cloud
+                                which tells us that the Cloud
                                 Acknowledged the packet we sent.
                                 This means that we have
                                 successfully configured our device
-                                as a Gateway, to verify the that we
-                                the device authenticated check the
+                                as a Gateway, to verify that the
+                                device authenticated check the
                                 Cloud Workbench.
                             </p>
                             <ul class="siblings inline-block">
